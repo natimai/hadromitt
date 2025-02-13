@@ -54,26 +54,30 @@ export function Footer() {
             <h3 className="text-xl font-semibold mb-6 text-[#FF0000]">פרטי התקשרות</h3>
             <motion.div className="space-y-4">
               <motion.a
-                href="tel:08-1234567"
+                href="tel:0796744711"
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center justify-center group"
               >
                 <Phone size={20} className="ml-3 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
-                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">08-1234567</span>
+                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">079-674-4711</span>
               </motion.a>
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center justify-center group"
               >
                 <MapPin size={20} className="ml-3 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
-                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">רחוב הדרום 123, באר שבע</span>
+                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע</span>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center justify-center group"
+                className="flex items-center justify-center group text-center"
               >
                 <Clock size={20} className="ml-3 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
-                <span className="text-gray-300 group-hover:text-white transition-colors duration-300">א'-ה' 12:00-23:00</span>
+                <div className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                  <div>א'-ד': 12:00-23:00</div>
+                  <div>ה': 12:00-00:00</div>
+                  <div>מוצ"ש: שעה לאחר צאת השבת עד 00:00</div>
+                </div>
               </motion.div>
             </motion.div>
           </motion.div>

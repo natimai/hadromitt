@@ -189,26 +189,31 @@ export function Contact() {
               <h2 className="text-2xl font-bold mb-6">פרטי התקשרות</h2>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <Phone className="w-6 h-6 text-yellow-400" />
+                  <Phone className="w-6 h-6 text-[#FF0000]" />
                   <div>
                     <h3 className="font-semibold">טלפון</h3>
-                    <p className="text-gray-600">08-1234567</p>
+                    <p className="text-gray-600">079-674-4711</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <MapPin className="w-6 h-6 text-yellow-400" />
+                  <MapPin className="w-6 h-6 text-[#FF0000]" />
                   <div>
                     <h3 className="font-semibold">כתובת</h3>
-                    <p className="text-gray-600">רחוב הדרום 123, באר שבע</p>
+                    <p className="text-gray-600">רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Clock className="w-6 h-6 text-yellow-400" />
+                  <Clock className="w-6 h-6 text-[#FF0000]" />
                   <div>
                     <h3 className="font-semibold">שעות פעילות</h3>
-                    <p className="text-gray-600">א'-ה': 12:00-23:00</p>
-                    <p className="text-gray-600">ו': 12:00-15:00</p>
-                    <p className="text-gray-600">שבת: סגור</p>
+                    <p className="text-gray-600">ראשון-רביעי:</p>
+                    <p className="text-gray-600 mr-4">סרויס צהריים: 12:00-17:00</p>
+                    <p className="text-gray-600 mr-4">סרויס ערב: 17:00-23:00</p>
+                    <p className="text-gray-600">חמישי:</p>
+                    <p className="text-gray-600 mr-4">סרויס צהריים: 12:00-17:00</p>
+                    <p className="text-gray-600 mr-4">סרויס ערב: 17:00-00:00</p>
+                    <p className="text-gray-600">מוצ"ש:</p>
+                    <p className="text-gray-600 mr-4">שעה לאחר צאת השבת עד 00:00</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">

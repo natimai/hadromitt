@@ -26,19 +26,19 @@ export function Home() {
       title: 'מטבח דרומי אותנטי',
       description: 'טעמים מסורתיים בגרסה מודרנית',
       icon: <Utensils className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80'
+      image: '/gallery/BarAharon-3565-2 Large.jpeg'
     },
     {
       title: 'אווירה ייחודית',
       description: 'חוויה קולינרית בלתי נשכחת',
       icon: <Star className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80'
+      image: '/gallery/BarAharon-3097 Large.jpeg'
     },
     {
       title: 'מיקום מרכזי',
-      description: 'נגיש ונוח להגעה',
+      description: 'רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע',
       icon: <MapPin className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80'
+      image: '/gallery/BarAharon-3402 Large.jpeg'
     }
   ];
 
