@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Star, Clock, MapPin, Utensils, Quote, ThumbsUp } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
+import { ChevronDown, Star, Clock, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Menu, Plus } from 'lucide-react';
 
 export function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
-  const { scrollYProgress } = useScroll();
   const [activeFeature, setActiveFeature] = useState(0);
+  const [currentReview, setCurrentReview] = useState(0);
+  const [isHoveringHero, setIsHoveringHero] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const heroRef = useRef(null);
+  const isHeroInView = useInView(heroRef);
 
+  const { scrollYProgress } = useScroll();
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const scaleX = useSpring(scrollYProgress, springConfig);
 
@@ -19,7 +24,33 @@ export function Home() {
 
   useEffect(() => {
     setIsLoaded(true);
+    
+    // אוטומציה לסקירת ביקורות
+    const interval = setInterval(() => {
+      setCurrentReview((prev) => (prev + 1) % reviews.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, []);
+
+  // אפקט פראלקס לתמונת הרקע
+  const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+
+  // אנימציית כניסה לאלמנטים
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   const features = [
     {
@@ -89,15 +120,25 @@ export function Home() {
   return (
     <div className="min-h-screen overflow-hidden bg-gradient-to-b from-[#1A0000] to-black">
       {/* Progress Bar */}
-      <div className="fixed top-0 right-0 left-0 h-1 bg-black/20 z-50">
+      <motion.div 
+        className="fixed top-0 right-0 left-0 h-1 bg-black/20 z-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+      >
         <motion.div
           className="absolute top-0 right-0 bottom-0 left-0 bg-gradient-to-l from-[#FF0000] to-[#CC0000] origin-right"
           style={{ scaleX }}
         />
-      </div>
+      </motion.div>
 
       {/* Hero Section */}
-      <header className="relative h-screen">
+      <header 
+        ref={heroRef}
+        className="relative h-screen overflow-hidden"
+        onMouseEnter={() => setIsHoveringHero(true)}
+        onMouseLeave={() => setIsHoveringHero(false)}
+      >
         <AnimatePresence>
           {isLoaded && (
             <motion.div
@@ -105,60 +146,77 @@ export function Home() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5 }}
               className="absolute inset-0"
+              style={{ y: heroY }}
             >
               <img 
                 src="/hero.jpeg"
                 alt="Restaurant ambiance" 
-                className="w-full h-full object-cover transition-opacity duration-1000"
+                className="w-full h-full object-cover transition-all duration-1000"
+                style={{ 
+                  transform: isHoveringHero ? 'scale(1.05)' : 'scale(1)',
+                  filter: isHoveringHero ? 'brightness(1.1)' : 'brightness(1)'
+                }}
               />
               <motion.div 
                 className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/80 via-transparent to-[#1A0000]/80"
                 style={{ backgroundColor: overlayOpacity }}
-              ></motion.div>
+              />
             </motion.div>
           )}
         </AnimatePresence>
         
         <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-4">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            variants={containerVariants}
+            initial="hidden"
+            animate={isHeroInView ? "visible" : "hidden"}
             className="space-y-8"
           >
             <motion.div
               className="relative"
-              initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 1, type: "spring" }}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <h1 className="text-6xl md:text-8xl font-bold text-[#FF0000] drop-shadow-2xl">
                 הדרומית
               </h1>
-              <div className="absolute -inset-1 bg-[#FF0000]/20 blur-xl -z-10 rounded-full"></div>
+              <div className="absolute -inset-1 bg-[#FF0000]/20 blur-xl -z-10 rounded-full" />
             </motion.div>
+
             <motion.p 
               className="text-2xl md:text-3xl text-[#F5F5F5] drop-shadow-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1 }}
+              variants={itemVariants}
             >
               חוויה קולינרית דרומית אותנטית
             </motion.p>
+
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.5 }}
+              variants={itemVariants}
               className="flex flex-col items-center gap-8"
             >
-              <Link 
-                to="/menu"
-                className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-full transition-all duration-300 hover:scale-105"
-              >
-                <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] transition-transform"></span>
-                <span className="absolute inset-0 bg-gradient-to-r from-[#CC0000] to-[#FF0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                <span className="relative text-white">לתפריט שלנו</span>
-              </Link>
+              <div className="flex gap-4">
+                <Link 
+                  to="/menu"
+                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-full transition-all duration-300 hover:scale-105"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] transition-transform"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#CC0000] to-[#FF0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <span className="relative text-white">לתפריט שלנו</span>
+                </Link>
+
+                <a 
+                  href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-full bg-white text-[#1A0000] hover:text-white transition-all duration-300 hover:scale-105"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <Calendar className="w-5 h-5 ml-2 relative" />
+                  <span className="relative">הזמן שולחן אונליין</span>
+                </a>
+              </div>
+
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -170,6 +228,76 @@ export function Home() {
             </motion.div>
           </motion.div>
         </div>
+
+        {/* Quick Access Menu */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1.5 }}
+          className="fixed left-8 bottom-8 z-40"
+        >
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="mb-4 flex flex-col items-center space-y-4"
+              >
+                <motion.a
+                  href="tel:0796744711"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="flex flex-col items-center gap-1"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
+                    <Phone className="w-6 h-6" />
+                  </div>
+                  <span className="text-white text-sm font-medium">חייג אלינו</span>
+                </motion.a>
+                <motion.a
+                  href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex flex-col items-center gap-1"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
+                    <Calendar className="w-6 h-6" />
+                  </div>
+                  <span className="text-white text-sm font-medium">הזמן מקום</span>
+                </motion.a>
+                <motion.a
+                  href="https://goo.gl/maps/xxxxx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-col items-center gap-1"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <span className="text-white text-sm font-medium">נווט אלינו</span>
+                </motion.a>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <motion.button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FF0000] text-white shadow-lg hover:bg-[#CC0000] transition-colors"
+            animate={{ rotate: isMenuOpen ? 45 : 0 }}
+          >
+            {isMenuOpen ? <X size={32} /> : <Plus size={32} />}
+          </motion.button>
+        </motion.div>
       </header>
 
       {/* Interactive Features Section */}
@@ -190,9 +318,9 @@ export function Home() {
                   whileInView={{ x: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.2 }}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 backdrop-blur-sm ${
+                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-500 backdrop-blur-sm transform hover:scale-105 ${
                     activeFeature === index 
-                      ? 'bg-gradient-to-r from-[#FF0000]/90 to-[#CC0000]/90 text-white' 
+                      ? 'bg-gradient-to-r from-[#FF0000]/90 to-[#CC0000]/90 text-white shadow-xl' 
                       : 'bg-[#1A0000]/30 text-white hover:bg-[#1A0000]/50'
                   }`}
                   onClick={() => setActiveFeature(index)}
@@ -222,7 +350,7 @@ export function Home() {
               initial={{ scale: 0.8, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
-              className="relative aspect-square rounded-2xl overflow-hidden"
+              className="relative aspect-square rounded-2xl overflow-hidden group"
             >
               <AnimatePresence mode="wait">
                 <motion.img
@@ -236,59 +364,14 @@ export function Home() {
                   className="w-full h-full object-cover"
                 />
               </AnimatePresence>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000]/90 via-[#1A0000]/50 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000]/90 via-[#1A0000]/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="relative py-24 px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-[#1A0000]/90"></div>
-        <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-[#FF0000] mb-4">הצוות שלנו</h2>
-            <p className="text-xl text-[#F5F5F5]">האנשים שעושים את הקסם</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="relative group"
-              >
-                <div className="relative overflow-hidden rounded-2xl aspect-square">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-transparent to-transparent opacity-80"></div>
-                </div>
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300">
-                  <h3 className="text-2xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-[#FF0000] font-semibold mb-2">{member.role}</p>
-                  <p className="text-[#F5F5F5]/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {member.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Reviews Section */}
-      <section className="relative py-24 px-6">
+      {/* Reviews Carousel */}
+      <section className="relative py-24 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/90 to-black/95"></div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <motion.div
@@ -301,52 +384,62 @@ export function Home() {
             <p className="text-xl text-[#F5F5F5]">הלקוחות שלנו מספרים</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {reviews.map((review, index) => (
+          <div className="relative">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-gradient-to-br from-[#1A0000] to-black/40 p-6 rounded-2xl backdrop-blur-sm"
+                key={currentReview}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                className="bg-gradient-to-br from-[#1A0000] to-black/40 p-8 rounded-2xl backdrop-blur-sm max-w-3xl mx-auto"
               >
-                <div className="flex items-start mb-4">
-                  <Quote className="text-[#FF0000] w-8 h-8 mt-1 ml-2" />
+                <div className="flex items-start mb-6">
+                  <Quote className="text-[#FF0000] w-12 h-12 mt-1 ml-4 transform -scale-x-100" />
                   <div>
-                    <h3 className="text-xl font-bold text-white">{review.name}</h3>
-                    {review.role && (
-                      <p className="text-[#FF6666] text-sm">{review.role}</p>
+                    <h3 className="text-2xl font-bold text-white">{reviews[currentReview].name}</h3>
+                    {reviews[currentReview].role && (
+                      <p className="text-[#FF6666] text-lg">{reviews[currentReview].role}</p>
                     )}
                   </div>
                 </div>
-                <div className="flex mb-3">
-                  {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-[#FF0000] fill-[#FF0000]" />
+                <div className="flex mb-6">
+                  {[...Array(reviews[currentReview].rating)].map((_, i) => (
+                    <Star key={i} className="w-6 h-6 text-[#FF0000] fill-[#FF0000]" />
                   ))}
                 </div>
-                <p className="text-[#F5F5F5]/90 mb-4 line-clamp-4">{review.content}</p>
-                <p className="text-[#F5F5F5]/60 text-sm">{review.date}</p>
+                <p className="text-[#F5F5F5] text-xl mb-6 leading-relaxed">
+                  {reviews[currentReview].content}
+                </p>
+                <p className="text-[#F5F5F5]/60">{reviews[currentReview].date}</p>
               </motion.div>
-            ))}
-          </div>
+            </AnimatePresence>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <a
-              href="https://g.page/r/CSKtBoitSOKpEBM/review"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#FF0000] to-[#CC0000] text-white rounded-full font-bold text-lg hover:scale-105 transition-all duration-300"
-            >
-              <ThumbsUp className="w-5 h-5" />
-              <span>השאירו ביקורת</span>
-            </a>
-          </motion.div>
+            <div className="flex justify-center gap-4 mt-8">
+              <button
+                onClick={() => setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length)}
+                className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </button>
+              <div className="flex gap-2">
+                {reviews.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentReview(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentReview === index ? 'bg-[#FF0000]' : 'bg-white/20'
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setCurrentReview((prev) => (prev + 1) % reviews.length)}
+                className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -359,7 +452,7 @@ export function Home() {
           className="absolute inset-0 z-0"
         >
           <img 
-            src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80"
+            src="/gallery/BarAharon-3565-2 Large.jpeg"
             alt="Background"
             className="w-full h-full object-cover"
           />
@@ -380,22 +473,37 @@ export function Home() {
               <div className="absolute -inset-1 bg-[#FF0000]/20 blur-xl -z-10 rounded-full"></div>
             </div>
             <p className="text-xl text-[#F5F5F5] drop-shadow-lg">הבטיחו את מקומכם במסעדה</p>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <a
-                href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] transition-transform"></span>
-                <span className="absolute inset-0 bg-gradient-to-r from-[#CC0000] to-[#FF0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                <Clock className="relative w-5 h-5 text-white" />
-                <span className="relative text-white">להזמנת מקום</span>
-              </a>
-            </motion.div>
+                <a
+                  href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] transition-transform"></span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#CC0000] to-[#FF0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                  <Clock className="relative w-5 h-5 text-white" />
+                  <span className="relative text-white">להזמנת מקום</span>
+                </a>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  to="/contact"
+                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>צור קשר</span>
+                </Link>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
