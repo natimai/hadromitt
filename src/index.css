@@ -2,6 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #1A0000;
+  color: #ffffff;
+}
+
+.dark-mode .bg-white {
+  background-color: #1A0000 !important;
+}
+
+.dark-mode .text-gray-700 {
+  color: #E5E5E5 !important;
+}
+
+.dark-mode .text-[#1A0000] {
+  color: #ffffff !important;
+}
+
+.dark-mode .border-gray-100 {
+  border-color: #333333 !important;
+}
+
+.dark-mode .bg-gray-100 {
+  background-color: #333333 !important;
+}
+
+.dark-mode .hover\:bg-gray-200:hover {
+  background-color: #444444 !important;
+}
+
+/* Cursor Styles */
+body[style*="cursor: pointer"] * {
+  cursor: pointer !important;
+}
+
+/* Animation Control */
+.pause-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Link Highlighting */
+.highlight-links a {
+  text-decoration: underline !important;
+  color: #FF0000 !important;
+}
+
+.highlight-links a:hover {
+  background-color: #FFEBEB !important;
+}
+
+.dark-mode.highlight-links a:hover {
+  background-color: #330000 !important;
+}
+
+/* Keyboard Navigation */
+.keyboard-nav *:focus {
+  outline: 3px solid #FF0000 !important;
+  outline-offset: 2px !important;
+}
+
+.keyboard-nav button:focus,
+.keyboard-nav a:focus {
+  box-shadow: 0 0 0 3px #FF0000 !important;
+}
+
+/* Skip to Main Content - נגישות מקלדת */
+.skip-to-main {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FF0000;
+  color: white;
+  padding: 8px 16px;
+  z-index: 9999;
+  transition: top 0.3s;
+  border-radius: 0 0 8px 8px;
+}
+
+.skip-to-main:focus {
+  top: 0;
+}
+
 @layer base {
   html {
     direction: rtl;

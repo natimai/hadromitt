@@ -11,6 +11,7 @@ export function Navbar() {
     { to: '/', text: 'בית' },
     { to: '/menu', text: 'תפריט' },
     { to: '/about', text: 'עלינו' },
+    { to: '/events', text: 'אירועים' },
     { to: '/gallery', text: 'גלריה' },
     { to: '/contact', text: 'צור קשר' },
   ];

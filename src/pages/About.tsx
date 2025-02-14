@@ -1,134 +1,161 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Users, Utensils, Calendar, MapPin, Accessibility } from 'lucide-react';
 
 export function About() {
+  const sections = [
+    {
+      icon: <Utensils className="w-8 h-8" />,
+      title: 'חוויה קולינרית',
+      content: 'בדרומית תמצאו תפריט עשיר ומגוון הכולל מנות בשרים משובחות, סלטים טריים וייחודיים, מנות פתיחה מפתיעות ומנות דגל שזכו לשם ולשבח בתחום האירועים. סימן ההיכר שלנו הוא הנדיבות יוצאת הדופן שמאפיינת את בעלי הקבוצה, אבי לב.',
+      image: '/gallery/BarAharon-3565-2 Large.jpeg'
+    },
+    {
+      icon: <Calendar className="w-8 h-8" />,
+      title: 'אירועים פרטיים',
+      content: 'למעוניינים באירועים פרטיים, המסעדה מציעה שלושה חדרי אירועי VIP מאובזרים במערכות הגברה מתקדמות ובמסכים, המתאימים לאירועים אינטימיים מ-30 סועדים ועד 50 סועדים. כל חדר תוכנן בקפידה כדי להעניק חוויה ייחודית ומותאמת אישית.',
+      image: '/gallery/BarAharon-3097 Large.jpeg'
+    },
+    {
+      icon: <Accessibility className="w-8 h-8" />,
+      title: 'נגישות',
+      content: 'מתחם המסעדה מתוכנן להנגיש חוויית ביקור נוחה לכל אורח. חניות נכים מסומנות ושמורות נמצאות בקרבת הכניסה, והגישה אל המסעדה נוחה ומותאמת לחלוטין.',
+      image: '/gallery/BarAharon-3402 Large.jpeg'
+    }
+  ];
+
   return (
-    <div className="min-h-screen pt-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">הסיפור שלנו</h1>
-          <p className="text-xl text-gray-600">מסורת של טעמים אותנטיים</p>
-        </motion.div>
-
-        {/* Story Section */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&q=80" 
-              alt="Restaurant interior"
-              className="rounded-xl shadow-xl"
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-right"
-          >
-            <h2 className="text-3xl font-bold mb-6">המסע שלנו</h2>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              הדרומית נולדה מתוך אהבה לאוכל דרומי אותנטי ורצון לשמר את המסורת הקולינרית העשירה של האזור.
-              המסעדה שלנו משלבת מתכונים מסורתיים עם טכניקות מודרניות, תוך שימוש בחומרי גלם טריים ואיכותיים.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              כל מנה במסעדה מספרת סיפור, וכל ביקור הוא הזדמנות לחוות את העושר התרבותי והקולינרי של המטבח הדרומי.
-            </p>
-          </motion.div>
+    <div className="min-h-screen pt-20">
+      {/* Hero Section with Background Image */}
+      <div className="relative h-[60vh] mb-16">
+        <div className="absolute inset-0">
+          <img 
+            src="/gallery/BarAharon-3131 Large.jpeg"
+            alt="מסעדת הדרומית"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/80 to-[#1A0000]"></div>
         </div>
-
-        {/* Values Section */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {[
-            {
-              title: 'איכות',
-              description: 'שימוש בחומרי הגלם הטריים והאיכותיים ביותר',
-              image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&q=80'
-            },
-            {
-              title: 'מסורת',
-              description: 'שמירה על מתכונים מסורתיים ושיטות בישול אותנטיות',
-              image: 'https://images.unsplash.com/photo-1547573854-74d2a71d0826?auto=format&fit=crop&q=80'
-            },
-            {
-              title: 'חדשנות',
-              description: 'שילוב טכניקות מודרניות עם טעמים מסורתיים',
-              image: 'https://images.unsplash.com/photo-1574966739987-65e42e4726e6?auto=format&fit=crop&q=80'
-            }
-          ].map((value, index) => (
+        
+        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center"
+          >
             <motion.div
-              key={value.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden"
+              initial={{ scale: 0.5 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="mb-8"
             >
-              <img 
-                src={value.image}
-                alt={value.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </div>
+              <img src="/logo.svg" alt="הדרומית" className="h-32 mx-auto" />
             </motion.div>
-          ))}
-        </div>
-
-        {/* Team Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold mb-12">הצוות שלנו</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'שף דוד כהן',
-                role: 'שף ראשי',
-                image: 'https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&q=80'
-              },
-              {
-                name: 'מיכל לוי',
-                role: 'שפית קונדיטורית',
-                image: 'https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80'
-              },
-              {
-                name: 'יוסי אברהם',
-                role: 'מנהל המסעדה',
-                image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80'
-              }
-            ].map((member, index) => (
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              מסעדת בשרים כשרה בבאר שבע
+            </h1>
+            <div className="max-w-3xl mx-auto">
               <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.2 }}
-                className="bg-white rounded-xl shadow-lg overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="relative"
               >
-                <img 
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{member.name}</h3>
-                  <p className="text-gray-600">{member.role}</p>
+                <p className="text-xl leading-relaxed text-gray-100 mb-8">
+                  ברוכים הבאים להדרומית, מסעדת בשרים כשרה מבית קבוצת פפה מישל, הממוקמת במתחם ישפרו סנטר ליד הפורום בבאר שבע.
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-lg text-center text-gray-600 max-w-3xl mx-auto mb-16"
+          >
+            המסעדה תוכננה ועוצבה בסגנון מודרני עם גווני עץ חמים, היוצרים אווירה אינטימית, חמה ורומנטית לכל סועד.
+          </motion.p>
+
+          {/* Main Content */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {sections.map((section, index) => (
+              <motion.div
+                key={section.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative overflow-hidden rounded-2xl shadow-xl"
+              >
+                <div className="aspect-square">
+                  <img 
+                    src={section.image}
+                    alt={section.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/60 to-transparent"></div>
+                </div>
+                
+                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white">
+                      {section.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">{section.title}</h3>
+                  </div>
+                  <p className="text-gray-200 leading-relaxed">{section.content}</p>
                 </div>
               </motion.div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Call to Action with Background */}
+      <div className="relative py-24">
+        <div className="absolute inset-0">
+          <img 
+            src="/gallery/BarAharon-3055 Large.jpeg"
+            alt="אווירת המסעדה"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] to-[#1A0000]/60 backdrop-blur-sm"></div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="relative text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="relative inline-block mb-8">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              בואו לחוות חוויה קולינרית נדיבה, ייחודית ומרגשת
+            </h2>
+            <div className="absolute -inset-1 bg-white/20 blur-xl -z-10 rounded-full"></div>
+          </div>
+          <p className="text-2xl text-gray-200 mb-12">אנחנו מחכים לכם בדרומית!</p>
+          
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block"
+          >
+            <a
+              href="/contact"
+              className="group relative inline-flex items-center gap-2 px-12 py-5 rounded-full text-xl font-bold overflow-hidden bg-white text-[#1A0000] hover:text-white transition-colors duration-300"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <MapPin className="relative w-6 h-6" />
+              <span className="relative">צור קשר</span>
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </div>

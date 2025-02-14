@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Footer() {
@@ -47,6 +47,13 @@ export function Footer() {
             <p className="text-gray-300 text-lg leading-relaxed">
               חוויה קולינרית דרומית אותנטית
             </p>
+            <Link 
+              to="/accessibility"
+              className="flex items-center justify-center md:justify-end gap-2 text-gray-300 hover:text-[#FF0000] transition-colors duration-300"
+            >
+              <Accessibility className="w-5 h-5" />
+              <span>הצהרת נגישות</span>
+            </Link>
           </motion.div>
 
           {/* Contact Info */}
