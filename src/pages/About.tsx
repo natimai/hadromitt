@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, Utensils, Calendar, MapPin, Accessibility } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function About() {
   const sections = [
@@ -31,7 +32,7 @@ export function About() {
         <div className="absolute inset-0">
           <img 
             src="/gallery/BarAharon-3131 Large.jpeg"
-            alt="מסעדת הדרומית"
+            alt="אווירה מיוחדת ועיצוב מודרני במסעדת הדרומית"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/80 to-[#1A0000]"></div>
@@ -49,7 +50,11 @@ export function About() {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <img src="/logo.svg" alt="הדרומית" className="h-32 mx-auto" />
+              <img 
+                src="/logo.svg" 
+                alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
+                className="h-32 mx-auto"
+              />
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
               מסעדת בשרים כשרה בבאר שבע
@@ -63,6 +68,14 @@ export function About() {
               >
                 <p className="text-xl leading-relaxed text-gray-100 mb-8">
                   ברוכים הבאים להדרומית, מסעדת בשרים כשרה מבית קבוצת פפה מישל, הממוקמת במתחם ישפרו סנטר ליד הפורום בבאר שבע.
+                  <Link to="/menu" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
+                    צפו בתפריט שלנו
+                  </Link>
+                  או
+                  <Link to="/contact" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
+                    צרו קשר
+                  </Link>
+                  לפרטים נוספים.
                 </p>
               </motion.div>
             </div>
@@ -95,7 +108,7 @@ export function About() {
                 <div className="aspect-square">
                   <img 
                     src={section.image}
-                    alt={section.title}
+                    alt={`${section.title} - ${section.content}`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/60 to-transparent"></div>
@@ -121,7 +134,7 @@ export function About() {
         <div className="absolute inset-0">
           <img 
             src="/gallery/BarAharon-3055 Large.jpeg"
-            alt="אווירת המסעדה"
+            alt="מטבח מקצועי ומודרני במסעדת הדרומית"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] to-[#1A0000]/60 backdrop-blur-sm"></div>

@@ -1,0 +1,6 @@
+# www.hadromit.co.il robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://www.hadromit.co.il/sitemap.xml 

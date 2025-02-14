@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Music, Tv, Gift, ChevronRight, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Events() {
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
@@ -72,7 +73,7 @@ export function Events() {
         <div className="absolute inset-0">
           <img 
             src="/gallery/BarAharon-3131 Large.jpeg"
-            alt="אירועים בדרומית"
+            alt="חדרי VIP מפוארים לאירועים במסעדת הדרומית"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/80 to-[#1A0000]"></div>
@@ -84,12 +85,25 @@ export function Events() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-              אירועים בדרומית
-            </h1>
-            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">אירועים בדרומית</h1>
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto mb-8">
               חדרי VIP מפוארים לאירועים פרטיים ועסקיים עם חוויה קולינרית יוצאת דופן
             </p>
+            <div className="flex justify-center gap-4">
+              <Link 
+                to="/menu" 
+                className="text-[#FF0000] hover:text-[#CC0000] transition-colors underline"
+              >
+                לתפריט האירועים
+              </Link>
+              <span className="text-gray-300">|</span>
+              <Link 
+                to="/contact" 
+                className="text-[#FF0000] hover:text-[#CC0000] transition-colors underline"
+              >
+                לפרטים נוספים
+              </Link>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -157,7 +171,7 @@ export function Events() {
                 <div className="aspect-[4/5]">
                   <img 
                     src={room.image}
-                    alt={room.name}
+                    alt={`חדר ${room.name} - ${room.capacity} איש במסעדת הדרומית`}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/60 to-transparent"></div>

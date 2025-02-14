@@ -150,7 +150,7 @@ export function Home() {
             >
               <img 
                 src="/hero.jpeg"
-                alt="Restaurant ambiance" 
+                alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
                 className="w-full h-full object-cover transition-all duration-1000"
                 style={{ 
                   transform: isHoveringHero ? 'scale(1.05)' : 'scale(1)',
@@ -178,10 +178,13 @@ export function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <h1 className="text-6xl md:text-8xl font-bold text-[#FF0000] drop-shadow-2xl">
-                הדרומית
-              </h1>
-              <div className="absolute -inset-1 bg-[#FF0000]/20 blur-xl -z-10 rounded-full" />
+              <Link to="/" aria-label="לוגו הדרומית">
+                <img 
+                  src="/logo.svg" 
+                  alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
+                  className="h-32 mx-auto"
+                />
+              </Link>
             </motion.div>
 
             <motion.p 
@@ -273,7 +276,7 @@ export function Home() {
                   <span className="text-white text-sm font-medium">הזמן מקום</span>
                 </motion.a>
                 <motion.a
-                  href="https://goo.gl/maps/xxxxx"
+                  href="https://www.google.com/maps?q=31.22244798333614,34.80355542130626"
                   target="_blank"
                   rel="noopener noreferrer"
                   initial={{ y: 50, opacity: 0 }}
@@ -313,35 +316,17 @@ export function Home() {
             <div className="space-y-12">
               {features.map((feature, index) => (
                 <motion.div
-                  key={index}
-                  initial={{ x: -50, opacity: 0 }}
-                  whileInView={{ x: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className={`p-6 rounded-2xl cursor-pointer transition-all duration-500 backdrop-blur-sm transform hover:scale-105 ${
-                    activeFeature === index 
-                      ? 'bg-gradient-to-r from-[#FF0000]/90 to-[#CC0000]/90 text-white shadow-xl' 
-                      : 'bg-[#1A0000]/30 text-white hover:bg-[#1A0000]/50'
-                  }`}
-                  onClick={() => setActiveFeature(index)}
+                  key={feature.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative aspect-square rounded-2xl overflow-hidden group"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className={`${
-                      activeFeature === index ? 'text-white' : 'text-[#FF6666]'
-                    } transition-colors duration-300`}>
-                      {feature.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                      <p className={
-                        activeFeature === index 
-                          ? 'text-white/90' 
-                          : 'text-[#F5F5F5]/70'
-                      }>
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
+                  <img 
+                    src={feature.image}
+                    alt={`${feature.title} - ${feature.description}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </motion.div>
               ))}
             </div>
@@ -453,7 +438,7 @@ export function Home() {
         >
           <img 
             src="/gallery/BarAharon-3565-2 Large.jpeg"
-            alt="Background"
+            alt="אווירה מיוחדת במסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/80 to-[#1A0000]/60 backdrop-blur-sm"></div>
@@ -466,43 +451,36 @@ export function Home() {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="relative inline-block">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#FF0000] drop-shadow-2xl">
-                רוצים להזמין שולחן?
-              </h2>
-              <div className="absolute -inset-1 bg-[#FF0000]/20 blur-xl -z-10 rounded-full"></div>
-            </div>
-            <p className="text-xl text-[#F5F5F5] drop-shadow-lg">הבטיחו את מקומכם במסעדה</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#FF0000] mb-4">
+              גלו את הטעמים האותנטיים שלנו
+            </h2>
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+              בואו לחוות את הטעמים המיוחדים שלנו במסעדת הדרומית. 
+              <Link to="/menu" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
+                צפו בתפריט שלנו
+              </Link>
+              או
+              <Link to="/events" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
+                הזמינו אירוע מיוחד
+              </Link>.
+            </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <Link 
+                to="/menu"
+                className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden bg-[#FF0000] hover:bg-[#CC0000] transition-colors"
               >
-                <a
-                  href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] transition-transform"></span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#CC0000] to-[#FF0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <Clock className="relative w-5 h-5 text-white" />
-                  <span className="relative text-white">להזמנת מקום</span>
-                </a>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                <Utensils className="w-5 h-5" />
+                <span>לתפריט המלא</span>
+              </Link>
+              
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
               >
-                <Link
-                  to="/contact"
-                  className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
-                >
-                  <Phone className="w-5 h-5" />
-                  <span>צור קשר</span>
-                </Link>
-              </motion.div>
+                <Phone className="w-5 h-5" />
+                <span>צור קשר</span>
+              </Link>
             </div>
           </motion.div>
         </div>
