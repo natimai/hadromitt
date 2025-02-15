@@ -11,6 +11,7 @@ export function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef);
+  const [currentSubtitle, setCurrentSubtitle] = useState(0);
 
   const { scrollYProgress } = useScroll();
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
@@ -22,6 +23,13 @@ export function Home() {
     ["rgba(26, 0, 0, 0.3)", "rgba(26, 0, 0, 0.95)"]
   );
 
+  const subtitles = [
+    "חוויה קולינרית דרומית אותנטית",
+    "בשרים משובחים על האש",
+    "אווירה ייחודית ושירות מעולה",
+    "טעם של דרום בכל ביס"
+  ];
+
   useEffect(() => {
     setIsLoaded(true);
     
@@ -30,7 +38,14 @@ export function Home() {
       setCurrentReview((prev) => (prev + 1) % reviews.length);
     }, 5000);
 
-    return () => clearInterval(interval);
+    const subtitleInterval = setInterval(() => {
+      setCurrentSubtitle((prev) => (prev + 1) % subtitles.length);
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(subtitleInterval);
+    };
   }, []);
 
   // אפקט פראלקס לתמונת הרקע
@@ -185,19 +200,57 @@ export function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/" aria-label="לוגו הדרומית">
-                <img 
-                  src="/logo.svg" 
-                  alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
-                  className="h-32 mx-auto"
-                />
+                <div className="relative">
+                  <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-2xl"></div>
+                  <div className="relative p-4">
+                    <img 
+                      src="/logo.svg" 
+                      alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
+                      className="h-32 mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                    />
+                  </div>
+                </div>
               </Link>
             </motion.div>
 
             <motion.p 
-              className="text-2xl md:text-3xl text-[#F5F5F5] drop-shadow-lg"
+              className="text-2xl md:text-4xl font-bold text-white drop-shadow-lg"
               variants={itemVariants}
             >
-              חוויה קולינרית דרומית אותנטית
+              <div className="relative inline-block">
+                <div className="absolute inset-0 bg-gradient-to-r from-[#FF0000]/20 via-black/60 to-[#FF0000]/20 backdrop-blur-2xl rounded-2xl border border-white/10 transform hover:scale-105 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shine"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#FF0000]/20 via-white/5 to-[#FF0000]/20 blur-xl opacity-50"></div>
+                <div className="relative px-12 py-6">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={currentSubtitle}
+                      initial={{ opacity: 0, y: 20, rotateX: 90 }}
+                      animate={{ 
+                        opacity: 1, 
+                        y: 0, 
+                        rotateX: 0,
+                        transition: {
+                          duration: 0.8,
+                          ease: [0.16, 1, 0.3, 1]
+                        }
+                      }}
+                      exit={{ 
+                        opacity: 0, 
+                        y: -20, 
+                        rotateX: -90,
+                        transition: {
+                          duration: 0.4,
+                          ease: [0.16, 1, 0.3, 1]
+                        }
+                      }}
+                      className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-red-100 to-white font-extrabold tracking-wide"
+                    >
+                      {subtitles[currentSubtitle]}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
+              </div>
             </motion.p>
 
             <motion.div

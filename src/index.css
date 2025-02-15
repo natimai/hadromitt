@@ -2,6 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* אנימציית Shine */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+.animate-shine {
+  animation: shine 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
 /* Dark Mode Styles */
 .dark-mode {
   background-color: #1A0000;
