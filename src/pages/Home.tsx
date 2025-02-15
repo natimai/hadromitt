@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronDown, Star, Clock, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Menu, Plus } from 'lucide-react';
+import { ChevronDown, Star, Clock, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Menu, Plus, Check } from 'lucide-react';
 
 export function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -55,21 +55,24 @@ export function Home() {
   const features = [
     {
       title: 'מטבח דרומי אותנטי',
-      description: 'טעמים מסורתיים בגרסה מודרנית',
+      description: 'חוויה קולינרית ייחודית המשלבת מסורת וחדשנות. בשרים איכותיים על האש, תבלינים מיוחדים וטעמים מהדרום',
       icon: <Utensils className="w-8 h-8" />,
-      image: '/gallery/BarAharon-3565-2 Large.jpeg'
+      image: '/gallery/BarAharon-3565-2 Large.jpeg',
+      highlights: ['בשר טרי ואיכותי', 'תבלינים מיוחדים', 'מתכונים מסורתיים']
     },
     {
       title: 'אווירה ייחודית',
-      description: 'חוויה קולינרית בלתי נשכחת',
+      description: 'עיצוב מודרני המשלב אלמנטים דרומיים מסורתיים. תאורה אינטימית, מוזיקה נעימה ואווירה חמה ומזמינה',
       icon: <Star className="w-8 h-8" />,
-      image: '/gallery/BarAharon-3097 Large.jpeg'
+      image: '/gallery/BarAharon-3097 Large.jpeg',
+      highlights: ['עיצוב מודרני', 'אווירה אינטימית', 'ישיבה נוחה']
     },
     {
-      title: 'מיקום מרכזי',
-      description: 'רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע',
-      icon: <MapPin className="w-8 h-8" />,
-      image: '/gallery/BarAharon-3402 Large.jpeg'
+      title: 'שירות מצוין',
+      description: 'צוות מקצועי ואדיב שישמח להמליץ ולהתאים את החוויה הקולינרית המושלמת עבורכם',
+      icon: <ThumbsUp className="w-8 h-8" />,
+      image: '/gallery/BarAharon-3402 Large.jpeg',
+      highlights: ['צוות מקצועי', 'שירות אישי', 'המלצות מותאמות']
     }
   ];
 
@@ -99,21 +102,24 @@ export function Home() {
       name: 'ניסן בן שושן',
       role: 'רימון הנדסה ושמאות',
       rating: 5,
-      content: 'מקום נהדר, המנות היו טעימות, מגוון רחב של סלטים, שירות ואווירה מצויינים. אין ספק שאחזור',
-      date: 'לפני 6 ימים'
+      content: 'מקום נהדר, המנות היו טעימות מאוד! מגוון רחב של סלטים טריים, שירות מעולה ואווירה מצויינת. הסטייק היה מושלם והצוות היה אדיב במיוחד. אין ספק שאחזור',
+      date: 'לפני 6 ימים',
+      image: '/gallery/BarAharon-3565-2 Large.jpeg'
     },
     {
       name: 'יוסי כהן',
       role: 'ממליץ מקומי',
       rating: 5,
-      content: 'אכלנו היום לא פעם ראשונה וכמו תמיד שירות מצויין. אוכל טעים וטרי, סלטים טריים. אווירה טובה, טל לב עובר בין השולחנות ובודק אם הכל טוב כל כמה דק וגם המלצרים מוודאים שהכל טעים.',
-      date: 'לפני 3 חודשים'
+      content: 'אכלנו היום לא פעם ראשונה וכמו תמיד שירות מצויין. אוכל טעים וטרי, סלטים טריים ומגוונים. אווירה טובה, הצוות עובר בין השולחנות ובודק שהכל טוב. ממליץ בחום!',
+      date: 'לפני 3 חודשים',
+      image: '/gallery/BarAharon-3097 Large.jpeg'
     },
     {
       name: 'הראל שטרן',
       rating: 5,
-      content: 'הזמנו מקום וישר נכנסנו למסעדה. סלטים אליפות ממש טעמים, גם הלאפות. הזמנו סטייק,פילה בקר,פיקניה ופרגיות הגיעו במידת העשייה שביקשנו ללא עיכובים. אוכל טעים ברמה גבוהה',
-      date: 'לפני 5 חודשים'
+      content: 'חוויה קולינרית מושלמת! הזמנו מקום וישר נכנסנו למסעדה. סלטים מעולים וטעימים, גם הלאפות נהדרות. הזמנו סטייק, פילה בקר, פיקניה ופרגיות - הכל הגיע במידת העשייה המבוקשת וללא עיכובים. אוכל טעים ברמה גבוהה',
+      date: 'לפני 5 חודשים',
+      image: '/gallery/BarAharon-3402 Large.jpeg'
     }
   ];
 
@@ -303,61 +309,76 @@ export function Home() {
         </motion.div>
       </header>
 
-      {/* Interactive Features Section */}
-      <section className="relative py-20 px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/50 to-black/90"></div>
+      {/* מאפיינים מיוחדים */}
+      <section className="relative py-24 px-6">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/90 to-black/95 backdrop-blur-sm"></div>
+        </div>
         <div className="relative z-10 max-w-7xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-12 items-center"
+            className="text-center mb-16"
           >
-            <div className="space-y-12">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="relative aspect-square rounded-2xl overflow-hidden group"
-                >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">למה הדרומית?</h2>
+            <p className="text-xl text-gray-300">חוויה קולינרית שלא תשכחו</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="group relative overflow-hidden rounded-2xl bg-[#1A0000]/40 backdrop-blur-sm"
+              >
+                <div className="aspect-[4/3] relative overflow-hidden">
                   <img 
                     src={feature.image}
-                    alt={`${feature.title} - ${feature.description}`}
+                    alt={feature.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              className="relative aspect-square rounded-2xl overflow-hidden group"
-            >
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={activeFeature}
-                  src={features[activeFeature].image}
-                  alt={features[activeFeature].title}
-                  initial={{ opacity: 0, scale: 1.2 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-full h-full object-cover"
-                />
-              </AnimatePresence>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000]/90 via-[#1A0000]/50 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
-            </motion.div>
-          </motion.div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/60 to-transparent"></div>
+                </div>
+                
+                <div className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-3 bg-[#FF0000]/10 rounded-full text-[#FF0000]">
+                      {feature.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
+                  </div>
+                  <p className="text-gray-300 mb-6">{feature.description}</p>
+                  <ul className="space-y-2">
+                    {feature.highlights.map((highlight, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1 * i }}
+                        className="flex items-center text-gray-300"
+                      >
+                        <Check className="w-5 h-5 text-[#FF0000] ml-2" />
+                        {highlight}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Reviews Carousel */}
+      {/* ביקורות */}
       <section className="relative py-24 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/90 to-black/95"></div>
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/90 to-black/95 backdrop-blur-sm"></div>
+        </div>
         <div className="relative z-10 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -366,7 +387,7 @@ export function Home() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-[#FF0000] mb-4">מה אומרים עלינו</h2>
-            <p className="text-xl text-[#F5F5F5]">הלקוחות שלנו מספרים</p>
+            <p className="text-xl text-gray-300">הלקוחות שלנו מספרים על החוויה</p>
           </motion.div>
 
           <div className="relative">
@@ -376,26 +397,43 @@ export function Home() {
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -100 }}
-                className="bg-gradient-to-br from-[#1A0000] to-black/40 p-8 rounded-2xl backdrop-blur-sm max-w-3xl mx-auto"
+                className="relative"
               >
-                <div className="flex items-start mb-6">
-                  <Quote className="text-[#FF0000] w-12 h-12 mt-1 ml-4 transform -scale-x-100" />
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{reviews[currentReview].name}</h3>
-                    {reviews[currentReview].role && (
-                      <p className="text-[#FF6666] text-lg">{reviews[currentReview].role}</p>
-                    )}
+                <div className="grid md:grid-cols-2 gap-8 items-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="relative aspect-[4/3] rounded-2xl overflow-hidden"
+                  >
+                    <img 
+                      src={reviews[currentReview].image}
+                      alt={`ביקורת מאת ${reviews[currentReview].name}`}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/50 to-transparent"></div>
+                  </motion.div>
+
+                  <div className="bg-[#1A0000]/40 backdrop-blur-sm p-8 rounded-2xl">
+                    <div className="flex items-start mb-6">
+                      <Quote className="text-[#FF0000] w-12 h-12 mt-1 ml-4 transform -scale-x-100" />
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">{reviews[currentReview].name}</h3>
+                        {reviews[currentReview].role && (
+                          <p className="text-[#FF6666] text-lg">{reviews[currentReview].role}</p>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex mb-6">
+                      {[...Array(reviews[currentReview].rating)].map((_, i) => (
+                        <Star key={i} className="w-6 h-6 text-[#FF0000] fill-[#FF0000]" />
+                      ))}
+                    </div>
+                    <p className="text-gray-200 text-xl mb-6 leading-relaxed">
+                      {reviews[currentReview].content}
+                    </p>
+                    <p className="text-gray-400">{reviews[currentReview].date}</p>
                   </div>
                 </div>
-                <div className="flex mb-6">
-                  {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 text-[#FF0000] fill-[#FF0000]" />
-                  ))}
-                </div>
-                <p className="text-[#F5F5F5] text-xl mb-6 leading-relaxed">
-                  {reviews[currentReview].content}
-                </p>
-                <p className="text-[#F5F5F5]/60">{reviews[currentReview].date}</p>
               </motion.div>
             </AnimatePresence>
 
@@ -404,7 +442,7 @@ export function Home() {
                 onClick={() => setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length)}
                 className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
               >
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-6 h-6 text-white" />
               </button>
               <div className="flex gap-2">
                 {reviews.map((_, index) => (
@@ -421,14 +459,14 @@ export function Home() {
                 onClick={() => setCurrentReview((prev) => (prev + 1) % reviews.length)}
                 className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
               >
-                <ArrowLeft className="w-6 h-6" />
+                <ArrowLeft className="w-6 h-6 text-white" />
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* קריאה לפעולה */}
       <section className="relative py-24 px-6 overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
@@ -438,13 +476,13 @@ export function Home() {
         >
           <img 
             src="/gallery/BarAharon-3565-2 Large.jpeg"
-            alt="אווירה מיוחדת במסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע"
+            alt="אווירה מיוחדת במסעדת הדרומית"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/80 to-[#1A0000]/60 backdrop-blur-sm"></div>
         </motion.div>
 
-        <div className="relative z-10 max-w-7xl mx-auto text-center text-white">
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -452,35 +490,42 @@ export function Home() {
             className="space-y-8"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-[#FF0000] mb-4">
-              גלו את הטעמים האותנטיים שלנו
+              בואו לגלות את הטעמים האותנטיים שלנו
             </h2>
             <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-              בואו לחוות את הטעמים המיוחדים שלנו במסעדת הדרומית. 
-              <Link to="/menu" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
-                צפו בתפריט שלנו
-              </Link>
-              או
-              <Link to="/events" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
-                הזמינו אירוע מיוחד
-              </Link>.
+              מחכים לכם בהדרומית לחוויה קולינרית בלתי נשכחת.
+              <br />
+              הזמינו מקום או צפו בתפריט העשיר שלנו.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/menu"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden bg-[#FF0000] hover:bg-[#CC0000] transition-colors"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Utensils className="w-5 h-5" />
-                <span>לתפריט המלא</span>
-              </Link>
+                <a
+                  href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF0000] text-white rounded-full text-lg font-bold hover:bg-[#CC0000] transition-colors"
+                >
+                  <Calendar className="w-5 h-5" />
+                  הזמן שולחן
+                </a>
+              </motion.div>
               
-              <Link
-                to="/contact"
-                className="group relative inline-flex items-center gap-2 px-8 py-4 rounded-full text-lg font-bold overflow-hidden bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <Phone className="w-5 h-5" />
-                <span>צור קשר</span>
-              </Link>
+                <Link
+                  to="/menu"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full text-lg font-bold hover:bg-white/20 transition-colors"
+                >
+                  <Utensils className="w-5 h-5" />
+                  לתפריט המלא
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         </div>
