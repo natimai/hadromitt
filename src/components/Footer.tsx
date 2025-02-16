@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Footer() {
@@ -94,20 +94,48 @@ export function Footer() {
             <h3 className="text-xl font-semibold mb-6 text-[#FF0000]">עקבו אחרינו</h3>
             <div className="flex justify-center md:justify-start space-x-6">
               <motion.a
-                href="#"
+                href="https://www.instagram.com/hadromit/?hl=he"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 10 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-3 bg-[#FF0000]/5 rounded-full hover:bg-[#FF0000]/10 transition-colors duration-300"
+                aria-label="עקבו אחרינו באינסטגרם"
               >
                 <Instagram size={24} className="text-[#FF0000]" />
               </motion.a>
               <motion.a
-                href="#"
+                href="https://www.facebook.com/hadromit/?locale=he_IL"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: -10 }}
                 whileTap={{ scale: 0.9 }}
                 className="p-3 bg-[#FF0000]/5 rounded-full hover:bg-[#FF0000]/10 transition-colors duration-300"
+                aria-label="עקבו אחרינו בפייסבוק"
               >
                 <Facebook size={24} className="text-[#FF0000]" />
+              </motion.a>
+              <motion.a
+                href="https://www.youtube.com/@Hadromit_"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-3 bg-[#FF0000]/5 rounded-full hover:bg-[#FF0000]/10 transition-colors duration-300"
+                aria-label="הצטרפו אלינו ביוטיוב"
+              >
+                <Youtube size={24} className="text-[#FF0000]" />
+              </motion.a>
+              <motion.a
+                href="https://www.tiktok.com/@hadromit_?lang=he-IL"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, rotate: -10 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-3 bg-[#FF0000]/5 rounded-full hover:bg-[#FF0000]/10 transition-colors duration-300"
+                aria-label="עקבו אחרינו בטיקטוק"
+              >
+                <Video size={24} className="text-[#FF0000]" />
               </motion.a>
             </div>
           </motion.div>
