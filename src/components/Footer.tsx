@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Footer() {
@@ -59,7 +59,7 @@ export function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo and Description */}
           <motion.div variants={itemVariants} className="text-center md:text-right space-y-4">
             <Link to="/">
@@ -81,13 +81,10 @@ export function Footer() {
             <p className="text-gray-300 text-lg leading-relaxed">
               חוויה קולינרית דרומית אותנטית
             </p>
-            <Link 
-              to="/accessibility"
-              className="flex items-center justify-center md:justify-end gap-2 text-gray-300 hover:text-[#FF0000] transition-colors duration-300"
-            >
-              <Accessibility className="w-5 h-5" />
-              <span>הצהרת נגישות</span>
-            </Link>
+            <div className="flex items-center justify-center md:justify-end gap-2">
+              <img src="/kosher.png" alt="תעודת כשרות" className="h-12" />
+              <img src="/accessible.png" alt="נגיש לנכים" className="h-12" />
+            </div>
           </motion.div>
 
           {/* Contact Info */}
@@ -194,15 +191,62 @@ export function Footer() {
               </motion.a>
             </div>
           </motion.div>
+
+          {/* Legal Links - New Section */}
+          <motion.div variants={itemVariants} className="text-center md:text-left space-y-6">
+            <h3 className="text-xl font-semibold mb-6 text-[#FF0000]">מידע נוסף</h3>
+            <div className="space-y-3">
+              <Link 
+                to="/accessibility"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+              >
+                <Accessibility className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
+                <span>הצהרת נגישות</span>
+              </Link>
+              <Link 
+                to="/privacy"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+              >
+                <Shield className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
+                <span>מדיניות פרטיות</span>
+              </Link>
+              <Link 
+                to="/terms"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+              >
+                <Scale className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
+                <span>תנאי שימוש</span>
+              </Link>
+              <Link 
+                to="/cookies"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+              >
+                <Cookie className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
+                <span>מדיניות עוגיות</span>
+              </Link>
+              <Link 
+                to="/sitemap"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+              >
+                <FileText className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
+                <span>מפת האתר</span>
+              </Link>
+            </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           variants={itemVariants}
           className="relative mt-12 pt-8 border-t border-[#1A0000] text-center space-y-4"
         >
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} הדרומית. כל הזכויות שמורות.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <div className="text-gray-400 text-sm">
+              © {new Date().getFullYear()} הדרומית. כל הזכויות שמורות.
+            </div>
+            <div className="text-gray-400 text-sm">
+              רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע | טל: 079-674-4711
+            </div>
+          </div>
           <motion.div 
             className="flex items-center justify-center gap-2 text-sm text-gray-500"
             whileHover={{ scale: 1.05 }}
