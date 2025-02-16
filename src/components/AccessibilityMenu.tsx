@@ -16,7 +16,8 @@ import {
   Play,
   PauseCircle,
   FileText,
-  Phone
+  Phone,
+  Check
 } from 'lucide-react';
 
 export function AccessibilityMenu() {
@@ -228,10 +229,10 @@ export function AccessibilityMenu() {
       {/* כפתור נגישות קבוע */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-4 right-4 z-50 p-3 bg-[#FF0000] text-white rounded-full shadow-lg hover:bg-[#CC0000] transition-colors duration-300"
+        className="fixed bottom-4 right-4 z-50 p-4 bg-[#FF0000] text-white rounded-full shadow-lg hover:bg-[#CC0000] transition-colors duration-300 hover:scale-110 transform"
         aria-label="תפריט נגישות"
       >
-        <Accessibility className="w-6 h-6" />
+        <Accessibility className="w-7 h-7" />
       </button>
 
       {/* תפריט נגישות */}
@@ -245,10 +246,11 @@ export function AccessibilityMenu() {
             onClick={() => setIsOpen(false)}
           >
             <motion.div
-              className="absolute top-0 left-0 bottom-0 w-96 bg-white shadow-xl p-6 overflow-y-auto"
+              className="absolute top-0 left-0 bottom-0 w-[min(100vw,400px)] bg-white shadow-xl overflow-y-auto"
               onClick={e => e.stopPropagation()}
             >
-              <div className="flex justify-between items-center mb-8">
+              {/* כותרת */}
+              <div className="sticky top-0 z-10 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
                 <h2 className="text-2xl font-bold text-[#1A0000] flex items-center gap-2">
                   <Accessibility className="w-6 h-6 text-[#FF0000]" />
                   הגדרות נגישות
@@ -258,29 +260,32 @@ export function AccessibilityMenu() {
                   className="p-2 hover:bg-gray-100 rounded-full transition-colors"
                   aria-label="סגור תפריט נגישות"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </button>
               </div>
 
-              <div className="space-y-6">
+              {/* תוכן התפריט */}
+              <div className="p-6 space-y-6">
                 {/* גודל טקסט */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     <Type className="w-5 h-5 text-[#FF0000]" />
                     גודל טקסט
                   </h3>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-between gap-4 bg-white rounded-lg p-2">
                     <button
                       onClick={decreaseFontSize}
-                      className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                      className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={fontSize <= 70}
                       aria-label="הקטן טקסט"
                     >
                       <ZoomOut className="w-5 h-5" />
                     </button>
-                    <span className="text-lg">{fontSize}%</span>
+                    <span className="text-lg font-medium w-16 text-center">{fontSize}%</span>
                     <button
                       onClick={increaseFontSize}
-                      className="p-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+                      className="p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={fontSize >= 150}
                       aria-label="הגדל טקסט"
                     >
                       <ZoomIn className="w-5 h-5" />
@@ -289,44 +294,46 @@ export function AccessibilityMenu() {
                 </div>
 
                 {/* ניגודיות */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     <Contrast className="w-5 h-5 text-[#FF0000]" />
                     ניגודיות צבעים
                   </h3>
                   <button
                     onClick={toggleContrast}
-                    className={`w-full p-3 rounded-lg transition-colors ${
+                    className={`w-full p-4 rounded-lg transition-all duration-300 flex items-center justify-between ${
                       contrast === 'high' 
                         ? 'bg-[#FF0000] text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200'
+                        : 'bg-white hover:bg-gray-100'
                     }`}
                   >
-                    ניגודיות {contrast === 'high' ? 'גבוהה' : 'רגילה'}
+                    <span>ניגודיות {contrast === 'high' ? 'גבוהה' : 'רגילה'}</span>
+                    <Check className={`w-5 h-5 ${contrast === 'high' ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
                 </div>
 
                 {/* סמן מוגדל */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     <MousePointer2 className="w-5 h-5 text-[#FF0000]" />
                     סמן מוגדל
                   </h3>
                   <button
                     onClick={toggleCursor}
-                    className={`w-full p-3 rounded-lg transition-colors ${
+                    className={`w-full p-4 rounded-lg transition-all duration-300 flex items-center justify-between ${
                       cursor === 'pointer' 
                         ? 'bg-[#FF0000] text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200'
+                        : 'bg-white hover:bg-gray-100'
                     }`}
                   >
-                    סמן {cursor === 'pointer' ? 'מוגדל' : 'רגיל'}
+                    <span>סמן {cursor === 'pointer' ? 'מוגדל' : 'רגיל'}</span>
+                    <Check className={`w-5 h-5 ${cursor === 'pointer' ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
                 </div>
 
                 {/* עצירת אנימציות */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     {isAnimationPaused ? (
                       <PauseCircle className="w-5 h-5 text-[#FF0000]" />
                     ) : (
@@ -336,55 +343,58 @@ export function AccessibilityMenu() {
                   </h3>
                   <button
                     onClick={toggleAnimations}
-                    className={`w-full p-3 rounded-lg transition-colors ${
+                    className={`w-full p-4 rounded-lg transition-all duration-300 flex items-center justify-between ${
                       isAnimationPaused 
                         ? 'bg-[#FF0000] text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200'
+                        : 'bg-white hover:bg-gray-100'
                     }`}
                   >
-                    אנימציות {isAnimationPaused ? 'מושבתות' : 'פעילות'}
+                    <span>אנימציות {isAnimationPaused ? 'מושבתות' : 'פעילות'}</span>
+                    <Check className={`w-5 h-5 ${isAnimationPaused ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
                 </div>
 
                 {/* הדגשת קישורים */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     <FileText className="w-5 h-5 text-[#FF0000]" />
                     הדגשת קישורים
                   </h3>
                   <button
                     onClick={toggleHighlightLinks}
-                    className={`w-full p-3 rounded-lg transition-colors ${
+                    className={`w-full p-4 rounded-lg transition-all duration-300 flex items-center justify-between ${
                       isHighlightLinks 
                         ? 'bg-[#FF0000] text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200'
+                        : 'bg-white hover:bg-gray-100'
                     }`}
                   >
-                    הדגשת קישורים {isHighlightLinks ? 'פעילה' : 'כבויה'}
+                    <span>הדגשת קישורים {isHighlightLinks ? 'פעילה' : 'כבויה'}</span>
+                    <Check className={`w-5 h-5 ${isHighlightLinks ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
                 </div>
 
                 {/* ניווט מקלדת */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     <Keyboard className="w-5 h-5 text-[#FF0000]" />
                     ניווט מקלדת
                   </h3>
                   <button
                     onClick={toggleKeyboardNav}
-                    className={`w-full p-3 rounded-lg transition-colors ${
+                    className={`w-full p-4 rounded-lg transition-all duration-300 flex items-center justify-between ${
                       isKeyboardNav 
                         ? 'bg-[#FF0000] text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200'
+                        : 'bg-white hover:bg-gray-100'
                     }`}
                   >
-                    ניווט מקלדת {isKeyboardNav ? 'פעיל' : 'כבוי'}
+                    <span>ניווט מקלדת {isKeyboardNav ? 'פעיל' : 'כבוי'}</span>
+                    <Check className={`w-5 h-5 ${isKeyboardNav ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
                 </div>
 
                 {/* מצב כהה */}
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
+                <div className="bg-gray-50 rounded-xl p-4 space-y-3">
+                  <h3 className="text-lg font-semibold flex items-center gap-2 text-[#1A0000]">
                     {isDark ? (
                       <Moon className="w-5 h-5 text-[#FF0000]" />
                     ) : (
@@ -394,34 +404,36 @@ export function AccessibilityMenu() {
                   </h3>
                   <button
                     onClick={toggleDarkMode}
-                    className={`w-full p-3 rounded-lg transition-colors ${
+                    className={`w-full p-4 rounded-lg transition-all duration-300 flex items-center justify-between ${
                       isDark 
                         ? 'bg-[#FF0000] text-white' 
-                        : 'bg-gray-100 hover:bg-gray-200'
+                        : 'bg-white hover:bg-gray-100'
                     }`}
                   >
-                    מצב {isDark ? 'כהה' : 'בהיר'}
+                    <span>מצב {isDark ? 'כהה' : 'בהיר'}</span>
+                    <Check className={`w-5 h-5 ${isDark ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
                 </div>
 
-                {/* איפוס הגדרות */}
-                <button
-                  onClick={resetSettings}
-                  className="w-full mt-4 p-3 flex items-center justify-center gap-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  <RotateCcw className="w-5 h-5" />
-                  איפוס הגדרות
-                </button>
+                {/* כפתורי פעולה */}
+                <div className="flex flex-col gap-3 pt-4 border-t border-gray-200">
+                  <button
+                    onClick={resetSettings}
+                    className="w-full p-4 flex items-center justify-center gap-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors text-[#1A0000] font-medium"
+                  >
+                    <RotateCcw className="w-5 h-5" />
+                    איפוס הגדרות
+                  </button>
 
-                {/* קישור להצהרת נגישות */}
-                <Link
-                  to="/accessibility"
-                  className="w-full mt-4 p-3 flex items-center justify-center gap-2 bg-[#FF0000] text-white rounded-lg hover:bg-[#CC0000] transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <FileText className="w-5 h-5" />
-                  הצהרת נגישות
-                </Link>
+                  <Link
+                    to="/accessibility"
+                    className="w-full p-4 flex items-center justify-center gap-2 bg-[#FF0000] text-white rounded-lg hover:bg-[#CC0000] transition-colors font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <FileText className="w-5 h-5" />
+                    הצהרת נגישות
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </motion.div>

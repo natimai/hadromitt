@@ -599,7 +599,7 @@ export function Menu() {
                         className="overflow-hidden"
                       >
                         <div className="p-6 pt-0 space-y-6">
-                          {category.items.map((item, itemIndex) => (
+                  {category.items.map((item, itemIndex) => (
                     <motion.div
                       key={item.name}
                       initial={{ opacity: 0, x: -20 }}
