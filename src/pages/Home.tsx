@@ -169,19 +169,39 @@ export function Home() {
               className="absolute inset-0"
               style={{ y: heroY }}
             >
-              <img 
-                src="/hero.jpeg"
-                alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
-                className="w-full h-full object-cover transition-all duration-1000"
-                style={{ 
-                  transform: isHoveringHero ? 'scale(1.05)' : 'scale(1)',
-                  filter: isHoveringHero ? 'brightness(1.1)' : 'brightness(1)'
-                }}
-              />
               <motion.div 
-                className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/80 via-transparent to-[#1A0000]/80"
-                style={{ backgroundColor: overlayOpacity }}
-              />
+                initial={{ scale: 1.2 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 2 }}
+                className="relative w-full h-full"
+              >
+                <img 
+                  src="/hero.jpeg"
+                  alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
+                  className="w-full h-full object-cover transition-all duration-1000 filter"
+                  style={{ 
+                    transform: isHoveringHero ? 'scale(1.05)' : 'scale(1)',
+                    filter: isHoveringHero ? 'brightness(1.1) saturate(1.2)' : 'brightness(1) saturate(1)'
+                  }}
+                />
+                <motion.div 
+                  className="absolute inset-0"
+                  style={{ 
+                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.4) 0%, rgba(26,0,0,0.8) 100%)',
+                    mixBlendMode: 'multiply'
+                  }}
+                />
+                <motion.div 
+                  className="absolute inset-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0.3, 0.5, 0.3] }}
+                  transition={{ duration: 5, repeat: Infinity }}
+                  style={{
+                    background: 'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)',
+                    mixBlendMode: 'overlay'
+                  }}
+                />
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -191,7 +211,7 @@ export function Home() {
             variants={containerVariants}
             initial="hidden"
             animate={isHeroInView ? "visible" : "hidden"}
-            className="space-y-8"
+            className="space-y-12"
           >
             <motion.div
               className="relative"
@@ -201,29 +221,49 @@ export function Home() {
             >
               <Link to="/" aria-label="לוגו הדרומית">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-white/10 backdrop-blur-md rounded-2xl"></div>
-                  <div className="relative p-4">
+                  <motion.div 
+                    className="absolute -inset-4 bg-gradient-to-r from-[#FF0000]/20 via-white/10 to-[#FF0000]/20 rounded-3xl blur-xl"
+                    animate={{ 
+                      opacity: [0.5, 0.8, 0.5],
+                      scale: [1, 1.05, 1]
+                    }}
+                    transition={{ 
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  <div className="relative p-6 bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10">
                     <img 
                       src="/logo.svg" 
                       alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
-                      className="h-32 mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                      className="h-40 mx-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
                     />
                   </div>
                 </div>
               </Link>
             </motion.div>
 
-            <motion.p 
-              className="text-2xl md:text-4xl font-bold text-white drop-shadow-lg"
+            <motion.div 
+              className="relative max-w-4xl mx-auto"
               variants={itemVariants}
             >
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#FF0000]/20 via-black/60 to-[#FF0000]/20 backdrop-blur-2xl rounded-2xl border border-white/10 transform hover:scale-105 transition-all duration-500"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shine"></div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#FF0000]/20 via-white/5 to-[#FF0000]/20 blur-xl opacity-50"></div>
-                <div className="relative px-12 py-6">
+              <div className="relative">
+                <motion.div 
+                  className="absolute -inset-8 bg-gradient-to-r from-[#FF0000]/10 via-black/40 to-[#FF0000]/10 rounded-3xl blur-xl"
+                  animate={{ 
+                    opacity: [0.3, 0.6, 0.3],
+                    scale: [1, 1.02, 1]
+                  }}
+                  transition={{ 
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <div className="relative px-8 py-6 bg-black/30 backdrop-blur-md rounded-2xl border border-white/10">
                   <AnimatePresence mode="wait">
-                    <motion.span
+                    <motion.p
                       key={currentSubtitle}
                       initial={{ opacity: 0, y: 20, rotateX: 90 }}
                       animate={{ 
@@ -244,44 +284,84 @@ export function Home() {
                           ease: [0.16, 1, 0.3, 1]
                         }
                       }}
-                      className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-red-100 to-white font-extrabold tracking-wide"
+                      className="text-3xl md:text-5xl font-bold"
                     >
-                      {subtitles[currentSubtitle]}
-                    </motion.span>
+                      <span className="bg-gradient-to-r from-white via-red-100 to-white text-transparent bg-clip-text">
+                        {subtitles[currentSubtitle]}
+                      </span>
+                    </motion.p>
                   </AnimatePresence>
                 </div>
               </div>
-            </motion.p>
+            </motion.div>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-col items-center gap-8"
             >
-              <div className="flex gap-4">
-                <Link 
-                  to="/menu"
-                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-full transition-all duration-300 hover:scale-105"
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] transition-transform"></span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#CC0000] to-[#FF0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <span className="relative text-white">לתפריט שלנו</span>
-                </Link>
+                  <Link 
+                    to="/menu"
+                    className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-xl"
+                  >
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000]"
+                      animate={{
+                        background: [
+                          'linear-gradient(to right, #FF0000, #CC0000)',
+                          'linear-gradient(to right, #CC0000, #FF0000)',
+                          'linear-gradient(to right, #FF0000, #CC0000)'
+                        ]
+                      }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    />
+                    <motion.div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 100%)'
+                      }}
+                    />
+                    <span className="relative text-white">לתפריט שלנו</span>
+                  </Link>
+                </motion.div>
 
-                <a 
-                  href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-full bg-white text-[#1A0000] hover:text-white transition-all duration-300 hover:scale-105"
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                  <Calendar className="w-5 h-5 ml-2 relative" />
-                  <span className="relative">הזמן שולחן אונליין</span>
-                </a>
+                  <a 
+                    href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300"
+                  >
+                    <motion.div 
+                      className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                      animate={{
+                        x: ['0%', '100%', '0%']
+                      }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <Calendar className="w-5 h-5 ml-2 relative" />
+                    <span className="relative text-white">הזמן שולחן אונליין</span>
+                  </a>
+                </motion.div>
               </div>
 
               <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
+                animate={{ 
+                  y: [0, 10, 0],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
                 className="cursor-pointer text-[#FF6666] hover:text-[#FF0000] transition-colors"
                 onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
               >
