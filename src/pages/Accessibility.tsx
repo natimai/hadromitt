@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Accessibility, Check, Users, Phone, Settings, Eye } from 'lucide-react';
+import { Accessibility, Check, Users, Phone, Settings, Eye, FileText } from 'lucide-react';
 
 export default function AccessibilityPage(): JSX.Element {
   const containerVariants = {
@@ -24,46 +24,51 @@ export default function AccessibilityPage(): JSX.Element {
   const sections = [
     {
       icon: <Check className="w-6 h-6 text-[#FF0000]" />,
-      title: "התאמות נגישות באתר",
-      content: `אתר הדרומית הותאם לשימוש עבור אנשים עם מוגבלויות וכולל:
-• תמיכה בתוכנות קריאת מסך
-• אפשרות לניווט באמצעות מקלדת
+      title: "סטטוס התאמות הנגישות באתר",
+      content: `אתר זה עומד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג 2013.
+התאמות הנגישות בוצעו עפ"י המלצות התקן הישראלי (ת"י 5568) לנגישות תכנים באינטרנט ברמת AA ומסמך WCAG2.1 הבינלאומי.
+
+ההתאמות שבוצעו כוללות:
+• תמיכה בתוכנות קריאת מסך ומקלדת
 • תיאורי תמונות חלופיים
 • ניגודיות צבעים מותאמת
 • אפשרות להגדלת טקסט
-• מבנה אתר ברור ועקבי`
+• מבנה אתר ברור ועקבי
+• תפריט נגישות מלא`
     },
     {
       icon: <Users className="w-6 h-6 text-[#FF0000]" />,
       title: "נגישות במסעדה",
-      content: `המסעדה מותאמת פיזית לאנשים עם מוגבלויות:
-• חניית נכים בסמוך לכניסה
-• גישה נוחה לכיסאות גלגלים
-• שירותים מותאמים
+      content: `המסעדה מותאמת פיזית בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות למקום ציבורי שהוא בניין קיים), תשע"ב-2011:
+• חניות נכים תקניות בסמוך לכניסה
+• דרכי גישה נגישות ומותאמות לכיסאות גלגלים
+• שירותי נכים תקניים
 • תפריט בכתב ברייל (לפי בקשה)
-• צוות מיומן ומודע לצרכי נגישות
-• אפשרות להזמנת מקום מראש`
+• צוות מיומן שעבר הדרכות נגישות
+• כניסה מותרת לחיות שירות`
     },
     {
       icon: <Settings className="w-6 h-6 text-[#FF0000]" />,
-      title: "כלי נגישות",
-      content: `האתר מציע מגוון כלי נגישות:
+      title: "אמצעי נגישות באתר",
+      content: `האתר מציע מגוון אמצעי נגישות בהתאם לתקן:
 • שינוי גודל טקסט
 • שינוי ניגודיות צבעים
 • עצירת אנימציות
 • הדגשת קישורים
 • מצב קריאה מונגש
-• סימון כותרות`
+• ניווט מקלדת
+• תפריט נגישות מלא הזמין בכל עמוד`
     },
     {
-      icon: <Eye className="w-6 h-6 text-[#FF0000]" />,
-      title: "מחויבות לשיפור מתמיד",
-      content: `אנו פועלים באופן מתמיד לשיפור הנגישות:
-• בדיקות תקופתיות של הנגישות
-• עדכון והתאמה לטכנולוגיות חדשות
-• הדרכות צוות בנושא נגישות
-• קבלת משוב מהמשתמשים
-• התייעצות עם מומחי נגישות`
+      icon: <FileText className="w-6 h-6 text-[#FF0000]" />,
+      title: "הצהרת נגישות לפי החוק",
+      content: `בהתאם לסעיף 35 לחוק שוויון זכויות לאנשים עם מוגבלות, תשנ"ח-1998 ותקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013, אנו מצהירים כי:
+
+• האתר מספק מידע אודות נגישות השירות
+• ניתן לקבל מידע על אודות התאמות הנגישות בשירות
+• ניתן לקבל מידע בדבר נגישות המבנה שבו ניתן השירות
+• קיימת אפשרות לבקש התאמות נגישות נוספות
+• ניתן להגיש תלונה בנושא נגישות ולקבל מענה`
     }
   ];
 
@@ -85,7 +90,7 @@ export default function AccessibilityPage(): JSX.Element {
               הצהרת נגישות
             </h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              אנו מאמינים שלכל אדם מגיעה הזכות ליהנות מהשירותים שלנו
+              מסעדת הדרומית מחויבת למתן שירות שוויוני לכלל לקוחותיה
             </p>
           </motion.div>
 
@@ -99,7 +104,7 @@ export default function AccessibilityPage(): JSX.Element {
           {/* Introduction */}
           <motion.div variants={itemVariants} className="prose prose-lg prose-invert max-w-none">
             <p className="text-gray-300 leading-relaxed text-center">
-              אתר הדרומית מחויב להנגשת השירותים שלו לאנשים עם מוגבלויות, בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות ותקנות הנגישות.
+              בהתאם לחוק שוויון זכויות לאנשים עם מוגבלות, תשנ"ח-1998 ותקנותיו, אתר הדרומית הונגש כדי להבטיח שירות שוויוני ונגיש לכלל הציבור, לרבות אנשים עם מוגבלויות.
             </p>
           </motion.div>
 
@@ -122,13 +127,13 @@ export default function AccessibilityPage(): JSX.Element {
 
           {/* Contact Section */}
           <motion.div variants={itemVariants} className="text-center mt-12">
-            <h2 className="text-2xl font-bold mb-4">צריכים עזרה?</h2>
+            <h2 className="text-2xl font-bold mb-4">פרטי רכז הנגישות</h2>
             <p className="text-gray-300 mb-4">
-              נתקלתם בבעיית נגישות? אנחנו כאן בשבילכם
+              בהתאם לתקנה 35 לתקנות, פרטי רכז הנגישות של העסק:
             </p>
             <div className="space-y-2">
-              <p className="text-gray-300">רכז הנגישות: ישראל ישראלי</p>
-              <p className="text-gray-300">טלפון: 079-674-4711</p>
+              <p className="text-gray-300">שם: נתי מימון</p>
+              <p className="text-gray-300">טלפון: 054-4445567</p>
               <p className="text-gray-300">דוא"ל: accessibility@hadromit.co.il</p>
               <p className="text-gray-300">כתובת: רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע</p>
             </div>
@@ -137,7 +142,7 @@ export default function AccessibilityPage(): JSX.Element {
           {/* Disclaimer */}
           <motion.div variants={itemVariants} className="text-sm text-gray-400 text-center">
             <p>
-              אנו ממשיכים לשפר את נגישות האתר והשירותים שלנו. אם נתקלתם בבעיה או יש לכם הצעות לשיפור, נשמח לשמוע מכם.
+              במידה ונתקלתם בבעיית נגישות או שיש לכם הצעות לשיפור הנגישות, נשמח לקבל פנייתכם ונטפל בה בהקדם האפשרי ולא יאוחר מ-21 ימים.
             </p>
           </motion.div>
         </motion.div>

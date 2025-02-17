@@ -61,7 +61,7 @@ export function Footer() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Logo and Description */}
-          <motion.div variants={itemVariants} className="text-center md:text-right space-y-4">
+          <motion.div variants={itemVariants} className="text-center md:text-right space-y-4 md:col-span-1">
             <Link to="/">
               <motion.div className="relative inline-block">
                 <motion.div
@@ -81,35 +81,49 @@ export function Footer() {
             <p className="text-gray-300 text-lg leading-relaxed">
               חוויה קולינרית דרומית אותנטית
             </p>
-            <div className="flex items-center justify-center md:justify-end gap-2">
-              <img src="/kosher.png" alt="תעודת כשרות" className="h-12" />
-              <img src="/accessible.png" alt="נגיש לנכים" className="h-12" />
+            <div className="flex flex-col items-center md:items-end gap-4">
+              <div className="flex items-center gap-4">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="relative bg-white/5 backdrop-blur-sm rounded-lg p-2 hover:bg-white/10 transition-colors duration-300"
+                >
+                  <img src="/kosher.png" alt="תעודת כשרות" className="h-14 w-auto object-contain" />
+                  <span className="absolute -bottom-6 right-0 text-xs text-gray-400">תעודת כשרות</span>
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="relative bg-white/5 backdrop-blur-sm rounded-lg p-2 hover:bg-white/10 transition-colors duration-300"
+                >
+                  <img src="/accessible.png" alt="נגיש לנכים" className="h-14 w-auto object-contain" />
+                  <span className="absolute -bottom-6 right-0 text-xs text-gray-400">נגיש לנכים</span>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
 
           {/* Contact Info */}
-          <motion.div variants={itemVariants} className="text-center space-y-6">
+          <motion.div variants={itemVariants} className="text-center md:text-right space-y-6 md:col-span-1">
             <h3 className="text-xl font-semibold mb-6 text-[#FF0000]">פרטי התקשרות</h3>
             <motion.div className="space-y-4">
               <motion.a
                 href="tel:0796744711"
                 whileHover={{ scale: 1.05, x: [0, 5, -5, 5, -5, 0] }}
                 transition={{ duration: 0.5 }}
-                className="flex items-center justify-center group"
+                className="flex items-center justify-center md:justify-end group"
               >
                 <Phone size={20} className="ml-3 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300">079-674-4711</span>
               </motion.a>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center justify-center group"
+                className="flex items-center justify-center md:justify-end group"
               >
                 <MapPin size={20} className="ml-3 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300">רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע</span>
               </motion.div>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center justify-center group text-center"
+                className="flex items-center justify-center md:justify-end group text-right"
               >
                 <Clock size={20} className="ml-3 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <div className="text-gray-300 group-hover:text-white transition-colors duration-300">
@@ -122,9 +136,9 @@ export function Footer() {
           </motion.div>
 
           {/* Social Links */}
-          <motion.div variants={itemVariants} className="text-center md:text-left space-y-6">
+          <motion.div variants={itemVariants} className="text-center md:text-right space-y-6 md:col-span-1">
             <h3 className="text-xl font-semibold mb-6 text-[#FF0000]">עקבו אחרינו</h3>
-            <div className="flex justify-center md:justify-start gap-4">
+            <div className="flex flex-wrap justify-center md:justify-end gap-4">
               <motion.a
                 href="https://www.instagram.com/hadromit/?hl=he"
                 target="_blank"
@@ -192,41 +206,41 @@ export function Footer() {
             </div>
           </motion.div>
 
-          {/* Legal Links - New Section */}
-          <motion.div variants={itemVariants} className="text-center md:text-left space-y-6">
+          {/* Legal Links */}
+          <motion.div variants={itemVariants} className="text-center md:text-right space-y-6 md:col-span-1">
             <h3 className="text-xl font-semibold mb-6 text-[#FF0000]">מידע נוסף</h3>
-            <div className="space-y-3">
+            <div className="flex flex-col items-center md:items-end space-y-3">
               <Link 
                 to="/accessibility"
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
               >
                 <Accessibility className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span>הצהרת נגישות</span>
               </Link>
               <Link 
                 to="/privacy"
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
               >
                 <Shield className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span>מדיניות פרטיות</span>
               </Link>
               <Link 
                 to="/terms"
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
               >
                 <Scale className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span>תנאי שימוש</span>
               </Link>
               <Link 
                 to="/cookies"
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
               >
                 <Cookie className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span>מדיניות עוגיות</span>
               </Link>
               <Link 
                 to="/sitemap"
-                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
               >
                 <FileText className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span>מפת האתר</span>
