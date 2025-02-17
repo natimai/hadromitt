@@ -85,17 +85,25 @@ export function Footer() {
               <div className="flex items-center gap-4">
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  className="relative bg-white/5 backdrop-blur-sm rounded-lg p-2 hover:bg-white/10 transition-colors duration-300"
+                  className="relative bg-white/5 backdrop-blur-sm rounded-lg p-2 hover:bg-white/10 transition-colors duration-300 flex flex-col items-center"
                 >
-                  <img src="/kosher.png" alt="תעודת כשרות" className="h-14 w-auto object-contain" />
-                  <span className="absolute -bottom-6 right-0 text-xs text-gray-400">תעודת כשרות</span>
+                  <img 
+                    src="/039-kosher.svg" 
+                    alt="תעודת כשרות למהדרין" 
+                    className="h-10 w-auto object-contain"
+                  />
+                  <span className="mt-2 text-xs text-gray-400">כשר למהדרין</span>
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  className="relative bg-white/5 backdrop-blur-sm rounded-lg p-2 hover:bg-white/10 transition-colors duration-300"
+                  className="relative bg-white/5 backdrop-blur-sm rounded-lg p-2 hover:bg-white/10 transition-colors duration-300 flex flex-col items-center"
                 >
-                  <img src="/accessible.png" alt="נגיש לנכים" className="h-14 w-auto object-contain" />
-                  <span className="absolute -bottom-6 right-0 text-xs text-gray-400">נגיש לנכים</span>
+                  <img 
+                    src="/people-wheelchair.svg" 
+                    alt="נגיש לנכים" 
+                    className="h-10 w-auto object-contain"
+                  />
+                  <span className="mt-2 text-xs text-gray-400">נגיש לנכים</span>
                 </motion.div>
               </div>
             </div>
