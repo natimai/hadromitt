@@ -284,7 +284,7 @@ export function Footer() {
             </motion.div>
             <span>על ידי</span>
             <a 
-              href="https://github.com/natimai" 
+              href="https://nati-maimon.vercel.app/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-[#FF0000] hover:text-white transition-colors duration-300 flex items-center gap-1"
