@@ -171,34 +171,71 @@ export function Home() {
             >
               <motion.div 
                 initial={{ scale: 1.2 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 2 }}
+                animate={{ 
+                  scale: [1.2, 1.1, 1.15],
+                  filter: ["brightness(0.8) saturate(1.2)", "brightness(1) saturate(1.4)", "brightness(0.9) saturate(1.3)"]
+                }}
+                transition={{ 
+                  duration: 20,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
                 className="relative w-full h-full"
               >
                 <img 
                   src="/hero.jpeg"
                   alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
-                  className="w-full h-full object-cover transition-all duration-1000 filter"
+                  className="w-full h-full object-cover"
                   style={{ 
-                    transform: isHoveringHero ? 'scale(1.05)' : 'scale(1)',
-                    filter: isHoveringHero ? 'brightness(1.1) saturate(1.2)' : 'brightness(1) saturate(1)'
+                    transform: isHoveringHero ? 'scale(1.1)' : 'scale(1)',
+                    transition: 'transform 1s ease-out'
                   }}
                 />
                 <motion.div 
                   className="absolute inset-0"
                   style={{ 
-                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.4) 0%, rgba(26,0,0,0.8) 100%)',
+                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.2) 0%, rgba(26,0,0,0.8) 100%)',
                     mixBlendMode: 'multiply'
                   }}
                 />
                 <motion.div 
                   className="absolute inset-0"
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: [0.3, 0.5, 0.3] }}
-                  transition={{ duration: 5, repeat: Infinity }}
+                  animate={{ 
+                    opacity: [0.2, 0.4, 0.2],
+                    background: [
+                      'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)',
+                      'linear-gradient(45deg, rgba(255,100,0,0.2) 0%, transparent 100%)',
+                      'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)'
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 8,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
                   style={{
-                    background: 'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)',
                     mixBlendMode: 'overlay'
+                  }}
+                />
+                <motion.div 
+                  className="absolute inset-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: [0, 0.5, 0],
+                    background: [
+                      'radial-gradient(circle at 30% 70%, rgba(255,0,0,0.1) 0%, transparent 50%)',
+                      'radial-gradient(circle at 70% 30%, rgba(255,100,0,0.2) 0%, transparent 50%)',
+                      'radial-gradient(circle at 30% 70%, rgba(255,0,0,0.1) 0%, transparent 50%)'
+                    ]
+                  }}
+                  transition={{ 
+                    duration: 15,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                  style={{
+                    mixBlendMode: 'screen'
                   }}
                 />
               </motion.div>
@@ -211,7 +248,7 @@ export function Home() {
             variants={containerVariants}
             initial="hidden"
             animate={isHeroInView ? "visible" : "hidden"}
-            className="space-y-12"
+            className="space-y-16"
           >
             <motion.div
               className="relative"
@@ -222,22 +259,32 @@ export function Home() {
               <Link to="/" aria-label="לוגו הדרומית">
                 <div className="relative">
                   <motion.div 
-                    className="absolute -inset-4 bg-gradient-to-r from-[#FF0000]/20 via-white/10 to-[#FF0000]/20 rounded-3xl blur-xl"
+                    className="absolute -inset-8 bg-gradient-to-r from-[#FF0000]/20 via-white/10 to-[#FF0000]/20 rounded-[40px] blur-2xl"
                     animate={{ 
-                      opacity: [0.5, 0.8, 0.5],
-                      scale: [1, 1.05, 1]
+                      opacity: [0.4, 0.8, 0.4],
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 5, 0, -5, 0]
                     }}
                     transition={{ 
-                      duration: 3,
+                      duration: 5,
                       repeat: Infinity,
                       ease: "easeInOut"
                     }}
                   />
-                  <div className="relative p-6 bg-black/20 backdrop-blur-lg rounded-2xl border border-white/10">
-                    <img 
+                  <div className="relative p-8 bg-black/30 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
+                    <motion.img 
                       src="/logo.svg" 
                       alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
-                      className="h-40 mx-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+                      className="h-40 mx-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]"
+                      animate={{
+                        scale: [1, 1.02, 1],
+                        rotate: [0, 1, 0, -1, 0]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
                     />
                   </div>
                 </div>
@@ -250,45 +297,56 @@ export function Home() {
             >
               <div className="relative">
                 <motion.div 
-                  className="absolute -inset-8 bg-gradient-to-r from-[#FF0000]/10 via-black/40 to-[#FF0000]/10 rounded-3xl blur-xl"
+                  className="absolute -inset-12 bg-gradient-to-r from-[#FF0000]/10 via-black/40 to-[#FF0000]/10 rounded-[40px] blur-2xl"
                   animate={{ 
                     opacity: [0.3, 0.6, 0.3],
-                    scale: [1, 1.02, 1]
+                    scale: [1, 1.05, 1],
+                    rotate: [0, 2, 0, -2, 0]
                   }}
                   transition={{ 
-                    duration: 4,
+                    duration: 6,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                 />
-                <div className="relative px-8 py-6 bg-black/30 backdrop-blur-md rounded-2xl border border-white/10">
+                <div className="relative px-10 py-8 bg-black/40 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
                   <AnimatePresence mode="wait">
                     <motion.p
                       key={currentSubtitle}
-                      initial={{ opacity: 0, y: 20, rotateX: 90 }}
+                      initial={{ opacity: 0, y: 30, rotateX: 90 }}
                       animate={{ 
                         opacity: 1, 
                         y: 0, 
                         rotateX: 0,
                         transition: {
-                          duration: 0.8,
+                          duration: 1,
                           ease: [0.16, 1, 0.3, 1]
                         }
                       }}
                       exit={{ 
                         opacity: 0, 
-                        y: -20, 
+                        y: -30, 
                         rotateX: -90,
                         transition: {
-                          duration: 0.4,
+                          duration: 0.6,
                           ease: [0.16, 1, 0.3, 1]
                         }
                       }}
-                      className="text-3xl md:text-5xl font-bold"
+                      className="text-4xl md:text-6xl font-bold"
                     >
-                      <span className="bg-gradient-to-r from-white via-red-100 to-white text-transparent bg-clip-text">
+                      <motion.span 
+                        className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent inline-block"
+                        animate={{
+                          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                        }}
+                        transition={{
+                          duration: 5,
+                          repeat: Infinity,
+                          ease: "linear"
+                        }}
+                      >
                         {subtitles[currentSubtitle]}
-                      </span>
+                      </motion.span>
                     </motion.p>
                   </AnimatePresence>
                 </div>
@@ -297,16 +355,16 @@ export function Home() {
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-col items-center gap-8"
+              className="flex flex-col items-center gap-10"
             >
-              <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <div className="flex flex-col md:flex-row gap-6 justify-center">
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Link 
                     to="/menu"
-                    className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-xl"
+                    className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold overflow-hidden rounded-[20px]"
                   >
                     <motion.div 
                       className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000]"
@@ -320,9 +378,11 @@ export function Home() {
                       transition={{ duration: 3, repeat: Infinity }}
                     />
                     <motion.div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100"
+                      initial={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
                       style={{
-                        background: 'radial-gradient(circle at center, rgba(255,255,255,0.2) 0%, transparent 100%)'
+                        background: 'radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%)'
                       }}
                     />
                     <span className="relative text-white">לתפריט שלנו</span>
@@ -337,16 +397,16 @@ export function Home() {
                     href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold overflow-hidden rounded-xl bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300"
+                    className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold overflow-hidden rounded-[20px] bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
                   >
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100"
+                      className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent opacity-0 group-hover:opacity-100"
                       animate={{
                         x: ['0%', '100%', '0%']
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <Calendar className="w-5 h-5 ml-2 relative" />
+                    <Calendar className="w-6 h-6 ml-3 relative" />
                     <span className="relative text-white">הזמן שולחן אונליין</span>
                   </a>
                 </motion.div>
@@ -354,7 +414,7 @@ export function Home() {
 
               <motion.div
                 animate={{ 
-                  y: [0, 10, 0],
+                  y: [0, 15, 0],
                   opacity: [0.6, 1, 0.6]
                 }}
                 transition={{ 
@@ -365,7 +425,7 @@ export function Home() {
                 className="cursor-pointer text-[#FF6666] hover:text-[#FF0000] transition-colors"
                 onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
               >
-                <ChevronDown className="w-8 h-8" />
+                <ChevronDown className="w-10 h-10" />
               </motion.div>
             </motion.div>
           </motion.div>
