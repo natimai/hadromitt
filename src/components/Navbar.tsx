@@ -3,11 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface NavbarProps {
-  isBannerVisible: boolean;
-}
-
-export function Navbar({ isBannerVisible }: NavbarProps) {
+export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
@@ -23,7 +19,7 @@ export function Navbar({ isBannerVisible }: NavbarProps) {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <div className={`fixed w-full z-40 ${isBannerVisible ? 'top-[42px]' : 'top-0'} transition-all duration-300`}>
+    <div className="fixed w-full z-40 top-0 transition-all duration-300">
       {/* Navbar */}
       <motion.nav
         initial={{ y: -100 }}

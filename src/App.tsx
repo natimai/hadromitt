@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { TopBanner } from './components/TopBanner';
+import { VipPopup } from './components/VipPopup';
 import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
 import { About } from './pages/About';
@@ -17,12 +17,19 @@ import AccessibilityPage from './pages/Accessibility';
 import Sitemap from './pages/Sitemap';
 
 function App(): JSX.Element {
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPopupVisible(true);
+    }, 5000); // מציג את הפופ-אפ אחרי 5 שניות
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
-      <TopBanner isVisible={isBannerVisible} setIsVisible={setIsBannerVisible} />
-      <Navbar isBannerVisible={isBannerVisible} />
+      <Navbar />
       <main className="flex-grow">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -40,6 +47,7 @@ function App(): JSX.Element {
       </main>
       <Footer />
       <AccessibilityMenu />
+      <VipPopup isVisible={isPopupVisible} setIsVisible={setIsPopupVisible} />
     </div>
   );
 }
