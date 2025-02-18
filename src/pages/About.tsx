@@ -35,7 +35,7 @@ export function About() {
             alt="אווירה מיוחדת ועיצוב מודרני במסעדת הדרומית"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/80 to-[#1A0000]"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/95 via-[#1A0000]/80 to-[#1A0000]/95 backdrop-blur-[2px]"></div>
         </div>
         
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center text-center">

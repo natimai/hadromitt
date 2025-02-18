@@ -170,13 +170,13 @@ export function Home() {
               style={{ y: heroY }}
             >
               <motion.div 
-                initial={{ scale: 1.2 }}
+                initial={{ scale: 1.1 }}
                 animate={{ 
-                  scale: [1.2, 1.1, 1.15],
-                  filter: ["brightness(0.8) saturate(1.2)", "brightness(1) saturate(1.4)", "brightness(0.9) saturate(1.3)"]
+                  scale: 1.05,
+                  filter: "brightness(0.9) saturate(1.2)"
                 }}
                 transition={{ 
-                  duration: 20,
+                  duration: 10,
                   repeat: Infinity,
                   repeatType: "reverse"
                 }}
@@ -194,48 +194,24 @@ export function Home() {
                 <motion.div 
                   className="absolute inset-0"
                   style={{ 
-                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.2) 0%, rgba(26,0,0,0.8) 100%)',
+                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.3) 0%, rgba(26,0,0,0.9) 100%)',
                     mixBlendMode: 'multiply'
                   }}
                 />
                 <motion.div 
                   className="absolute inset-0"
-                  initial={{ opacity: 0 }}
+                  initial={{ opacity: 0.2 }}
                   animate={{ 
-                    opacity: [0.2, 0.4, 0.2],
-                    background: [
-                      'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)',
-                      'linear-gradient(45deg, rgba(255,100,0,0.2) 0%, transparent 100%)',
-                      'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)'
-                    ]
+                    opacity: [0.2, 0.3, 0.2],
+                    background: 'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)'
                   }}
                   transition={{ 
-                    duration: 8,
+                    duration: 10,
                     repeat: Infinity,
                     repeatType: "reverse"
                   }}
                   style={{
                     mixBlendMode: 'overlay'
-                  }}
-                />
-                <motion.div 
-                  className="absolute inset-0"
-                  initial={{ opacity: 0 }}
-                  animate={{ 
-                    opacity: [0, 0.5, 0],
-                    background: [
-                      'radial-gradient(circle at 30% 70%, rgba(255,0,0,0.1) 0%, transparent 50%)',
-                      'radial-gradient(circle at 70% 30%, rgba(255,100,0,0.2) 0%, transparent 50%)',
-                      'radial-gradient(circle at 30% 70%, rgba(255,0,0,0.1) 0%, transparent 50%)'
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 15,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                  style={{
-                    mixBlendMode: 'screen'
                   }}
                 />
               </motion.div>
