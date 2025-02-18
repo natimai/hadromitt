@@ -161,22 +161,22 @@ export function Home() {
         onMouseLeave={() => setIsHoveringHero(false)}
       >
         <AnimatePresence>
-          {isLoaded && (
+          {isLoaded &&
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1.5 }}
+              transition={{ duration: 1 }}
               className="absolute inset-0"
               style={{ y: heroY }}
             >
               <motion.div 
-                initial={{ scale: 1.1 }}
+                initial={{ scale: 1.05 }}
                 animate={{ 
-                  scale: 1.05,
-                  filter: "brightness(0.9) saturate(1.2)"
+                  scale: 1.02,
+                  filter: "brightness(0.85) saturate(1.1)"
                 }}
                 transition={{ 
-                  duration: 10,
+                  duration: 8,
                   repeat: Infinity,
                   repeatType: "reverse"
                 }}
@@ -186,37 +186,17 @@ export function Home() {
                   src="/hero.jpeg"
                   alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
                   className="w-full h-full object-cover"
-                  style={{ 
-                    transform: isHoveringHero ? 'scale(1.1)' : 'scale(1)',
-                    transition: 'transform 1s ease-out'
-                  }}
                 />
-                <motion.div 
+                <div 
                   className="absolute inset-0"
                   style={{ 
-                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.3) 0%, rgba(26,0,0,0.9) 100%)',
+                    background: 'radial-gradient(circle at center, rgba(26,0,0,0.4) 0%, rgba(26,0,0,0.8) 100%)',
                     mixBlendMode: 'multiply'
-                  }}
-                />
-                <motion.div 
-                  className="absolute inset-0"
-                  initial={{ opacity: 0.2 }}
-                  animate={{ 
-                    opacity: [0.2, 0.3, 0.2],
-                    background: 'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)'
-                  }}
-                  transition={{ 
-                    duration: 10,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                  style={{
-                    mixBlendMode: 'overlay'
                   }}
                 />
               </motion.div>
             </motion.div>
-          )}
+          }
         </AnimatePresence>
         
         <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-4">

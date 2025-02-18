@@ -74,8 +74,8 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
                   </p>
 
                   <ul className="text-gray-300 space-y-2">
-                    <li>• חדרים מרווחים ל-20 עד 50 איש</li>
-                    <li>• מערכות שמע וקריוקי מתקדמות</li>
+                    <li>• חדרים מרווחים עד 90 איש</li>
+                    <li>• מערכות שמע ומולטימדיה מתקדמות</li>
                     <li>• תפריט מותאם אישית</li>
                     <li>• שירות VIP צמוד</li>
                   </ul>
