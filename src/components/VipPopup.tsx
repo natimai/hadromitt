@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PartyPopper, Star, X, Crown } from 'lucide-react';
+import fbq from '../utils/fbq';
 
 interface VipPopupProps {
   isVisible: boolean;
@@ -9,6 +10,15 @@ interface VipPopupProps {
 }
 
 export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
+  useEffect(() => {
+    if (isVisible) {
+      fbq('track', 'ViewContent', {
+        content_type: 'vip_popup',
+        content_name: 'פופאפ VIP'
+      });
+    }
+  }, [isVisible]);
+
   return (
     <AnimatePresence>
       {isVisible && (

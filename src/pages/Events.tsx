@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Users, Music, Tv, Gift, ChevronRight, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import fbq from '../utils/fbq';
 
 export function Events() {
+  useEffect(() => {
+    fbq('track', 'ViewContent', {
+      content_type: 'vip_rooms',
+      content_name: 'חדרי VIP'
+    });
+  }, []);
+
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
 
   const rooms = [

@@ -2,8 +2,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, Mail, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import fbq from '../utils/fbq';
 
 export function Contact() {
+  const handleReservationClick = () => {
+    fbq('track', 'Lead', {
+      content_name: 'הזמנת מקום',
+      content_category: 'reservation'
+    });
+  };
+
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -53,6 +61,7 @@ export function Contact() {
                 href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleReservationClick}
                 className="w-full bg-[#FF0000] text-white py-3 rounded-lg font-semibold hover:bg-[#CC0000] transition transform hover:scale-105 flex items-center justify-center gap-2"
               >
                 <Calendar className="w-5 h-5" />

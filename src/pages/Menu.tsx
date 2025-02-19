@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Search, Flame, Award, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import fbq from '../utils/fbq';
 
 interface MenuItem {
   name: string;
@@ -512,6 +513,14 @@ export function Menu() {
       (item.description && item.description.toLowerCase().includes(searchQuery.toLowerCase()))
     )
   })).filter(category => category.items.length > 0);
+
+  useEffect(() => {
+    // Track menu page view
+    fbq('track', 'ViewContent', {
+      content_type: 'menu',
+      content_name: 'תפריט הדרומית'
+    });
+  }, []);
 
   return (
     <div className="min-h-screen pt-20 bg-gradient-to-b from-[#1A0000] to-black text-white">
