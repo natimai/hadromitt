@@ -19,72 +19,75 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsVisible(false)}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
-          />
-
-          {/* Popup */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-lg z-50"
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           >
-            <div className="relative bg-[#1A0000] rounded-2xl overflow-hidden">
-              {/* Background Animation */}
-              <motion.div 
-                className="absolute inset-0"
-                initial={{ opacity: 0.2 }}
-                animate={{ 
-                  opacity: [0.2, 0.3, 0.2],
-                  background: 'linear-gradient(45deg, rgba(255,0,0,0.1) 0%, transparent 100%)'
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              />
+            {/* Popup */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-xl bg-[#1A0000] rounded-2xl overflow-hidden shadow-2xl relative"
+            >
+              {/* תמונת רקע */}
+              <div className="relative h-48 sm:h-64 overflow-hidden">
+                <img 
+                  src="/gallery/BarAharon-3131 Large.jpeg"
+                  alt="חדרי VIP מפוארים במסעדת הדרומית"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/30 to-[#1A0000]" />
+                
+                {/* כפתור סגירה */}
+                <button
+                  onClick={() => setIsVisible(false)}
+                  className="absolute top-4 left-4 p-2 bg-black/50 hover:bg-black/70 rounded-full transition-colors"
+                  aria-label="סגור חלון"
+                >
+                  <X className="w-5 h-5 text-white" />
+                </button>
+              </div>
 
-              {/* Content */}
-              <div className="relative p-8">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center gap-3">
-                    <Crown className="w-8 h-8 text-[#FF0000]" />
-                    <h2 className="text-2xl font-bold text-white">חדרי VIP מפוארים</h2>
+              {/* תוכן */}
+              <div className="p-6 sm:p-8">
+                <div className="text-center space-y-6">
+                  <div className="flex items-center justify-center gap-3 -mt-12 relative">
+                    <div className="bg-[#1A0000] p-4 rounded-xl shadow-lg">
+                      <Crown className="w-8 h-8 text-[#FF0000]" />
+                    </div>
                   </div>
-                  <button
-                    onClick={() => setIsVisible(false)}
-                    className="p-1 hover:bg-white/10 rounded-full transition-colors"
-                    aria-label="סגור חלון"
-                  >
-                    <X className="w-6 h-6 text-white" />
-                  </button>
-                </div>
 
-                <div className="space-y-6 text-center">
-                  <div className="flex justify-center gap-2">
-                    <PartyPopper className="w-6 h-6 text-[#FF0000] animate-bounce" />
-                    <Star className="w-6 h-6 text-[#FF0000] animate-pulse" />
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">חדרי VIP מפוארים</h2>
+                    <p className="text-gray-300 text-sm sm:text-base">
+                      מושלם לאירועים פרטיים, ימי הולדת ומפגשים עסקיים
+                    </p>
                   </div>
-                  
-                  <p className="text-lg text-gray-200">
-                    אנחנו שמחים לבשר על פתיחת חדרי ה-VIP המפוארים שלנו!
-                    <br />
-                    מושלם לאירועים פרטיים, ימי הולדת ומפגשים עסקיים.
-                  </p>
 
-                  <ul className="text-gray-300 space-y-2">
-                    <li>• חדרים מרווחים עד 90 איש</li>
-                    <li>• מערכות שמע ומולטימדיה מתקדמות</li>
-                    <li>• תפריט מותאם אישית</li>
-                    <li>• שירות VIP צמוד</li>
+                  <ul className="text-gray-300 space-y-3 text-right max-w-md mx-auto">
+                    <li className="flex items-center gap-2 text-sm sm:text-base">
+                      <Star className="w-5 h-5 text-[#FF0000] shrink-0" />
+                      חדרים מרווחים עד 90 איש
+                    </li>
+                    <li className="flex items-center gap-2 text-sm sm:text-base">
+                      <Star className="w-5 h-5 text-[#FF0000] shrink-0" />
+                      מערכות שמע ומולטימדיה מתקדמות
+                    </li>
+                    <li className="flex items-center gap-2 text-sm sm:text-base">
+                      <Star className="w-5 h-5 text-[#FF0000] shrink-0" />
+                      תפריט מותאם אישית
+                    </li>
+                    <li className="flex items-center gap-2 text-sm sm:text-base">
+                      <Star className="w-5 h-5 text-[#FF0000] shrink-0" />
+                      שירות VIP צמוד
+                    </li>
                   </ul>
 
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
                     <Link
                       to="/events"
                       onClick={() => setIsVisible(false)}
-                      className="bg-[#FF0000] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#CC0000] transition-colors flex items-center justify-center gap-2"
+                      className="bg-[#FF0000] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#CC0000] transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                       <Crown className="w-5 h-5" />
                       לפרטים נוספים
@@ -92,14 +95,14 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
                     <Link
                       to="/contact"
                       onClick={() => setIsVisible(false)}
-                      className="border border-[#FF0000] text-[#FF0000] px-6 py-3 rounded-lg font-semibold hover:bg-[#FF0000]/10 transition-colors"
+                      className="border border-[#FF0000] text-[#FF0000] px-6 py-3 rounded-lg font-semibold hover:bg-[#FF0000]/10 transition-colors text-sm sm:text-base"
                     >
                       צור קשר
                     </Link>
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </>
       )}
