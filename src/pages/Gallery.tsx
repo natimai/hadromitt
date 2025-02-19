@@ -35,10 +35,75 @@ const images = [
     alt: 'מטבח מקצועי ומודרני במסעדת הדרומית'
   },
   {
-    url: '/gallery/staik or shipud.png',
-    title: 'סטייק ושיפודים',
-    alt: 'סטייקים ושיפודים על האש במסעדת הדרומית'
+    url: '/gallery/BarAharon-2973 Large.jpeg',
+    title: 'אווירה ייחודית',
+    alt: 'אווירה ייחודית במסעדת הדרומית'
   },
+  {
+    url: '/gallery/BarAharon-2994 Large.jpeg',
+    title: 'מנות בשרים',
+    alt: 'מנות בשרים איכותיות במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3008 Large.jpeg',
+    title: 'סטייקים מיוחדים',
+    alt: 'סטייקים מיוחדים במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3016 Large.jpeg',
+    title: 'מנות פתיחה',
+    alt: 'מנות פתיחה מיוחדות במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3044 Large.jpeg',
+    title: 'עיצוב המסעדה',
+    alt: 'עיצוב מודרני במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3049 Large.jpeg',
+    title: 'אווירת ערב',
+    alt: 'אווירת ערב רומנטית במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3064 Large.jpeg',
+    title: 'מנות דגל',
+    alt: 'מנות דגל מיוחדות במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3068 Large.jpeg',
+    title: 'סלטים טריים',
+    alt: 'סלטים טריים ומיוחדים במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3077 Large.jpeg',
+    title: 'מנות בשריות',
+    alt: 'מנות בשריות מיוחדות במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3080 Large.jpeg',
+    title: 'תפריט מגוון',
+    alt: 'תפריט מגוון במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3085 Large.jpeg',
+    title: 'חדרי VIP',
+    alt: 'חדרי VIP מפוארים במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3087 Large.jpeg',
+    title: 'אירועים מיוחדים',
+    alt: 'אירועים מיוחדים במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3095 Large.jpeg',
+    title: 'מנות מיוחדות',
+    alt: 'מנות מיוחדות במסעדת הדרומית'
+  },
+  {
+    url: '/gallery/BarAharon-3098 Large.jpeg',
+    title: 'אווירה חמה',
+    alt: 'אווירה חמה ומזמינה במסעדת הדרומית'
+  }
 ];
 
 export function Gallery() {
