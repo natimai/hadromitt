@@ -9,6 +9,7 @@ export function Home() {
   const [currentReview, setCurrentReview] = useState(0);
   const [isHoveringHero, setIsHoveringHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentBackground, setCurrentBackground] = useState(0);
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef);
   const [currentSubtitle, setCurrentSubtitle] = useState(0);
@@ -30,6 +31,14 @@ export function Home() {
     "טעם של דרום בכל ביס"
   ];
 
+  // מערך תמונות רקע מהגלריה
+  const backgroundImages = [
+    '/hero.jpeg',
+    '/gallery/BarAharon-3565-2 Large.jpeg',
+    '/gallery/BarAharon-3097 Large.jpeg',
+    '/gallery/BarAharon-3402 Large.jpeg'
+  ];
+
   useEffect(() => {
     setIsLoaded(true);
     
@@ -42,9 +51,15 @@ export function Home() {
       setCurrentSubtitle((prev) => (prev + 1) % subtitles.length);
     }, 3000);
 
+    // טיימר להחלפת תמונות רקע
+    const backgroundInterval = setInterval(() => {
+      setCurrentBackground((prev) => (prev + 1) % backgroundImages.length);
+    }, 7000);
+
     return () => {
       clearInterval(interval);
       clearInterval(subtitleInterval);
+      clearInterval(backgroundInterval);
     };
   }, []);
 
@@ -156,15 +171,17 @@ export function Home() {
       {/* Hero Section */}
       <header 
         ref={heroRef}
-        className="relative h-screen overflow-hidden"
+        className="relative min-h-[100vh] overflow-hidden"
         onMouseEnter={() => setIsHoveringHero(true)}
         onMouseLeave={() => setIsHoveringHero(false)}
       >
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {isLoaded &&
             <motion.div
+              key={currentBackground}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ duration: 1 }}
               className="absolute inset-0"
               style={{ y: heroY }}
@@ -183,7 +200,7 @@ export function Home() {
                 className="relative w-full h-full"
               >
                 <img 
-                  src="/hero.jpeg"
+                  src={backgroundImages[currentBackground]}
                   alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
                   className="w-full h-full object-cover"
                 />
@@ -199,192 +216,195 @@ export function Home() {
           }
         </AnimatePresence>
         
-        <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-4">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={isHeroInView ? "visible" : "hidden"}
-            className="space-y-16"
-          >
+        <div className="relative min-h-[100vh] flex flex-col items-center text-white px-4">
+          <div className="h-[150px] md:h-[60px]"></div> {/* Fixed space for navbar */}
+          <div className="mt-10 sm:mt-0 flex-grow flex flex-col justify-center items-center">
             <motion.div
-              className="relative"
-              variants={itemVariants}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              variants={containerVariants}
+              initial="hidden"
+              animate={isHeroInView ? "visible" : "hidden"}
+              className="space-y-8 md:space-y-16"
             >
-              <Link to="/" aria-label="לוגו הדרומית">
-                <div className="relative">
-                  <motion.div 
-                    className="absolute -inset-8 bg-gradient-to-r from-[#FF0000]/20 via-white/10 to-[#FF0000]/20 rounded-[40px] blur-2xl"
-                    animate={{ 
-                      opacity: [0.4, 0.8, 0.4],
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 5, 0, -5, 0]
-                    }}
-                    transition={{ 
-                      duration: 5,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                  <div className="relative p-8 bg-black/30 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
-                    <motion.img 
-                      src="/logo.svg" 
-                      alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
-                      className="h-40 mx-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]"
-                      animate={{
-                        scale: [1, 1.02, 1],
-                        rotate: [0, 1, 0, -1, 0]
+              <motion.div
+                className="relative"
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link to="/" aria-label="לוגו הדרומית">
+                  <div className="relative">
+                    <motion.div 
+                      className="absolute -inset-8 bg-gradient-to-r from-[#FF0000]/20 via-white/10 to-[#FF0000]/20 rounded-[40px] blur-2xl"
+                      animate={{ 
+                        opacity: [0.4, 0.8, 0.4],
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 5, 0, -5, 0]
                       }}
-                      transition={{
-                        duration: 4,
+                      transition={{ 
+                        duration: 5,
                         repeat: Infinity,
                         ease: "easeInOut"
                       }}
                     />
+                    <div className="relative p-8 bg-black/30 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
+                      <motion.img 
+                        src="/logo.svg" 
+                        alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
+                        className="h-40 mx-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]"
+                        animate={{
+                          scale: [1, 1.02, 1],
+                          rotate: [0, 1, 0, -1, 0]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+
+              <motion.div 
+                className="relative max-w-4xl mx-auto"
+                variants={itemVariants}
+              >
+                <div className="relative">
+                  <motion.div 
+                    className="absolute -inset-12 bg-gradient-to-r from-[#FF0000]/10 via-black/40 to-[#FF0000]/10 rounded-[40px] blur-2xl"
+                    animate={{ 
+                      opacity: [0.3, 0.6, 0.3],
+                      scale: [1, 1.05, 1],
+                      rotate: [0, 2, 0, -2, 0]
+                    }}
+                    transition={{ 
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  <div className="relative px-10 py-8 bg-black/40 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
+                    <AnimatePresence mode="wait">
+                      <motion.p
+                        key={currentSubtitle}
+                        initial={{ opacity: 0, y: 30, rotateX: 90 }}
+                        animate={{ 
+                          opacity: 1, 
+                          y: 0, 
+                          rotateX: 0,
+                          transition: {
+                            duration: 1,
+                            ease: [0.16, 1, 0.3, 1]
+                          }
+                        }}
+                        exit={{ 
+                          opacity: 0, 
+                          y: -30, 
+                          rotateX: -90,
+                          transition: {
+                            duration: 0.6,
+                            ease: [0.16, 1, 0.3, 1]
+                          }
+                        }}
+                        className="text-4xl md:text-6xl font-bold"
+                      >
+                        <motion.span 
+                          className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent inline-block"
+                          animate={{
+                            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+                          }}
+                          transition={{
+                            duration: 5,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                        >
+                          {subtitles[currentSubtitle]}
+                        </motion.span>
+                      </motion.p>
+                    </AnimatePresence>
                   </div>
                 </div>
-              </Link>
-            </motion.div>
+              </motion.div>
 
-            <motion.div 
-              className="relative max-w-4xl mx-auto"
-              variants={itemVariants}
-            >
-              <div className="relative">
-                <motion.div 
-                  className="absolute -inset-12 bg-gradient-to-r from-[#FF0000]/10 via-black/40 to-[#FF0000]/10 rounded-[40px] blur-2xl"
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-col items-center gap-10"
+              >
+                <div className="flex flex-col md:flex-row gap-6 justify-center">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link 
+                      to="/menu"
+                      className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold overflow-hidden rounded-[20px]"
+                    >
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000]"
+                        animate={{
+                          background: [
+                            'linear-gradient(to right, #FF0000, #CC0000)',
+                            'linear-gradient(to right, #CC0000, #FF0000)',
+                            'linear-gradient(to right, #FF0000, #CC0000)'
+                          ]
+                        }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
+                      <motion.div 
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100"
+                        initial={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        style={{
+                          background: 'radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%)'
+                        }}
+                      />
+                      <span className="relative text-white">לתפריט שלנו</span>
+                    </Link>
+                  </motion.div>
+
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <a 
+                      href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold overflow-hidden rounded-[20px] bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                    >
+                      <motion.div 
+                        className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent opacity-0 group-hover:opacity-100"
+                        animate={{
+                          x: ['0%', '100%', '0%']
+                        }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                      <Calendar className="w-6 h-6 ml-3 relative" />
+                      <span className="relative text-white">הזמן שולחן אונליין</span>
+                    </a>
+                  </motion.div>
+                </div>
+
+                <motion.div
                   animate={{ 
-                    opacity: [0.3, 0.6, 0.3],
-                    scale: [1, 1.05, 1],
-                    rotate: [0, 2, 0, -2, 0]
+                    y: [0, 15, 0],
+                    opacity: [0.6, 1, 0.6]
                   }}
                   transition={{ 
-                    duration: 6,
+                    duration: 2, 
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                />
-                <div className="relative px-10 py-8 bg-black/40 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
-                  <AnimatePresence mode="wait">
-                    <motion.p
-                      key={currentSubtitle}
-                      initial={{ opacity: 0, y: 30, rotateX: 90 }}
-                      animate={{ 
-                        opacity: 1, 
-                        y: 0, 
-                        rotateX: 0,
-                        transition: {
-                          duration: 1,
-                          ease: [0.16, 1, 0.3, 1]
-                        }
-                      }}
-                      exit={{ 
-                        opacity: 0, 
-                        y: -30, 
-                        rotateX: -90,
-                        transition: {
-                          duration: 0.6,
-                          ease: [0.16, 1, 0.3, 1]
-                        }
-                      }}
-                      className="text-4xl md:text-6xl font-bold"
-                    >
-                      <motion.span 
-                        className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent inline-block"
-                        animate={{
-                          backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                        }}
-                        transition={{
-                          duration: 5,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }}
-                      >
-                        {subtitles[currentSubtitle]}
-                      </motion.span>
-                    </motion.p>
-                  </AnimatePresence>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col items-center gap-10"
-            >
-              <div className="flex flex-col md:flex-row gap-6 justify-center">
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="cursor-pointer text-[#FF6666] hover:text-[#FF0000] transition-colors"
+                  onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
                 >
-                  <Link 
-                    to="/menu"
-                    className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold overflow-hidden rounded-[20px]"
-                  >
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000]"
-                      animate={{
-                        background: [
-                          'linear-gradient(to right, #FF0000, #CC0000)',
-                          'linear-gradient(to right, #CC0000, #FF0000)',
-                          'linear-gradient(to right, #FF0000, #CC0000)'
-                        ]
-                      }}
-                      transition={{ duration: 3, repeat: Infinity }}
-                    />
-                    <motion.div 
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100"
-                      initial={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      style={{
-                        background: 'radial-gradient(circle at center, rgba(255,255,255,0.3) 0%, transparent 70%)'
-                      }}
-                    />
-                    <span className="relative text-white">לתפריט שלנו</span>
-                  </Link>
+                  <ChevronDown className="w-10 h-10" />
                 </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <a 
-                    href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold overflow-hidden rounded-[20px] bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-                  >
-                    <motion.div 
-                      className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent opacity-0 group-hover:opacity-100"
-                      animate={{
-                        x: ['0%', '100%', '0%']
-                      }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    />
-                    <Calendar className="w-6 h-6 ml-3 relative" />
-                    <span className="relative text-white">הזמן שולחן אונליין</span>
-                  </a>
-                </motion.div>
-              </div>
-
-              <motion.div
-                animate={{ 
-                  y: [0, 15, 0],
-                  opacity: [0.6, 1, 0.6]
-                }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                className="cursor-pointer text-[#FF6666] hover:text-[#FF0000] transition-colors"
-                onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
-              >
-                <ChevronDown className="w-10 h-10" />
               </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Quick Access Menu */}
