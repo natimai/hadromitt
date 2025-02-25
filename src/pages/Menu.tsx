@@ -71,8 +71,8 @@ const menuCategories: MenuCategory[] = [
   },
   {
     name: 'מנות פתיחה',
-    description: 'פתיחה מושלמת לארוחה עשירה',
-    image: '/gallery/BarAharon-3097 Large.jpeg',
+    description: 'מבחר מנות ראשונות מעשה ידי השף',
+    image: '/gallery/BarAharon-3333 Large.jpeg',
     items: [
       { 
         name: 'מבחר סלטי הבית', 
@@ -225,7 +225,7 @@ const menuCategories: MenuCategory[] = [
   },
   {
     name: 'המיוחדים שלנו',
-    description: 'מנות הדגל של השף',
+    description: 'מנות הדגל של השף, הבאים בגדלים הנכונים לחבורה',
     image: '/gallery/BarAharon-3402 Large.jpeg',
     items: [
       { 
@@ -282,7 +282,7 @@ const menuCategories: MenuCategory[] = [
   {
     name: 'בשרים ומנות עיקריות',
     description: 'כל מנות הפרימיום מוגשות בליווי של רוטב יין, קרם בטטה וקונפי שום למעט המבורגר',
-    image: '/gallery/BarAharon-3565-2 Large.jpeg',
+    image: '/gallery/BarAharon-3287 Large.jpeg',
     items: [
       { 
         name: 'סטייק אנטריקוט ארגנטינאי', 
@@ -406,36 +406,9 @@ const menuCategories: MenuCategory[] = [
     ]
   },
   {
-    name: 'שיפודים',
-    description: 'על האש בסגנון דרומי אותנטי',
-    image: '/gallery/staik or shipud.png',
-    items: [
-      { name: 'שיפוד פילה בקר', price: '64', description: 'קוביות פילה בקר טרי בתיבול עדין', isSpicy: false, isRecommended: true },
-      { name: 'שיפוד פיקניה', price: '59', description: 'נתחי פיקניה מיושנים בתיבול הבית', isSpicy: false, isRecommended: true },
-      { name: 'שיפוד אנטריקוט', price: '51', description: 'קוביות אנטריקוט מיושן בתיבול מיוחד', isSpicy: false, isRecommended: false },
-      { name: 'שקדים', price: '99', description: 'נתחי בשר רכים במיוחד בתיבול ביתי', isSpicy: false, isRecommended: false },
-      { name: 'שיפוד מולארד', price: '54', description: 'נתח בשר מיוחד בתיבול סודי של השף', isSpicy: true, isRecommended: true },
-      { name: 'שיפוד שומן כבש', price: '59', description: 'שומן כבש עסיסי בתיבול מסורתי', isSpicy: false, isRecommended: false },
-      { name: 'שיפוד כבש', price: '57', description: 'נתחי כבש מובחרים בתיבול מזרחי', isSpicy: false, isRecommended: true },
-      { name: 'שיפוד קבב', price: '38', description: 'קבב ביתי עסיסי בתיבול מסורתי', isSpicy: true, isRecommended: false },
-      { name: 'שיפוד לבבות עוף', price: '31', description: 'לבבות עוף טריים בתיבול עדין', isSpicy: false, isRecommended: false },
-      { name: 'שיפוד כבד עוף', price: '34', description: 'כבדי עוף טריים בתיבול הבית', isSpicy: false, isRecommended: false },
-      { name: 'שיפוד כנפיים', price: '31', description: 'כנפי עוף בתיבול חריף-מתוק', isSpicy: true, isRecommended: false },
-    ]
-  },
-  {
-    name: 'מנות דגים',
-    description: 'דגים טריים מהים',
-    image: '/gallery/BarAharon-3097 Large.jpeg',
-    items: [
-      { name: 'פילה דג דניס', price: '118', description: '', isSpicy: false, isRecommended: false },
-      { name: 'פילה סלמון', price: '118', description: '', isSpicy: false, isRecommended: false },
-    ]
-  },
-  {
     name: 'ארוחות ילדים',
-    description: 'מנות מיוחדות לילדים',
-    image: '/gallery/BarAharon-3097 Large.jpeg',
+    description: 'מנות לקטנטנים עד גיל 10 | מגיעות עם צ׳יפס ושתייה קלה או מיץ תפוזים',
+    image: '/gallery/BarAharon-3044 Large.jpeg',
     items: [
       { name: 'שניצלוני עוף', price: '65', description: '', isSpicy: false, isRecommended: false },
       { name: 'שיפוד פרגית/כבד עוף/לבבות', price: '65', description: '', isSpicy: false, isRecommended: false },
@@ -460,6 +433,75 @@ const menuCategories: MenuCategory[] = [
       { name: 'לימונענע גרוס', price: '19', description: '', isSpicy: false, isRecommended: false },
       { name: 'לימונדה', price: '14/25', description: '', isSpicy: false, isRecommended: false },
       { name: 'קינלי סודה', price: '14', description: '', isSpicy: false, isRecommended: false }
+    ]
+  },
+  {
+    name: 'תוספות',
+    description: 'תוספות טעימות למנות הראשיות',
+    image: '/gallery/BarAharon-3142 Large.jpeg',
+    items: [
+      { name: 'צ׳יפס', price: '22/29', description: 'גדול / קטן', isSpicy: false, isRecommended: false },
+      { name: 'צ׳יפס בטטה', price: '35', description: '', isSpicy: false, isRecommended: false },
+      { name: 'פוטאטוס', price: '29', description: 'תפוחי אדמה פריכים בתיבול מיוחד', isSpicy: false, isRecommended: false },
+      { name: 'הום פרייז ברוטב צ׳ילי מתוק', price: '29', description: '', isSpicy: true, isRecommended: false },
+      { name: 'אורז', price: '19', description: 'אורז לבן בסגנון ביתי', isSpicy: false, isRecommended: false },
+      { name: 'פירה תפו״א', price: '19', description: 'פירה תפוחי אדמה חלק וקרמי', isSpicy: false, isRecommended: false },
+      { name: 'פירה בטטה', price: '25', description: 'פירה בטטה קרמי במרקם עשיר', isSpicy: false, isRecommended: false },
+      { name: 'סלט ירקות קצוץ', price: '21', description: '', isSpicy: false, isRecommended: false },
+      { name: 'כדורי פירה', price: '32', description: 'כדורי פירה תפוחי אדמה מטוגנים', isSpicy: false, isRecommended: false }
+    ]
+  },
+  {
+    name: 'שתיה קלה',
+    description: 'מבחר משקאות קרים ומרעננים',
+    image: '/gallery/BarAharon-3087 Large.jpeg',
+    items: [
+      { name: 'קוקה קולה', price: '14', description: 'קוקה קולה, קולה קולה זירו, דיאט קוקה קולה', isSpicy: false, isRecommended: false },
+      { name: 'ספרייט', price: '14', description: 'ספרייט, זירו ספרייט', isSpicy: false, isRecommended: false },
+      { name: 'פנטה', price: '14', description: '', isSpicy: false, isRecommended: false },
+      { name: 'פריגת משקה קל', price: '14', description: 'תפוזים, לימונענע, אשכוליות', isSpicy: false, isRecommended: false },
+      { name: 'פריגת משקה קל', price: '14', description: 'ענבים, תות בננה', isSpicy: false, isRecommended: false },
+      { name: 'פריגת 100%', price: '14', description: 'תפוחים - סיידר', isSpicy: false, isRecommended: false },
+      { name: 'מאלטי בירה שחורה', price: '14', description: '', isSpicy: false, isRecommended: false },
+      { name: 'פיוז-טי', price: '14', description: 'אפרסק, פירות יער', isSpicy: false, isRecommended: false },
+      { name: 'נביעות בטעמים עדינים', price: '14', description: 'תפוחים, אפרסק, ענבים', isSpicy: false, isRecommended: false },
+      { name: 'נביעות מים מינרלים', price: '14', description: '', isSpicy: false, isRecommended: false },
+      { name: 'לימונענע גרוס', price: '19', description: '', isSpicy: false, isRecommended: false },
+      { name: 'לימונדה', price: '14/25', description: 'כוס / קנקן', isSpicy: false, isRecommended: false },
+      { name: 'קינלי סודה', price: '14', description: '', isSpicy: false, isRecommended: false }
+    ]
+  },
+  {
+    name: 'אלכוהול',
+    description: 'מבחר משקאות אלכוהוליים',
+    image: '/gallery/BarAharon-3235 Large.jpeg',
+    items: [
+      { name: 'ג׳ין גורדונ׳ס', price: '34', description: '', isSpicy: false, isRecommended: false },
+      { name: 'ג׳ין ביפיטר', price: '36', description: '', isSpicy: false, isRecommended: false },
+      { name: 'וודקה סמירנוף', price: '34', description: '', isSpicy: false, isRecommended: false },
+      { name: 'וודקה סמירנוף דאבל', price: '47', description: '', isSpicy: false, isRecommended: false },
+      { name: 'וודקה קטל וואן', price: '37', description: '', isSpicy: false, isRecommended: false },
+      { name: 'וודקה קטל וואן דאבל', price: '57', description: '', isSpicy: false, isRecommended: false },
+      { name: 'וודקה גריי גוס', price: '45', description: '', isSpicy: false, isRecommended: false },
+      { name: 'וודקה גריי גוס דאבל', price: '74', description: '', isSpicy: false, isRecommended: false },
+      { name: 'קפטן מורגן', price: '32', description: '', isSpicy: false, isRecommended: false },
+      { name: 'קפטן מורגן דאבל', price: '48', description: '', isSpicy: false, isRecommended: false },
+      { name: 'בקארדי', price: '34', description: '', isSpicy: false, isRecommended: false },
+      { name: 'בקארדי דאבל', price: '47', description: '', isSpicy: false, isRecommended: false },
+      { name: 'ג׳יימסון', price: '40', description: '', isSpicy: false, isRecommended: false },
+      { name: 'בושמילס', price: '38', description: '', isSpicy: false, isRecommended: false }
+    ]
+  },
+  {
+    name: 'קינוחים',
+    description: 'קינוחים מפנקים לסיום הארוחה',
+    image: '/gallery/BarAharon-3114 Large.jpeg',
+    items: [
+      { name: 'פאי תפוחים חם', price: '45', description: 'מוגש עם כדור גלידה וניל', isSpicy: false, isRecommended: true },
+      { name: 'סופלה שוקולד', price: '45', description: 'עם גלידה וניל', isSpicy: false, isRecommended: true },
+      { name: 'צלחת בראוניז', price: '42', description: 'בראוניז שוקולד חמים', isSpicy: false, isRecommended: false },
+      { name: 'מלבי', price: '38', description: 'עם סירופ רוזטה וקוקוס קלוי', isSpicy: false, isRecommended: false },
+      { name: 'קינוח הדרומית', price: '49', description: 'קינוח מיוחד של השף - חם עם גלידה וניל', isSpicy: false, isRecommended: true }
     ]
   },
   {
@@ -490,12 +532,29 @@ const menuCategories: MenuCategory[] = [
 ];
 
 export function Menu() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(menuCategories[0].name);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleCategory = (categoryName: string) => {
-    setSelectedCategory(selectedCategory === categoryName ? null : categoryName);
+    setSelectedCategory(categoryName);
+    setIsMenuOpen(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   };
 
   const toggleItemExpansion = (itemName: string) => {
@@ -523,165 +582,297 @@ export function Menu() {
   }, []);
 
   return (
-    <div className="min-h-screen pt-20 bg-gradient-to-b from-[#1A0000] to-black text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="min-h-screen pt-16 bg-gradient-to-b from-[#1A0000] to-black text-white">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          className="text-center mb-6 sm:mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#FF0000]">התפריט שלנו</h1>
-          <p className="text-xl text-gray-300 mb-6">חוויה קולינרית מהמטבח הדרומי</p>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-[#FF0000]">התפריט שלנו</h1>
+          <p className="text-lg sm:text-xl text-gray-300 mb-4 sm:mb-6">חוויה קולינרית מהמטבח הדרומי</p>
+          
+          {/* כפתורי הזמנה ואירועים */}
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
             <Link 
               to="/contact" 
-              className="bg-[#FF0000] text-white px-6 py-3 rounded-full hover:bg-[#CC0000] transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium rounded-full transition duration-300 ease-out border-2 border-[#FF0000] text-white shadow-md"
             >
-              להזמנת מקום
+              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white bg-[#FF0000] group-hover:w-full transition-all duration-300 ease-out"></span>
+              <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">להזמנת מקום</span>
+              <span className="relative invisible">להזמנת מקום</span>
             </Link>
             <Link 
               to="/events" 
-              className="bg-white/10 text-white px-6 py-3 rounded-full hover:bg-white/20 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium rounded-full transition duration-300 ease-out border-2 border-white/20 text-white shadow-md"
             >
-              לאירועים מיוחדים
+              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white bg-white/10 group-hover:w-full transition-all duration-300 ease-out"></span>
+              <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">לאירועים מיוחדים</span>
+              <span className="relative invisible">לאירועים מיוחדים</span>
             </Link>
           </div>
           
-          {/* Search Bar */}
-          <div className="relative max-w-md mx-auto">
-            <input
-              type="text"
-              placeholder="חיפוש בתפריט..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full px-6 py-3 bg-[#1A0000]/60 border border-[#FF0000]/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-[#FF0000]/50 focus:ring-2 focus:ring-[#FF0000]/20"
-            />
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+          {/* סרגל חיפוש */}
+          <div className="relative max-w-md mx-auto mb-6 sm:mb-12">
+            <motion.div
+              whileTap={{ scale: 0.98 }}
+            >
+              <input
+                type="text"
+                placeholder="חיפוש בתפריט..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-5 py-2.5 bg-[#1A0000]/60 border border-[#FF0000]/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-[#FF0000]/50 focus:ring-2 focus:ring-[#FF0000]/20"
+              />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
+            </motion.div>
+          </div>
+
+          {/* כפתור פתיחת תפריט קטגוריות במובייל */}
+          <div className="md:hidden mb-4">
+            <motion.button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center justify-between w-full px-4 py-3 bg-[#FF0000] rounded-lg text-white font-bold"
+            >
+              <span>{selectedCategory || 'בחר קטגוריה'}</span>
+              <ChevronDown className={`transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} size={20} />
+            </motion.button>
+            
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-hidden bg-[#1A0000] rounded-b-lg border border-[#FF0000]/20 shadow-xl z-20"
+                >
+                  <div className="flex flex-col p-2 max-h-60 overflow-y-auto">
+                    {menuCategories.map((category) => (
+                      <motion.button
+                        key={`mobile-${category.name}`}
+                        onClick={() => toggleCategory(category.name)}
+                        className={`px-4 py-3 text-right rounded-lg mb-1 transition-all ${
+                          selectedCategory === category.name 
+                            ? 'bg-[#FF0000]/20 text-white font-bold' 
+                            : 'text-white/80 hover:bg-white/5'
+                        }`}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        {category.name}
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* לשוניות קטגוריה למסכים גדולים */}
+          <div className="hidden md:block overflow-x-auto py-4 mb-8 scrollbar-hide">
+            <motion.div 
+              className="flex gap-2 md:gap-4 justify-center min-w-max px-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              {menuCategories.map((category) => (
+                <motion.button
+                  key={category.name}
+                  onClick={() => toggleCategory(category.name)}
+                  className={`relative px-5 py-3 rounded-full transition-all duration-300 ${
+                    selectedCategory === category.name 
+                      ? 'bg-[#FF0000] text-white font-bold' 
+                      : 'bg-white/5 text-white/80 hover:bg-white/10'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category.name}
+                  {selectedCategory === category.name && (
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 h-1 bg-white"
+                      layoutId="activeTab"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </motion.div>
           </div>
         </motion.div>
 
-        <div className="grid gap-8">
-          <AnimatePresence>
-            {filteredCategories.map((category, index) => (
-            <motion.div
-              key={category.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+        {/* הצגת התפריט */}
+        <AnimatePresence mode="wait">
+          {filteredCategories.map((category) => (
+            ((selectedCategory === category.name && searchQuery === '') || searchQuery !== '') && (
+              <motion.div
+                key={category.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: index * 0.1 }}
-                className="relative overflow-hidden rounded-xl shadow-lg"
+                transition={{ duration: 0.3 }}
+                className="relative rounded-xl sm:rounded-2xl overflow-hidden shadow-xl bg-gradient-to-r from-[#1A0000]/90 via-[#1A0000]/60 to-[#1A0000]/80 backdrop-blur-lg mb-6"
               >
-                {/* Background Image */}
-                <div className="absolute inset-0">
+                {/* כותרת קטגוריה */}
+                <div className="relative h-36 sm:h-48 overflow-hidden">
                   <img
                     src={category.image}
                     alt={category.name}
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#1A0000] via-[#1A0000]/90 to-[#1A0000]/80"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-white">{category.name}</h2>
+                    <p className="text-white/80 text-sm sm:text-lg">{category.description}</p>
+                  </div>
                 </div>
 
-                <div className="relative">
-                  <motion.button
-                    onClick={() => toggleCategory(category.name)}
-                    className="w-full p-6 flex justify-between items-center hover:bg-[#FF0000]/5 transition-colors duration-300"
-                  >
-                    <div>
-                      <h2 className="text-2xl font-bold text-[#FF0000] mb-2">{category.name}</h2>
-                      <p className="text-gray-300">{category.description}</p>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: selectedCategory === category.name ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronDown className="text-[#FF0000]" size={24} />
-                    </motion.div>
-                  </motion.button>
-
-                  <AnimatePresence>
-                    {(selectedCategory === category.name || searchQuery) && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <div className="p-6 pt-0 space-y-6">
+                {/* פריטי תפריט */}
+                <div className="p-3 sm:p-6 grid gap-3 sm:gap-6 md:grid-cols-2">
                   {category.items.map((item, itemIndex) => (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: itemIndex * 0.05 }}
-                              className="group relative border-b border-[#FF0000]/10 last:border-0 pb-4 last:pb-0"
-                            >
-                              <div 
-                                onClick={() => toggleItemExpansion(item.name)}
-                                className="cursor-pointer"
+                      transition={{ delay: itemIndex * 0.03 }}
+                      className={`relative group p-3 sm:p-4 rounded-xl transition-all duration-300 border border-transparent ${
+                        expandedItems.includes(item.name) ? 'bg-white/5 shadow-lg backdrop-blur-sm border-white/10' : 'hover:bg-white/5'
+                      }`}
+                      onMouseEnter={() => setHoveredItem(item.name)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      onClick={() => toggleItemExpansion(item.name)}
+                    >
+                      <div className="flex justify-between items-start gap-2">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
+                            <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${expandedItems.includes(item.name) ? 'text-[#FF0000]' : 'text-white'}`}>
+                              {item.name}
+                            </h3>
+                            <div className="flex">
+                              {item.isRecommended && (
+                                <motion.div className="p-0.5">
+                                  <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#FFD700]" />
+                                </motion.div>
+                              )}
+                              {item.isSpicy && (
+                                <motion.div className="p-0.5">
+                                  <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF4500]" />
+                                </motion.div>
+                              )}
+                            </div>
+                          </div>
+                          <AnimatePresence>
+                            {(expandedItems.includes(item.name) || searchQuery) && item.description && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden"
                               >
-                                <div className="flex justify-between items-start">
-                                  <div className="flex-1">
-                                    <div className="flex items-center gap-2">
-                                      <h3 className="text-lg font-semibold text-white group-hover:text-[#FF0000] transition-colors duration-300">
-                                        {item.name}
-                                      </h3>
-                                      {item.isRecommended && (
-                                        <Award className="w-5 h-5 text-[#FFD700]" />
-                                      )}
-                                      {item.isSpicy && (
-                                        <Flame className="w-5 h-5 text-[#FF4500]" />
-                                      )}
-                                    </div>
-                                    <AnimatePresence>
-                                      {(expandedItems.includes(item.name) || searchQuery) && (
-                                        <motion.p
-                                          initial={{ height: 0, opacity: 0 }}
-                                          animate={{ height: "auto", opacity: 1 }}
-                                          exit={{ height: 0, opacity: 0 }}
-                                          className="text-gray-400 text-sm mt-2"
-                                        >
-                                          {item.description}
-                                        </motion.p>
-                                      )}
-                                    </AnimatePresence>
+                                <p className="text-gray-300 text-xs sm:text-sm mt-2 sm:mt-3 whitespace-pre-line leading-relaxed">
+                                  {item.description}
+                                </p>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+                          <motion.div
+                            whileTap={{ scale: 0.95 }}
+                            className="bg-gradient-to-r from-[#FF0000] to-[#CC0000] text-white font-bold px-2 sm:px-3 py-1 rounded-full text-sm sm:text-base"
+                          >
+                            ₪{item.price}
+                          </motion.div>
+                          <motion.div
+                            animate={{ rotate: expandedItems.includes(item.name) ? 180 : 0 }}
+                            className="text-white"
+                          >
+                            <ChevronDown size={16} />
+                          </motion.div>
+                        </div>
                       </div>
-                                  <div className="flex items-center gap-4">
-                                    <span className="text-[#FF0000] font-medium text-lg">₪{item.price}</span>
-                                    <motion.div
-                                      animate={{ rotate: expandedItems.includes(item.name) ? 180 : 0 }}
-                                      className="text-[#FF0000]/50"
-                                    >
-                                      <ChevronDown size={16} />
+                      
+                      {/* אפקט מרצד למנות מומלצות */}
+                      {item.isRecommended && (
+                        <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                          <motion.div
+                            className="absolute inset-0 bg-[#FFD700]/5 rounded-xl"
+                            animate={{ 
+                              scale: [1, 1.05, 1],
+                              opacity: [0, 0.2, 0]
+                            }}
+                            transition={{ 
+                              repeat: Infinity,
+                              duration: 3
+                            }}
+                          />
+                        </div>
+                      )}
                     </motion.div>
-                                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  ))}
                 </div>
               </motion.div>
-            ))}
-          </AnimatePresence>
+            )
+          ))}
+        </AnimatePresence>
+
+        {/* כפתור חזרה למעלה במובייל */}
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-20 md:hidden"
+            >
+              <motion.button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="bg-[#FF0000] text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center"
+                whileTap={{ scale: 0.9 }}
+              >
+                <ChevronUp size={24} />
+              </motion.button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* אינדיקטור לקטגוריה נוכחית במובייל */}
+        <div className="fixed top-16 left-0 z-10 md:hidden p-2 bg-gradient-to-r from-[#FF0000] to-transparent">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-white font-bold text-sm flex items-center"
+          >
+            <span className="mr-1">{selectedCategory}</span>
+          </motion.div>
         </div>
 
-        {/* Legend */}
+        {/* מקרא */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="mt-8 flex justify-center items-center gap-6 text-sm text-gray-400"
+          className="mt-8 sm:mt-12 bg-[#1A0000]/40 backdrop-blur-sm rounded-xl p-3 sm:p-4 flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-sm sm:text-base"
         >
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-[#FFD700]" />
-            <span>מומלץ השף</span>
+            <div className="p-1 sm:p-2 bg-[#FFD700]/10 rounded-full">
+              <Award className="w-5 h-5 sm:w-6 sm:h-6 text-[#FFD700]" />
+            </div>
+            <span className="text-white">מומלץ השף</span>
           </div>
           <div className="flex items-center gap-2">
-            <Flame className="w-4 h-4 text-[#FF4500]" />
-            <span>פיקנטי</span>
+            <div className="p-1 sm:p-2 bg-[#FF4500]/10 rounded-full">
+              <Flame className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF4500]" />
+            </div>
+            <span className="text-white">פיקנטי</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="p-1 sm:p-2 bg-[#FF0000]/10 rounded-full">
+              <Star className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            </div>
+            <span className="text-white">הקש לפרטים</span>
           </div>
         </motion.div>
       </div>
