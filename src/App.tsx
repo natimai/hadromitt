@@ -27,6 +27,47 @@ function App(): JSX.Element {
     return () => clearTimeout(timer);
   }, []);
 
+  // טיפול בגובה מסך דינמי במובייל
+  useEffect(() => {
+    // פתרון לבעיית גובה 100vh במובייל
+    const setAppHeight = () => {
+      const doc = document.documentElement;
+      doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+    };
+
+    // הוספת מאזין לשינוי גודל המסך
+    window.addEventListener('resize', setAppHeight);
+    // הוספת מאזין לשינוי כיוון המכשיר
+    window.addEventListener('orientationchange', setAppHeight);
+    
+    // הגדרה ראשונית
+    setAppHeight();
+    
+    // ניקוי המאזינים בעת פירוק הקומפוננטה
+    return () => {
+      window.removeEventListener('resize', setAppHeight);
+      window.removeEventListener('orientationchange', setAppHeight);
+    };
+  }, []);
+
+  // טיפול במצב תפריט פתוח
+  useEffect(() => {
+    const handleMenuState = (e: CustomEvent) => {
+      if (e.detail.isOpen) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
+    };
+
+    // הוספת מאזין לאירוע מותאם אישית
+    window.addEventListener('menuStateChange' as any, handleMenuState);
+    
+    return () => {
+      window.removeEventListener('menuStateChange' as any, handleMenuState);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
