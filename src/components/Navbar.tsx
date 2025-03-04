@@ -4,23 +4,6 @@ import { Menu, X, Phone, MapPin, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 
-// פונקציה לטיפול באירועי המרה
-const trackConversion = (eventType: 'reservation' | 'contact') => {
-  if (window.grp) {
-    window.grp.fireConversion({
-      orderId: `event_${Date.now()}`,
-      products: [
-        {
-          productId: eventType,
-          productName: eventType === 'reservation' ? 'הזמנת שולחן' : 'יצירת קשר',
-          productQuantity: 1,
-          productPrice: eventType === 'reservation' ? 0 : 0 // ערך סמלי
-        }
-      ]
-    });
-  }
-};
-
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -120,7 +103,6 @@ export function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-[#FF0000] hover:bg-[#CC0000] transition-colors"
-                onClick={() => trackConversion('reservation')}
               >
                 הזמן מקום
               </a>
@@ -195,10 +177,7 @@ export function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center px-4 py-4 rounded-lg text-lg font-medium bg-[#FF0000] text-white hover:bg-[#CC0000] transition-colors"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    trackConversion('reservation');
-                  }}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   הזמן מקום
                 </a>
@@ -208,7 +187,6 @@ export function Navbar() {
                   href="tel:0796744711"
                   className="text-white hover:text-[#FF0000] transition-colors"
                   aria-label="התקשר אלינו"
-                  onClick={() => trackConversion('contact')}
                 >
                   <Phone size={24} />
                 </a>

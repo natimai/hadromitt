@@ -4,34 +4,12 @@ import { Phone, MapPin, Clock, Mail, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import fbq from '../utils/fbq';
 
-// פונקציה לטיפול באירועי המרה
-const trackConversion = (eventType: 'reservation' | 'contact') => {
-  if (window.grp) {
-    window.grp.fireConversion({
-      orderId: `event_${Date.now()}`,
-      products: [
-        {
-          productId: eventType,
-          productName: eventType === 'reservation' ? 'הזמנת שולחן' : 'יצירת קשר',
-          productQuantity: 1,
-          productPrice: eventType === 'reservation' ? 0 : 0 // ערך סמלי
-        }
-      ]
-    });
-  }
-};
-
 export function Contact() {
   const handleReservationClick = () => {
     fbq('track', 'Lead', {
       content_name: 'הזמנת מקום',
       content_category: 'reservation'
     });
-    trackConversion('reservation');
-  };
-
-  const handleContactClick = () => {
-    trackConversion('contact');
   };
 
   return (
@@ -93,7 +71,7 @@ export function Contact() {
                 <p className="font-semibold mb-2">או צרו איתנו קשר:</p>
                 <div className="flex items-center gap-2">
                   <Phone className="w-5 h-5 text-[#FF0000]" />
-                  <a href="tel:0796744711" className="hover:text-[#FF0000] transition-colors" onClick={handleContactClick}>079-674-4711</a>
+                  <a href="tel:0796744711" className="hover:text-[#FF0000] transition-colors">079-674-4711</a>
                 </div>
               </div>
             </div>
@@ -113,9 +91,7 @@ export function Contact() {
                   <Phone className="w-6 h-6 text-[#FF0000]" />
                   <div>
                     <h3 className="font-semibold">טלפון</h3>
-                    <p className="text-gray-600">
-                      <a href="tel:0796744711" className="hover:text-[#FF0000] transition-colors" onClick={handleContactClick}>079-674-4711</a>
-                    </p>
+                    <p className="text-gray-600">079-674-4711</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
