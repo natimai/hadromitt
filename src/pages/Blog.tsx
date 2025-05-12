@@ -2,54 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, User, Tag, ChevronRight } from 'lucide-react';
-
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  author: string;
-  tags: string[];
-  image: string;
-  slug: string;
-}
-
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'המטבח שמאחורי הקלעים: סיור במטבח המקצועי שלנו',
-    excerpt: 'הצצה נדירה אל מאחורי הקלעים של המטבח המקצועי שלנו, שם הקסם קורה. גלו את הטכניקות, הציוד והצוות שהופכים כל ארוחה לחוויה מיוחדת.',
-    date: '2024-03-20',
-    readTime: '5 דקות',
-    author: 'צחי פיטקרים',
-    tags: ['מטבח', 'צוות', 'טכניקות בישול'],
-    image: '/gallery/BarAharon-3055 Large.jpeg',
-    slug: 'behind-the-scenes-kitchen'
-  },
-  {
-    id: '2',
-    title: 'סודות הבשר: תהליך הבחירה והטיפול בבשר איכותי',
-    excerpt: 'כיצד אנחנו בוחרים את הבשר הטוב ביותר? מהם התהליכים שעובר הבשר מרגע הבחירה ועד להגשה? צללו איתנו לעולם הבשר האיכותי.',
-    date: '2024-03-15',
-    readTime: '7 דקות',
-    author: 'אור לוי',
-    tags: ['בשר', 'איכות', 'טכניקות'],
-    image: '/gallery/BarAharon-3565-2 Large.jpeg',
-    slug: 'meat-secrets'
-  },
-  {
-    id: '3',
-    title: 'חדרי ה-VIP שלנו: עיצוב ואווירה',
-    excerpt: 'גלו את הסיפור מאחורי העיצוב המיוחד של חדרי ה-VIP שלנו. כיצד יצרנו אווירה ייחודית שמשלבת אלגנטיות עם נוחות?',
-    date: '2024-03-10',
-    readTime: '4 דקות',
-    author: 'נדב',
-    tags: ['עיצוב', 'VIP', 'אירועים'],
-    image: '/gallery/BarAharon-3097 Large.jpeg',
-    slug: 'vip-rooms-design'
-  }
-];
+import { blogPosts } from './blogData';
 
 export function Blog() {
   return (
