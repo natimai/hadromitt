@@ -44,4 +44,32 @@
     <priority>0.7</priority>
   </url>
 
-</urlset> 
+  <url>
+    <loc>https://www.hadromit.co.il/blog</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/behind-the-scenes-kitchen</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/meat-secrets</loc>
+    <lastmod>2024-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/vip-rooms-design</loc>
+    <lastmod>2024-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

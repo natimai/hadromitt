@@ -13,6 +13,7 @@ export function Navbar() {
     { to: '/about', text: 'עלינו' },
     { to: '/events', text: 'אירועים' },
     { to: '/gallery', text: 'גלריה' },
+    { to: '/blog', text: 'בלוג' },
     { to: '/contact', text: 'צור קשר' },
   ];
 

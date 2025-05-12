@@ -9,6 +9,7 @@ import { About } from './pages/About';
 import { Events } from './pages/Events';
 import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
+import { Blog } from './pages/Blog';
 import { AccessibilityMenu } from './components/AccessibilityMenu';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -22,7 +23,7 @@ function App(): JSX.Element {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPopupVisible(true);
-    }, 5000); // מציג את הפופ-אפ אחרי 5 שניות
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,6 +39,7 @@ function App(): JSX.Element {
           <Route path="/events" element={<Events />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/accessibility" element={<AccessibilityPage />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
