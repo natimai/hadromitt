@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Search, Flame, Award, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -539,6 +539,15 @@ export function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
+  // SEO optimization for menu page
+  useEffect(() => {
+    document.title = 'תפריט - הדרומית מסעדה בבאר שבע | מסעדת בשרים כשר חלק מומלצת';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'תפריט מסעדת הדרומית - מסעדה מומלצת בבאר שבע. מסעדת בשרים כשר חלק עם תפריט עשיר: סטייקים, שיפודים, עסקיות ומנות מיוחדות. מחירים אטרקטיביים ומנות טעימות במסעדה הטובה ביותר בבאר שבע.');
+    }
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 500);
@@ -589,8 +598,8 @@ export function Menu() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-6 sm:mb-12"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-[#FF0000]">התפריט שלנו</h1>
-          <p className="text-lg sm:text-xl text-gray-300 mb-4 sm:mb-6">חוויה קולינרית מהמטבח הדרומי</p>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-[#FF0000]">תפריט הדרומית - מסעדה בבאר שבע</h1>
+          <p className="text-lg sm:text-xl text-gray-300 mb-4 sm:mb-6">מסעדת בשרים כשר חלק מומלצת - תפריט עשיר ומגוון</p>
           
           {/* כפתורי הזמנה ואירועים */}
           <div className="flex flex-wrap justify-center gap-3 mb-6">

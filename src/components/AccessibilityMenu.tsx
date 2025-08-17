@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
@@ -16,7 +16,6 @@ import {
   Play,
   PauseCircle,
   FileText,
-  Phone,
   Check
 } from 'lucide-react';
 

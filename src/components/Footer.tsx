@@ -1,9 +1,12 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { CookieSettings } from './CookieSettings';
 
 export function Footer() {
+  const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
+  
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -246,6 +249,13 @@ export function Footer() {
                 <Cookie className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
                 <span>מדיניות עוגיות</span>
               </Link>
+              <button
+                onClick={() => setIsCookieSettingsOpen(true)}
+                className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
+              >
+                <Settings className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 transition-transform duration-300" />
+                <span>הגדרות עוגיות</span>
+              </button>
               <Link 
                 to="/sitemap"
                 className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-300 group w-fit"
@@ -295,6 +305,11 @@ export function Footer() {
           </motion.div>
         </motion.div>
       </div>
+      
+      <CookieSettings 
+        isOpen={isCookieSettingsOpen} 
+        onClose={() => setIsCookieSettingsOpen(false)} 
+      />
     </motion.footer>
   );
 }

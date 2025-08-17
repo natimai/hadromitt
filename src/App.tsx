@@ -12,6 +12,7 @@ import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
 import { AccessibilityMenu } from './components/AccessibilityMenu';
+import { CookieBanner } from './components/CookieBanner';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
@@ -51,6 +52,7 @@ function App(): JSX.Element {
       </main>
       <Footer />
       <AccessibilityMenu />
+      <CookieBanner />
       <VipPopup isVisible={isPopupVisible} setIsVisible={setIsPopupVisible} />
     </div>
   );

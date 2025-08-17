@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronDown, Star, Clock, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Menu, Plus, Check } from 'lucide-react';
+import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check } from 'lucide-react';
 
 export function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,10 +25,10 @@ export function Home() {
   );
 
   const subtitles = [
-    "חוויה קולינרית דרומית אותנטית",
+    "מסעדה מומלצת בבאר שבע",
+    "מסעדת בשרים כשר חלק",
     "בשרים משובחים על האש",
-    "אווירה ייחודית ושירות מעולה",
-    "טעם של דרום בכל ביס"
+    "המסעדה המובילה בבאר שבע"
   ];
 
   // מערך תמונות רקע מהגלריה
@@ -84,25 +84,25 @@ export function Home() {
 
   const features = [
     {
-      title: 'מטבח דרומי אותנטי',
-      description: 'חוויה קולינרית ייחודית המשלבת מסורת וחדשנות. בשרים איכותיים על האש, תבלינים מיוחדים וטעמים מהדרום',
+      title: 'מסעדת בשרים מובילה בבאר שבע',
+      description: 'מסעדה מומלצת המציעה חוויה קולינרית ייחודית. בשרים כשר חלק איכותיים על האש, סטייקים מעולים ושיפודים טעימים במסעדה הטובה ביותר בבאר שבע',
       icon: <Utensils className="w-8 h-8" />,
       image: '/gallery/BarAharon-3565-2 Large.jpeg',
-      highlights: ['בשר טרי ואיכותי', 'תבלינים מיוחדים', 'מתכונים מסורתיים']
+      highlights: ['בשר כשר חלק איכותי', 'סטייקים מעולים', 'שיפודים על האש']
     },
     {
-      title: 'אווירה ייחודית',
-      description: 'עיצוב מודרני המשלב אלמנטים דרומיים מסורתיים. תאורה אינטימית, מוזיקה נעימה ואווירה חמה ומזמינה',
+      title: 'מסעדה מומלצת לאירועים',
+      description: 'המסעדה המושלמת בבאר שבע לאירועים משפחתיים ועסקיים. חדרי VIP פרטיים, אווירה יוקרתית ושירות מעולה למסעדת בשרים מומלצת',
       icon: <Star className="w-8 h-8" />,
       image: '/gallery/BarAharon-3097 Large.jpeg',
-      highlights: ['עיצוב מודרני', 'אווירה אינטימית', 'ישיבה נוחה']
+      highlights: ['חדרי VIP פרטיים', 'אירועים משפחתיים', 'מפגשים עסקיים']
     },
     {
-      title: 'שירות מצוין',
-      description: 'צוות מקצועי ואדיב שישמח להמליץ ולהתאים את החוויה הקולינרית המושלמת עבורכם',
+      title: 'שירות מעולה במסעדה בבאר שבע',
+      description: 'צוות מקצועי ומנוסה במסעדה המומלצת בבאר שבע. שירות אישי ומותאם אישית, המלצות מקצועיות והכנת מנות ברמה הגבוהה ביותר',
       icon: <ThumbsUp className="w-8 h-8" />,
       image: '/gallery/BarAharon-3402 Large.jpeg',
-      highlights: ['צוות מקצועי', 'שירות אישי', 'המלצות מותאמות']
+      highlights: ['צוות מקצועי', 'שירות אישי מותאם', 'המלצות מקצועיות']
     }
   ];
 
@@ -201,7 +201,7 @@ export function Home() {
               >
                 <img 
                   src={backgroundImages[currentBackground]}
-                  alt="מסעדת הדרומית - חוויה קולינרית דרומית אותנטית בבאר שבע" 
+                  alt="מסעדה בבאר שבע - הדרומית מסעדת בשרים כשר חלק מומלצת" 
                   className="w-full h-full object-cover"
                 />
                 <div 
@@ -249,7 +249,7 @@ export function Home() {
                     <div className="relative p-8 bg-black/30 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
                       <motion.img 
                         src="/logo.svg" 
-                        alt="לוגו מסעדת הדרומית - מסעדת בשרים כשרה בבאר שבע" 
+                        alt="לוגו מסעדת הדרומית - מסעדה מומלצת בבאר שבע מסעדת בשרים כשר חלק" 
                         className="h-40 mx-auto drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]"
                         animate={{
                           scale: [1, 1.02, 1],
@@ -285,6 +285,18 @@ export function Home() {
                     }}
                   />
                   <div className="relative px-10 py-8 bg-black/40 backdrop-blur-xl rounded-[30px] border border-white/20 shadow-2xl">
+                    {/* כותרת H1 עיקרית לSEO */}
+                    <motion.h1 
+                      className="text-3xl md:text-5xl font-bold text-center text-white mb-6 leading-tight"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 0.5 }}
+                    >
+                      <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+                        הדרומית - מסעדה בבאר שבע
+                      </span>
+                    </motion.h1>
+                    
                     <AnimatePresence mode="wait">
                       <motion.p
                         key={currentSubtitle}
@@ -307,10 +319,10 @@ export function Home() {
                             ease: [0.16, 1, 0.3, 1]
                           }
                         }}
-                        className="text-4xl md:text-6xl font-bold"
+                        className="text-xl md:text-2xl font-semibold text-center"
                       >
                         <motion.span 
-                          className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent inline-block"
+                          className="bg-gradient-to-r from-gray-200 via-white to-gray-200 bg-clip-text text-transparent inline-block"
                           animate={{
                             backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
                           }}
@@ -645,7 +657,7 @@ export function Home() {
         >
           <img 
             src="/gallery/BarAharon-3565-2 Large.jpeg"
-            alt="אווירה מיוחדת במסעדת הדרומית"
+            alt="אווירה מיוחדת במסעדת הדרומית - מסעדה מומלצת בבאר שבע"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/80 to-[#1A0000]/60 backdrop-blur-sm"></div>

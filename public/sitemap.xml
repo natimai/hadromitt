@@ -12,7 +12,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.hadromit.co.il/hero.jpeg</image:loc>
-      <image:title>הדרומית - מסעדת בשרים כשרה בבאר שבע</image:title>
+      <image:title>הדרומית - מסעדה מומלצת בבאר שבע מסעדת בשרים כשר חלק</image:title>
     </image:image>
   </url>
 
@@ -70,6 +70,41 @@
     <lastmod>2024-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/events</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/accessibility</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/privacy</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/terms</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/cookies</loc>
+    <lastmod>2024-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>
