@@ -535,7 +535,6 @@ export function Menu() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(menuCategories[0].name);
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -749,8 +748,6 @@ export function Menu() {
                       className={`relative group p-3 sm:p-4 rounded-xl transition-all duration-300 border border-transparent ${
                         expandedItems.includes(item.name) ? 'bg-white/5 shadow-lg backdrop-blur-sm border-white/10' : 'hover:bg-white/5'
                       }`}
-                      onMouseEnter={() => setHoveredItem(item.name)}
-                      onMouseLeave={() => setHoveredItem(null)}
                       onClick={() => toggleItemExpansion(item.name)}
                     >
                       <div className="flex justify-between items-start gap-2">

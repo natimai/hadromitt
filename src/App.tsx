@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -25,7 +25,7 @@ function App(): JSX.Element {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsPopupVisible(true);
-    }, 5000);
+    }, 15000); // שינוי מ-5 שניות ל-15 שניות
 
     return () => clearTimeout(timer);
   }, []);
