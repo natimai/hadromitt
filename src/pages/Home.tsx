@@ -25,10 +25,12 @@ export function Home() {
 
   // מערך תמונות רקע מהגלריה
   const backgroundImages = [
+    '/gallery/BarAharon-3131 Large.jpeg',
+    '/gallery/BarAharon-3402 Large.jpeg',
     '/hero.jpeg',
     '/gallery/BarAharon-3565-2 Large.jpeg',
-    '/gallery/BarAharon-3097 Large.jpeg',
-    '/gallery/BarAharon-3402 Large.jpeg'
+    '/gallery/BarAharon-3345 Large.jpeg',
+    '/gallery/BarAharon-3097 Large.jpeg'
   ];
 
   useEffect(() => {
