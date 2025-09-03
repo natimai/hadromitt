@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { VipPopup } from './components/VipPopup';
@@ -11,6 +12,7 @@ import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { Catering } from './pages/Catering';
 import { AccessibilityMenu } from './components/AccessibilityMenu';
 import { CookieBanner } from './components/CookieBanner';
 import Privacy from './pages/Privacy';
@@ -31,30 +33,33 @@ function App(): JSX.Element {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/accessibility" element={<AccessibilityPage />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/cookies" element={<Cookies />} />
-          <Route path="/sitemap" element={<Sitemap />} />
-        </Routes>
-      </main>
-      <Footer />
-      <AccessibilityMenu />
-      <CookieBanner />
-      <VipPopup isVisible={isPopupVisible} setIsVisible={setIsPopupVisible} />
-    </div>
+    <HelmetProvider>
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/catering" element={<Catering />} />
+            <Route path="/accessibility" element={<AccessibilityPage />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/sitemap" element={<Sitemap />} />
+          </Routes>
+        </main>
+        <Footer />
+        <AccessibilityMenu />
+        <CookieBanner />
+        <VipPopup isVisible={isPopupVisible} setIsVisible={setIsPopupVisible} />
+      </div>
+    </HelmetProvider>
   );
 }
 

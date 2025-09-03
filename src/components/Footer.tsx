@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings, Truck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CookieSettings } from './CookieSettings';
 
@@ -381,6 +381,26 @@ export function Footer() {
                 <span className="text-gray-300 group-hover:text-white transition-colors duration-300 font-medium relative z-10">079-674-4711</span>
               </motion.a>
               
+              <motion.a
+                href="tel:0507557055"
+                whileHover={{ 
+                  scale: 1.08, 
+                  x: [0, 3, -3, 3, -3, 0],
+                  boxShadow: "0_8px_25px_-8px_rgba(255,0,0,0.4)"
+                }}
+                transition={{ duration: 0.5 }}
+                className="relative flex items-center justify-center md:justify-end group p-3 rounded-xl bg-gradient-to-r from-white/5 to-black/20 backdrop-blur-sm border border-white/10 hover:border-[#FF0000]/30 transition-all duration-300"
+              >
+                {/* Background glow on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-[#FF0000]/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100"
+                  transition={{ duration: 0.3 }}
+                />
+                
+                <Truck size={22} className="ml-3 text-[#FF0000] group-hover:rotate-12 group-hover:scale-110 transition-all duration-300 relative z-10" />
+                <span className="text-gray-300 group-hover:text-white transition-colors duration-300 font-medium relative z-10">הדרומית עד הבית: 050-7557055</span>
+              </motion.a>
+              
               <motion.div
                 whileHover={{ 
                   scale: 1.05,
@@ -664,6 +684,16 @@ export function Footer() {
                   <Settings className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
                   <span className="font-medium">הגדרות עוגיות</span>
                 </button>
+              </motion.div>
+              
+              <motion.div whileHover={{ scale: 1.05, x: -3 }} className="w-fit">
+              <Link 
+                to="/catering"
+                  className="flex items-center gap-3 text-gray-300 hover:text-white transition-all duration-300 group p-2 rounded-lg hover:bg-white/5"
+              >
+                  <Truck className="w-5 h-5 text-[#FF0000] group-hover:rotate-12 group-hover:scale-110 transition-all duration-300" />
+                  <span className="font-medium">הדרומית עד הבית</span>
+              </Link>
               </motion.div>
               
               <motion.div whileHover={{ scale: 1.05, x: -3 }} className="w-fit">
