@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -21,6 +21,17 @@ import Cookies from './pages/Cookies';
 import AccessibilityPage from './pages/Accessibility';
 import Sitemap from './pages/Sitemap';
 
+// קומפוננטה לגלילה אוטומטית למעלה בכל מעבר עמוד
+function ScrollToTop(): null {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
 function App(): JSX.Element {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -37,6 +48,7 @@ function App(): JSX.Element {
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow">
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/menu" element={<Menu />} />
