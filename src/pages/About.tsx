@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Utensils, Calendar, MapPin, Accessibility } from 'lucide-react';
+import { Utensils, Calendar, MapPin, Accessibility } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function About() {
@@ -95,7 +94,7 @@ export function About() {
           </motion.p>
 
           {/* Main Content */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 justify-items-center">
             {sections.map((section, index) => (
               <motion.div
                 key={section.title}
@@ -103,7 +102,7 @@ export function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="group relative overflow-hidden rounded-2xl shadow-xl"
+                className="group relative overflow-hidden rounded-2xl shadow-xl w-full max-w-md"
               >
                 <div className="aspect-square">
                   <img 
@@ -115,13 +114,13 @@ export function About() {
                 </div>
                 
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex flex-col items-center text-center gap-3 mb-3">
                     <div className="p-3 bg-white/10 backdrop-blur-sm rounded-full text-white">
                       {section.icon}
                     </div>
                     <h3 className="text-2xl font-bold text-white">{section.title}</h3>
                   </div>
-                  <p className="text-gray-200 leading-relaxed">{section.content}</p>
+                  <p className="text-gray-200 leading-relaxed text-center">{section.content}</p>
                 </div>
               </motion.div>
             ))}
