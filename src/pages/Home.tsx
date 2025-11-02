@@ -887,7 +887,7 @@ export function Home() {
             <p className="text-xl text-gray-300">חוויה קולינרית שלא תשכחו</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {features.map((feature, index) => (
               <motion.div
                 key={feature.title}
@@ -895,7 +895,7 @@ export function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="group relative overflow-hidden rounded-2xl bg-[#1A0000]/40 backdrop-blur-sm"
+                className="group relative overflow-hidden rounded-2xl bg-[#1A0000]/40 backdrop-blur-sm w-full max-w-md"
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
                   <img 
@@ -907,13 +907,15 @@ export function Home() {
                 </div>
                 
                 <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-[#FF0000]/10 rounded-full text-[#FF0000]">
-                      {feature.icon}
+                  <div className="flex flex-col items-center text-center gap-3 mb-4">
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="p-3 bg-[#FF0000]/10 rounded-full text-[#FF0000]">
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
                   </div>
-                  <p className="text-gray-300 mb-6">{feature.description}</p>
+                  <p className="text-gray-300 mb-6 text-center">{feature.description}</p>
                   <ul className="space-y-2">
                     {feature.highlights.map((highlight, i) => (
                       <motion.li
@@ -922,7 +924,7 @@ export function Home() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 * i }}
-                        className="flex items-center text-gray-300"
+                        className="flex items-center justify-center text-gray-300"
                       >
                         <Check className="w-5 h-5 text-[#FF0000] ml-2" />
                         {highlight}

@@ -41,7 +41,7 @@ export function Navbar() {
             </motion.div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center gap-8">
               {links.map(({ to, text }) => (
                 <motion.div
                   key={to}
@@ -100,7 +100,7 @@ export function Navbar() {
                     <Link
                       to={to}
                       onClick={() => setIsOpen(false)}
-                      className={`block px-4 py-3 text-base font-medium text-white hover:bg-[#FF0000]/10 rounded-lg transition-all duration-300 ${
+                      className={`block px-4 py-3 text-base font-medium text-white hover:bg-[#FF0000]/10 rounded-lg transition-all duration-300 text-right ${
                         isActive(to) ? 'text-[#FF0000] bg-[#FF0000]/5' : ''
                       }`}
                     >
