@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings, Truck } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CookieSettings } from './CookieSettings';
 
@@ -125,11 +125,6 @@ export function Footer() {
                   אירועים
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                <Link to="/catering" className="text-gray-300 hover:text-white transition-colors">
-                  הדרומית עד הבית
-                </Link>
-              </motion.div>
             </div>
           </motion.div>
 
@@ -142,18 +137,8 @@ export function Footer() {
                 className="flex items-center gap-3 text-gray-300"
               >
                 <Phone className="w-5 h-5 text-[#FF0000]" />
-                <a href="tel:0507557055" className="hover:text-white transition-colors">
-                  050-7557055
-                </a>
-              </motion.div>
-              <motion.div 
-                whileHover={{ scale: 1.02 }}
-                className="flex items-center gap-3 text-gray-300"
-              >
-                <Phone className="w-5 h-5 text-[#FF0000]" />
-                <span>הדרומית עד הבית:</span>
-                <a href="tel:0507557055" className="hover:text-white transition-colors">
-                  050-7557055
+                <a href="tel:0796744711" className="hover:text-white transition-colors">
+                  079-674-4711
                 </a>
               </motion.div>
               <motion.div 
@@ -161,7 +146,7 @@ export function Footer() {
                 className="flex items-center gap-3 text-gray-300"
               >
                 <MapPin className="w-5 h-5 text-[#FF0000]" />
-                <span>באר שבע, ישראל</span>
+                <span>רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע</span>
               </motion.div>
               <motion.div 
                 whileHover={{ scale: 1.02 }}

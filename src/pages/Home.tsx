@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check, Truck } from 'lucide-react';
+import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check } from 'lucide-react';
 
 export function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -97,13 +97,6 @@ export function Home() {
       icon: <ThumbsUp className="w-8 h-8" />,
       image: '/gallery/BarAharon-3402 Large.jpeg',
       highlights: ['צוות מקצועי', 'שירות אישי מותאם', 'המלצות מקצועיות']
-    },
-    {
-      title: 'הדרומית עד הבית - קייטרינג והפקת אירועים',
-      description: 'שירות חדש! אנחנו מגיעים אליכם עם גריל ענק, ציפסר מקצועי ומכינים הכל טרי במקום. ערבי פרישה, ימי גיבוש ואירועים משפחתיים',
-      icon: <Truck className="w-8 h-8" />,
-      image: '/HADROMIT_OUT/PHOTO-2025-09-03-12-02-38 2.jpg',
-      highlights: ['גריל ענק מקצועי', 'הכנה טרייה במקום', 'הפקה מלאה']
     }
   ];
 
@@ -865,19 +858,6 @@ export function Home() {
                   </div>
                   <span className="text-white text-sm font-medium">נווט אלינו</span>
                 </motion.a>
-                <motion.a
-                  href="tel:0507557055"
-                  initial={{ y: 50, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 50, opacity: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="flex flex-col items-center gap-1"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#FF0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#FF0000]/90 transition-colors">
-                    <Truck className="w-6 h-6" />
-                  </div>
-                  <span className="text-white text-sm font-medium">הדרומית עד הבית</span>
-                </motion.a>
               </motion.div>
             )}
           </AnimatePresence>
@@ -1106,19 +1086,6 @@ export function Home() {
                 >
                   <Utensils className="w-5 h-5" />
                   לתפריט המלא
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to="/catering"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF0000]/20 backdrop-blur-sm text-white rounded-full text-lg font-bold hover:bg-[#FF0000]/30 transition-colors"
-                >
-                  <Truck className="w-5 h-5" />
-                  הדרומית עד הבית
                 </Link>
               </motion.div>
             </div>

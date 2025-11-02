@@ -12,7 +12,6 @@ export function Navbar() {
     { to: '/menu', text: 'תפריט' },
     { to: '/about', text: 'עלינו' },
     { to: '/events', text: 'אירועים' },
-    { to: '/catering', text: 'הדרומית עד הבית' },
     { to: '/gallery', text: 'גלריה' },
     { to: '/blog', text: 'בלוג' },
     { to: '/contact', text: 'צור קשר' },

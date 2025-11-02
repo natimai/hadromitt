@@ -12,7 +12,6 @@ import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
-import { Catering } from './pages/Catering';
 import { AccessibilityMenu } from './components/AccessibilityMenu';
 import { CookieBanner } from './components/CookieBanner';
 import Privacy from './pages/Privacy';
@@ -58,7 +57,6 @@ function App(): JSX.Element {
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/catering" element={<Catering />} />
             <Route path="/accessibility" element={<AccessibilityPage />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

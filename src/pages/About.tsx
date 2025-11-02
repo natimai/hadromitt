@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Utensils, Calendar, MapPin, Accessibility, Truck } from 'lucide-react';
+import { Users, Utensils, Calendar, MapPin, Accessibility } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function About() {
@@ -22,12 +22,6 @@ export function About() {
       title: 'נגישות',
       content: 'מתחם המסעדה מתוכנן להנגיש חוויית ביקור נוחה לכל אורח. חניות נכים מסומנות ושמורות נמצאות בקרבת הכניסה, והגישה אל המסעדה נוחה ומותאמת לחלוטין.',
       image: '/gallery/BarAharon-3402 Large.jpeg'
-    },
-    {
-      icon: <Truck className="w-8 h-8" />,
-      title: 'הדרומית עד הבית',
-      content: 'שירות חדש! אנחנו מגיעים אליכם עם גריל ענק, ציפסר מקצועי ומכינים הכל טרי במקום. ערבי פרישה, ימי גיבוש ואירועים משפחתיים בהתאמה אישית.',
-      image: '/HADROMIT_OUT/PHOTO-2025-09-03-12-02-38 2.jpg'
     }
   ];
 
@@ -73,13 +67,9 @@ export function About() {
                 className="relative"
               >
                 <p className="text-xl leading-relaxed text-gray-100 mb-8">
-                  ברוכים הבאים להדרומית, מסעדת בשרים כשרה מבית קבוצת פפה מישל, הממוקמת במתחם ישפרו סנטר ליד הפורום בבאר שבע.
+                  ברוכים הבאים להדרומית, מסעדת בשרים כשרה מבית קבוצת פפה מישל, הממוקמת ברח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע.
                   <Link to="/menu" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
                     צפו בתפריט שלנו
-                  </Link>
-                  ,
-                  <Link to="/catering" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
-                    הדרומית עד הבית
                   </Link>
                   או
                   <Link to="/contact" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
