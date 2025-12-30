@@ -136,12 +136,8 @@ body[style*="cursor: pointer"] * {
     font-family: system-ui, -apple-system, sans-serif;
   }
   
-  /* Mobile bottom nav spacing */
+  /* Mobile optimizations */
   @media (max-width: 768px) {
-    main {
-      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
-    }
-    
     /* Optimize fonts for mobile */
     body {
       -webkit-font-smoothing: antialiased;

@@ -285,7 +285,7 @@ export function Gallery() {
           </div>
         </motion.div>
 
-        {/* Gallery Grid - Masonry Layout */}
+        {/* Gallery Grid - Responsive Grid Layout */}
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedCategory}
@@ -293,32 +293,33 @@ export function Gallery() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
           >
             {filteredImages.map((image, index) => (
               <motion.div
                 key={image.url}
                 variants={itemVariants}
-                className="group relative overflow-hidden rounded-xl shadow-2xl cursor-pointer break-inside-avoid mb-6 transform-gpu"
+                className="group relative overflow-hidden rounded-xl shadow-2xl cursor-pointer aspect-square transform-gpu"
                 onClick={() => setSelectedImage(image.url)}
-                whileHover={{ scale: 1.03, zIndex: 10 }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative w-full h-full overflow-hidden">
                   <ProgressiveImage
                     src={image.url}
                     alt={image.alt}
-                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-6">
-                    <h3 className="text-white text-xl font-bold mb-2">{image.title}</h3>
-                    <span className="text-sm text-gray-300 px-3 py-1 bg-[#FF0000]/80 rounded-full">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-end p-4 md:p-6">
+                    <h3 className="text-white text-lg md:text-xl font-bold mb-2">{image.title}</h3>
+                    <span className="text-xs md:text-sm text-gray-300 px-3 py-1 bg-[#FF0000]/80 rounded-full">
                       {image.category}
                     </span>
                   </div>
-                  {/* Zoom Indicator */}
-                  <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Zoom Indicator - Desktop only */}
+                  <div className="hidden md:block absolute top-4 left-4 bg-black/50 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
                     </svg>
