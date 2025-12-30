@@ -20,7 +20,6 @@ import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import AccessibilityPage from './pages/Accessibility';
 import Sitemap from './pages/Sitemap';
-import Order from './pages/Order';
 
 // קומפוננטה לגלילה אוטומטית למעלה בכל מעבר עמוד
 function ScrollToTop(): null {
@@ -65,7 +64,6 @@ function App(): JSX.Element {
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/sitemap" element={<Sitemap />} />
-            <Route path="/order" element={<Order />} />
           </Routes>
         </main>
         <Footer />

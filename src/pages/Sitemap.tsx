@@ -29,7 +29,6 @@ export default function Sitemap(): JSX.Element {
       links: [
         { to: "/", text: "דף הבית" },
         { to: "/menu", text: "תפריט" },
-        { to: "/order", text: "הזמנות" },
         { to: "/about", text: "אודות" },
         { to: "/events", text: "אירועים" },
         { to: "/gallery", text: "גלריה" },
