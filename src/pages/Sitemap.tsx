@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Map, Home, Menu, Info, Image, Phone, Calendar, Shield, FileText, Scale, Cookie, Accessibility } from 'lucide-react';
+import { Map, Home, Phone, Calendar, Scale } from 'lucide-react';
+import { gtagEvent } from '../utils/gtag';
 
 export default function Sitemap(): JSX.Element {
   const containerVariants = {
@@ -108,6 +109,11 @@ export default function Sitemap(): JSX.Element {
                           href={link.to}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={() => {
+                            if (link.to.includes('tabitisrael')) {
+                              gtagEvent('reservation_click', 'conversion', 'tabit_reservation_sitemap');
+                            }
+                          }}
                           className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
                         >
                           <span className="group-hover:translate-x-1 transition-transform duration-300">
@@ -147,4 +153,4 @@ export default function Sitemap(): JSX.Element {
       </div>
     </div>
   );
-} 
+}

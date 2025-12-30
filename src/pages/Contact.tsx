@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Phone, MapPin, Clock, Mail, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import fbq from '../utils/fbq';
+import { gtagEvent } from '../utils/gtag';
 
 export function Contact() {
   const handleReservationClick = () => {
@@ -10,6 +11,11 @@ export function Contact() {
       content_name: 'הזמנת מקום',
       content_category: 'reservation'
     });
+    gtagEvent('reservation_click', 'conversion', 'tabit_reservation');
+  };
+
+  const handleCallClick = () => {
+    gtagEvent('call_click', 'engagement', 'phone_call');
   };
 
   return (
@@ -71,7 +77,7 @@ export function Contact() {
                 <p className="font-semibold mb-2">או צרו איתנו קשר:</p>
                 <div className="flex items-center gap-2">
                   <Phone className="w-5 h-5 text-[#FF0000]" />
-                  <a href="tel:0796744711" className="hover:text-[#FF0000] transition-colors">079-674-4711</a>
+                  <a href="tel:0796744711" onClick={handleCallClick} className="hover:text-[#FF0000] transition-colors">079-674-4711</a>
                 </div>
               </div>
             </div>

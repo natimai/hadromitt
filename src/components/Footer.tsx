@@ -3,10 +3,15 @@ import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CookieSettings } from './CookieSettings';
+import { gtagEvent } from '../utils/gtag';
 
 export function Footer() {
   const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
-  
+
+  const handleCallClick = () => {
+    gtagEvent('call_click', 'engagement', 'phone_call');
+  };
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -137,7 +142,7 @@ export function Footer() {
                 className="flex items-center gap-3 text-gray-300"
               >
                 <Phone className="w-5 h-5 text-[#FF0000]" />
-                <a href="tel:0796744711" className="hover:text-white transition-colors">
+                <a href="tel:0796744711" onClick={handleCallClick} className="hover:text-white transition-colors">
                   079-674-4711
                 </a>
               </motion.div>

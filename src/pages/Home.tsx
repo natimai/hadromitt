@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
 import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check } from 'lucide-react';
+import { gtagEvent } from '../utils/gtag';
 
 export function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,6 +16,14 @@ export function Home() {
   const { scrollYProgress } = useScroll();
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 };
   const scaleX = useSpring(scrollYProgress, springConfig);
+
+  const handleCallClick = () => {
+    gtagEvent('call_click', 'engagement', 'phone_call');
+  };
+
+  const handleReservationClick = () => {
+    gtagEvent('reservation_click', 'conversion', 'tabit_reservation');
+  };
 
   const subtitles = [
     "מסעדה מומלצת בבאר שבע",
@@ -666,6 +675,7 @@ export function Home() {
                       href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={handleReservationClick}
                       className="group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 md:px-9 lg:px-10 py-4 sm:py-4 md:py-5 text-base sm:text-lg md:text-lg font-bold overflow-hidden rounded-[16px] sm:rounded-[18px] md:rounded-[20px] bg-gradient-to-br from-white/15 via-black/20 to-black/30 backdrop-blur-xl sm:backdrop-blur-2xl border border-white/30 sm:border-2 hover:border-white/50 transition-all duration-500"
                     >
                       {/* Animated background */}
@@ -817,6 +827,7 @@ export function Home() {
               >
                 <motion.a
                   href="tel:0796744711"
+                  onClick={handleCallClick}
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
@@ -832,6 +843,7 @@ export function Home() {
                   href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleReservationClick}
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
@@ -1071,6 +1083,7 @@ export function Home() {
                   href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={handleReservationClick}
                   className="inline-flex items-center gap-2 px-8 py-4 bg-[#FF0000] text-white rounded-full text-lg font-bold hover:bg-[#CC0000] transition-colors"
                 >
                   <Calendar className="w-5 h-5" />
