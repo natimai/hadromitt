@@ -1228,9 +1228,9 @@ export function Home() {
               >
                 <Link
                   to="/menu"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-full text-lg font-bold hover:bg-white/20 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 min-h-[56px] bg-white/10 backdrop-blur-sm text-white rounded-full text-lg font-bold hover:bg-white/20 active:scale-95 transition-all touch-manipulation"
                 >
-                  <Utensils className="w-5 h-5" />
+                  <Utensils className="w-6 h-6" />
                   לתפריט המלא
                 </Link>
               </motion.div>

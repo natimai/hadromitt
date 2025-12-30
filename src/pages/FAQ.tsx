@@ -212,30 +212,36 @@ export default function FAQ(): JSX.Element {
             </div>
           </motion.div>
 
-          {/* Category Filter */}
+          {/* Category Filter - Mobile Optimized */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mb-12"
+            className="mb-12 -mx-4 px-4 md:mx-0 md:px-0"
           >
-            <div className="flex flex-wrap justify-center gap-3">
-              {categories.map((category) => (
-                <motion.button
-                  key={category.name}
-                  onClick={() => setSelectedCategory(category.name)}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-full transition-all duration-300 ${
-                    selectedCategory === category.name
-                      ? 'bg-[#FF0000] text-white shadow-lg shadow-red-500/50'
-                      : 'bg-white/10 text-gray-300 hover:bg-white/20'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {category.icon}
-                  <span className="font-medium">{category.name}</span>
-                </motion.button>
-              ))}
+            <div className="overflow-x-auto pb-2 scrollbar-hide md:overflow-visible">
+              <div className="flex md:flex-wrap md:justify-center gap-3 min-w-max md:min-w-0">
+                {categories.map((category) => (
+                  <motion.button
+                    key={category.name}
+                    onClick={() => setSelectedCategory(category.name)}
+                    className={`
+                      flex items-center gap-2 px-5 py-3 rounded-full 
+                      transition-all duration-300 whitespace-nowrap
+                      min-h-[48px] touch-manipulation flex-shrink-0
+                      ${selectedCategory === category.name
+                        ? 'bg-[#FF0000] text-white shadow-lg shadow-red-500/50'
+                        : 'bg-white/10 text-gray-300 hover:bg-white/20 active:bg-white/30'
+                      }
+                    `}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {category.icon}
+                    <span className="font-medium">{category.name}</span>
+                  </motion.button>
+                ))}
+              </div>
             </div>
           </motion.div>
 
@@ -259,7 +265,8 @@ export default function FAQ(): JSX.Element {
                   >
                     <button
                       onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                      className="w-full px-6 py-5 flex items-center justify-between text-right"
+                      className="w-full px-6 py-5 flex items-center justify-between text-right min-h-[72px] touch-manipulation active:bg-white/5 transition-colors"
+                      aria-expanded={openIndex === index}
                     >
                       <div className="flex-1">
                         <h3 className="text-lg font-semibold text-white mb-1">

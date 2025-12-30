@@ -135,10 +135,97 @@ body[style*="cursor: pointer"] * {
   body {
     font-family: system-ui, -apple-system, sans-serif;
   }
+  
+  /* Mobile bottom nav spacing */
+  @media (max-width: 768px) {
+    main {
+      padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
+    }
+    
+    /* Optimize fonts for mobile */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Prevent zoom on input focus (iOS) */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      font-size: 16px !important;
+    }
+    
+    /* Better tap targets */
+    button,
+    a {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+  
+  /* iOS safe area support */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    body {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
 }
 
 @layer components {
   .transition {
     @apply transition-all duration-300 ease-in-out;
+  }
+  
+  /* Mobile optimizations */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Smooth scrolling for mobile */
+  @media (max-width: 768px) {
+    html {
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+    
+    /* Reduce motion for better performance on low-end devices */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    
+    /* Optimize blur effects */
+    .backdrop-blur-sm,
+    .backdrop-blur-lg,
+    .backdrop-blur-xl {
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+    
+    /* Hardware acceleration for animations */
+    .transform-gpu {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+  }
+  
+  /* Better scrollbar for mobile */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

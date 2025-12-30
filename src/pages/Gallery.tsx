@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { X, Filter } from 'lucide-react';
+import { motion, AnimatePresence, useMotionValue, useTransform, PanInfo } from 'framer-motion';
+import { X, Filter, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ProgressiveImage } from '../components/ProgressiveImage';
 
@@ -139,10 +139,43 @@ const categories = ['הכל', 'מנות עיקריות', 'אווירה', 'איר
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>('הכל');
+  const x = useMotionValue(0);
+  const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5]);
 
   const filteredImages = selectedCategory === 'הכל' 
     ? images 
     : images.filter(img => img.category === selectedCategory);
+
+  const getCurrentImageIndex = () => {
+    return filteredImages.findIndex(img => img.url === selectedImage);
+  };
+
+  const showNextImage = () => {
+    const currentIndex = getCurrentImageIndex();
+    if (currentIndex < filteredImages.length - 1) {
+      setSelectedImage(filteredImages[currentIndex + 1].url);
+      x.set(0);
+    }
+  };
+
+  const showPrevImage = () => {
+    const currentIndex = getCurrentImageIndex();
+    if (currentIndex > 0) {
+      setSelectedImage(filteredImages[currentIndex - 1].url);
+      x.set(0);
+    }
+  };
+
+  const handleDragEnd = (_: any, info: PanInfo) => {
+    const offset = info.offset.x;
+    const velocity = info.velocity.x;
+    
+    if (offset > 100 || velocity > 500) {
+      showPrevImage();
+    } else if (offset < -100 || velocity < -500) {
+      showNextImage();
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -196,32 +229,60 @@ export function Gallery() {
           </div>
         </motion.div>
 
-        {/* Category Filter */}
+        {/* Category Filter - Mobile Optimized */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="mb-12"
         >
-          <div className="flex items-center gap-2 mr-2">
+          <div className="flex items-center justify-center gap-2 mb-4">
             <Filter className="w-5 h-5 text-[#FF0000]" />
             <span className="text-gray-300 font-medium">סינון:</span>
           </div>
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                selectedCategory === category
-                  ? 'bg-[#FF0000] text-white shadow-lg shadow-red-500/50 scale-105'
-                  : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:scale-105'
-              }`}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category}
-            </motion.button>
-          ))}
+          
+          {/* Mobile: Horizontal scrollable */}
+          <div className="md:flex md:flex-wrap md:justify-center md:gap-3">
+            <div className="flex md:hidden overflow-x-auto gap-3 px-4 pb-2 scrollbar-hide -mx-4">
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`
+                    px-6 py-3 rounded-full transition-all duration-300 
+                    whitespace-nowrap min-h-[48px] flex-shrink-0
+                    touch-manipulation
+                    ${selectedCategory === category
+                      ? 'bg-[#FF0000] text-white shadow-lg shadow-red-500/50 scale-105'
+                      : 'bg-white/10 text-gray-300 active:bg-white/20'
+                    }
+                  `}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
+            
+            {/* Desktop: Flex wrap */}
+            <div className="hidden md:flex md:flex-wrap md:justify-center md:gap-3">
+              {categories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-3 rounded-full transition-all duration-300 ${
+                    selectedCategory === category
+                      ? 'bg-[#FF0000] text-white shadow-lg shadow-red-500/50 scale-105'
+                      : 'bg-white/10 text-gray-300 hover:bg-white/20 hover:scale-105'
+                  }`}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {category}
+                </motion.button>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         {/* Gallery Grid - Masonry Layout */}
@@ -280,41 +341,104 @@ export function Gallery() {
         )}
       </div>
 
-      {/* Lightbox */}
+      {/* Lightbox with Swipe Support */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelectedImage(null)}
           >
+            {/* Close Button */}
             <motion.button
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
-              className="absolute top-4 right-4 text-white p-3 hover:bg-white/10 rounded-full transition-colors backdrop-blur-sm bg-black/30 z-10"
-              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 text-white p-3 hover:bg-white/10 active:scale-95 rounded-full transition-all backdrop-blur-sm bg-black/30 z-10 touch-manipulation"
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedImage(null);
+              }}
               aria-label="סגור תמונה"
             >
               <X size={28} />
             </motion.button>
+
+            {/* Previous Button */}
+            {getCurrentImageIndex() > 0 && (
+              <motion.button
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 md:p-4 hover:bg-white/10 active:scale-95 rounded-full transition-all backdrop-blur-sm bg-black/30 z-10 touch-manipulation"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showPrevImage();
+                }}
+                aria-label="תמונה הקודמת"
+              >
+                <ChevronRight size={32} />
+              </motion.button>
+            )}
+
+            {/* Next Button */}
+            {getCurrentImageIndex() < filteredImages.length - 1 && (
+              <motion.button
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 md:p-4 hover:bg-white/10 active:scale-95 rounded-full transition-all backdrop-blur-sm bg-black/30 z-10 touch-manipulation"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showNextImage();
+                }}
+                aria-label="תמונה הבאה"
+              >
+                <ChevronLeft size={32} />
+              </motion.button>
+            )}
+
+            {/* Swipeable Image */}
             <motion.img
-              initial={{ opacity: 0, scale: 0.8 }}
+              key={selectedImage}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.3}
+              onDragEnd={handleDragEnd}
+              style={{ x, opacity }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
+              exit={{ opacity: 0, scale: 0.9 }}
               src={selectedImage}
-              alt={images.find(img => img.url === selectedImage)?.alt || 'תמונה מוגדלת'}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+              alt={filteredImages.find(img => img.url === selectedImage)?.alt || 'תמונה מוגדלת'}
+              className="max-w-full max-h-[80vh] md:max-h-[85vh] object-contain rounded-lg shadow-2xl cursor-grab active:cursor-grabbing touch-none"
               onClick={(e) => e.stopPropagation()}
             />
-            {/* Image Info */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm px-6 py-3 rounded-full">
-              <p className="text-white text-center">
-                {images.find(img => img.url === selectedImage)?.title}
+
+            {/* Image Info & Counter */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm px-6 py-3 rounded-full flex items-center gap-4"
+            >
+              <p className="text-white text-center font-medium">
+                {filteredImages.find(img => img.url === selectedImage)?.title}
               </p>
-            </div>
+              <span className="text-gray-400 text-sm">
+                {getCurrentImageIndex() + 1} / {filteredImages.length}
+              </span>
+            </motion.div>
+
+            {/* Swipe Hint (mobile only) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="absolute top-20 left-1/2 transform -translate-x-1/2 text-white/50 text-sm md:hidden"
+            >
+              החלק לשינוי תמונה
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

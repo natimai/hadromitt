@@ -1,0 +1,43 @@
+{
+  "name": "הדרומית - מסעדת בשרים בבאר שבע",
+  "short_name": "הדרומית",
+  "description": "מסעדת בשרים כשר חלק מומלצת בבאר שבע",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1A0000",
+  "theme_color": "#FF0000",
+  "orientation": "portrait-primary",
+  "dir": "rtl",
+  "lang": "he",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "restaurants"],
+  "shortcuts": [
+    {
+      "name": "תפריט",
+      "short_name": "תפריט",
+      "description": "צפה בתפריט המלא",
+      "url": "/menu",
+      "icons": [{ "src": "/logo.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "הזמן מקום",
+      "short_name": "הזמנה",
+      "description": "הזמן מקום במסעדה",
+      "url": "https://tabitisrael.co.il/הזמנת-מקום/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+    },
+    {
+      "name": "צור קשר",
+      "short_name": "קשר",
+      "description": "צור איתנו קשר",
+      "url": "/contact",
+      "icons": [{ "src": "/logo.svg", "sizes": "96x96" }]
+    }
+  ]
+}

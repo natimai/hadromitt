@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Breadcrumb } from './components/Breadcrumb';
+import { MobileNav } from './components/MobileNav';
 import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
 import { About } from './pages/About';
@@ -58,6 +59,7 @@ function App(): JSX.Element {
           </Routes>
         </main>
         <Footer />
+        <MobileNav />
         <AccessibilityMenu />
         <CookieBanner />
       </div>

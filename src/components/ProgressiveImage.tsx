@@ -36,9 +36,11 @@ export function ProgressiveImage({ src, alt, className = '', placeholderSrc }: P
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         loading="lazy"
+        decoding="async"
+        fetchpriority="auto"
       />
       {isLoading && (
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-800/50 via-gray-700/50 to-gray-800/50 animate-shimmer" />
       )}
     </div>
   );
