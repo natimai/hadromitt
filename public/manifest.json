@@ -23,21 +23,19 @@
       "name": "תפריט",
       "short_name": "תפריט",
       "description": "צפה בתפריט המלא",
-      "url": "/menu",
-      "icons": [{ "src": "/logo.svg", "sizes": "96x96" }]
-    },
-    {
-      "name": "הזמן מקום",
-      "short_name": "הזמנה",
-      "description": "הזמן מקום במסעדה",
-      "url": "https://tabitisrael.co.il/הזמנת-מקום/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
+      "url": "/menu"
     },
     {
       "name": "צור קשר",
       "short_name": "קשר",
       "description": "צור איתנו קשר",
-      "url": "/contact",
-      "icons": [{ "src": "/logo.svg", "sizes": "96x96" }]
+      "url": "/contact"
+    },
+    {
+      "name": "גלריה",
+      "short_name": "גלריה",
+      "description": "תמונות המסעדה",
+      "url": "/gallery"
     }
   ]
 }

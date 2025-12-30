@@ -58,7 +58,6 @@ function App(): JSX.Element {
           </Routes>
         </main>
         <Footer />
-        <MobileNav />
         <AccessibilityMenu />
         <CookieBanner />
       </div>
