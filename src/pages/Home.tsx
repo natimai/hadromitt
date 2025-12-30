@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check, ShoppingCart } from 'lucide-react';
+import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check } from 'lucide-react';
 import { gtagEvent } from '../utils/gtag';
+import { ReviewPlatforms } from '../components/ReviewPlatforms';
 
 export function Home() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -170,15 +171,22 @@ export function Home() {
               style={{ y: heroY }}
             >
               <motion.div 
-                initial={{ scale: 1.05 }}
+                key={currentBackground}
+                initial={{ scale: 1.1, x: '-2%', y: '-2%', opacity: 0 }}
                 animate={{ 
-                  scale: [1.05, 1.02, 1.05],
+                  scale: [1.1, 1.15, 1.1],
+                  x: ['-2%', '2%', '-2%'],
+                  y: ['-2%', '2%', '-2%'],
+                  opacity: 1,
                   filter: ["brightness(0.85) saturate(1.1)", "brightness(0.9) saturate(1.2)", "brightness(0.85) saturate(1.1)"]
                 }}
+                exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ 
-                  duration: 12,
-                  repeat: Infinity,
-                  ease: "easeInOut"
+                  scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+                  x: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+                  y: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+                  opacity: { duration: 0.7 },
+                  filter: { duration: 12, repeat: Infinity, ease: "easeInOut" }
                 }}
                 className="relative w-full h-full"
               >
@@ -188,13 +196,13 @@ export function Home() {
                   className="w-full h-full object-cover"
                 />
                 
-                {/* Multi-layer gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1A0000]/40 via-transparent to-[#1A0000]/40" />
+                {/* Enhanced multi-layer gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#1A0000]/50 via-transparent to-[#1A0000]/50" />
                 <div 
                   className="absolute inset-0"
                   style={{ 
-                    background: 'radial-gradient(ellipse at center bottom, rgba(255,0,0,0.1) 0%, rgba(26,0,0,0.6) 50%, rgba(0,0,0,0.8) 100%)',
+                    background: 'radial-gradient(ellipse at center bottom, rgba(255,0,0,0.15) 0%, rgba(26,0,0,0.7) 50%, rgba(0,0,0,0.85) 100%)',
                   }}
                 />
                 
@@ -832,12 +840,40 @@ export function Home() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="flex flex-col items-center gap-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex flex-col items-center gap-2"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
-                    <Phone className="w-6 h-6" />
-                  </div>
-                  <span className="text-white text-sm font-medium">חייג אלינו</span>
+                  <motion.div 
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#FF0000] to-[#CC0000] text-white shadow-2xl shadow-red-500/50 backdrop-blur-lg hover:shadow-red-500/70 transition-all duration-300 relative"
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(255,0,0,0.5)",
+                        "0 0 40px rgba(255,0,0,0.7)",
+                        "0 0 20px rgba(255,0,0,0.5)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <Phone className="w-7 h-7" />
+                    <motion.div
+                      className="absolute inset-0 rounded-full bg-white/20"
+                      animate={{
+                        scale: [1, 1.4, 1],
+                        opacity: [0.5, 0, 0.5]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeOut"
+                      }}
+                    />
+                  </motion.div>
+                  <span className="text-white text-sm font-semibold drop-shadow-lg">חייג אלינו</span>
                 </motion.a>
                 <motion.a
                   href="https://tabitisrael.co.il/%D7%94%D7%96%D7%9E%D7%A0%D7%AA-%D7%9E%D7%A7%D7%95%D7%9D/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation"
@@ -848,12 +884,42 @@ export function Home() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="flex flex-col items-center gap-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex flex-col items-center gap-2"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
-                    <Calendar className="w-6 h-6" />
-                  </div>
-                  <span className="text-white text-sm font-medium">הזמן מקום</span>
+                  <motion.div 
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#FF0000] to-[#CC0000] text-white shadow-2xl shadow-red-500/50 backdrop-blur-lg hover:shadow-red-500/70 transition-all duration-300 relative"
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(255,0,0,0.5)",
+                        "0 0 40px rgba(255,0,0,0.7)",
+                        "0 0 20px rgba(255,0,0,0.5)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5
+                    }}
+                  >
+                    <Calendar className="w-7 h-7" />
+                    <motion.div
+                      className="absolute inset-0 rounded-full bg-white/20"
+                      animate={{
+                        scale: [1, 1.4, 1],
+                        opacity: [0.5, 0, 0.5]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                        delay: 0.5
+                      }}
+                    />
+                  </motion.div>
+                  <span className="text-white text-sm font-semibold drop-shadow-lg">הזמן מקום</span>
                 </motion.a>
                 <motion.a
                   href="https://www.google.com/maps?q=31.22244798333614,34.80355542130626"
@@ -863,12 +929,42 @@ export function Home() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="flex flex-col items-center gap-1"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex flex-col items-center gap-2"
                 >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <span className="text-white text-sm font-medium">נווט אלינו</span>
+                  <motion.div 
+                    className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-[#FF0000] to-[#CC0000] text-white shadow-2xl shadow-red-500/50 backdrop-blur-lg hover:shadow-red-500/70 transition-all duration-300 relative"
+                    animate={{
+                      boxShadow: [
+                        "0 0 20px rgba(255,0,0,0.5)",
+                        "0 0 40px rgba(255,0,0,0.7)",
+                        "0 0 20px rgba(255,0,0,0.5)"
+                      ]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1
+                    }}
+                  >
+                    <MapPin className="w-7 h-7" />
+                    <motion.div
+                      className="absolute inset-0 rounded-full bg-white/20"
+                      animate={{
+                        scale: [1, 1.4, 1],
+                        opacity: [0.5, 0, 0.5]
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                        delay: 1
+                      }}
+                    />
+                  </motion.div>
+                  <span className="text-white text-sm font-semibold drop-shadow-lg">נווט אלינו</span>
                 </motion.a>
               </motion.div>
             )}
@@ -989,26 +1085,58 @@ export function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/50 to-transparent"></div>
                   </motion.div>
 
-                  <div className="bg-[#1A0000]/40 backdrop-blur-sm p-8 rounded-2xl">
-                    <div className="flex items-start mb-6">
-                      <Quote className="text-[#FF0000] w-12 h-12 mt-1 ml-4 transform -scale-x-100" />
-                      <div>
-                        <h3 className="text-2xl font-bold text-white">{reviews[currentReview].name}</h3>
-                        {reviews[currentReview].role && (
-                          <p className="text-[#FF6666] text-lg">{reviews[currentReview].role}</p>
-                        )}
+                  <motion.div 
+                    className="bg-gradient-to-br from-[#1A0000]/60 to-black/60 backdrop-blur-lg p-10 rounded-3xl shadow-2xl border border-white/10 relative overflow-hidden"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    {/* Decorative elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF0000]/10 rounded-full blur-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl"></div>
+                    
+                    <div className="relative">
+                      <div className="flex items-start mb-8">
+                        <motion.div
+                          animate={{ rotate: [0, -5, 0] }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        >
+                          <Quote className="text-[#FF0000] w-14 h-14 mt-1 ml-4 transform -scale-x-100 drop-shadow-lg" />
+                        </motion.div>
+                        <div>
+                          <h3 className="text-3xl font-bold text-white mb-2">{reviews[currentReview].name}</h3>
+                          {reviews[currentReview].role && (
+                            <p className="text-[#FF6666] text-xl font-medium">{reviews[currentReview].role}</p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className="flex gap-2 mb-8">
+                        {[...Array(reviews[currentReview].rating)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ scale: 0, rotate: -180 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            transition={{ delay: 0.3 + i * 0.1, type: "spring" }}
+                          >
+                            <Star className="w-7 h-7 text-[#FF0000] fill-[#FF0000] drop-shadow-lg" />
+                          </motion.div>
+                        ))}
+                      </div>
+                      
+                      <p className="text-gray-100 text-2xl mb-8 leading-relaxed font-light italic">
+                        "{reviews[currentReview].content}"
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <p className="text-gray-400 text-lg">{reviews[currentReview].date}</p>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-[#FF0000]/20 rounded-full">
+                          <ThumbsUp className="w-5 h-5 text-[#FF0000]" />
+                          <span className="text-white font-medium">מומלץ בחום</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="flex mb-6">
-                      {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                        <Star key={i} className="w-6 h-6 text-[#FF0000] fill-[#FF0000]" />
-                      ))}
-                    </div>
-                    <p className="text-gray-200 text-xl mb-6 leading-relaxed">
-                      {reviews[currentReview].content}
-                    </p>
-                    <p className="text-gray-400">{reviews[currentReview].date}</p>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -1041,6 +1169,9 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* Review Platforms */}
+      <ReviewPlatforms />
 
       {/* קריאה לפעולה */}
       <section className="relative py-24 px-6 overflow-hidden">

@@ -43,6 +43,7 @@ export default function Sitemap(): JSX.Element {
         { to: "/terms", text: "תנאי שימוש" },
         { to: "/cookies", text: "מדיניות עוגיות" },
         { to: "/accessibility", text: "הצהרת נגישות" },
+        { to: "/faq", text: "שאלות נפוצות" },
         { text: "מפת האתר XML", to: "/sitemap.xml", external: true }
       ]
     },

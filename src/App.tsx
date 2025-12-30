@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { VipPopup } from './components/VipPopup';
 import { Breadcrumb } from './components/Breadcrumb';
 import { Home } from './pages/Home';
 import { Menu } from './pages/Menu';
@@ -20,6 +19,7 @@ import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
 import AccessibilityPage from './pages/Accessibility';
 import Sitemap from './pages/Sitemap';
+import FAQ from './pages/FAQ';
 
 // קומפוננטה לגלילה אוטומטית למעלה בכל מעבר עמוד
 function ScrollToTop(): null {
@@ -33,16 +33,6 @@ function ScrollToTop(): null {
 }
 
 function App(): JSX.Element {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsPopupVisible(true);
-    }, 15000); // שינוי מ-5 שניות ל-15 שניות
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <HelmetProvider>
       <div className="flex flex-col min-h-screen">
@@ -64,12 +54,12 @@ function App(): JSX.Element {
             <Route path="/terms" element={<Terms />} />
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/faq" element={<FAQ />} />
           </Routes>
         </main>
         <Footer />
         <AccessibilityMenu />
         <CookieBanner />
-        <VipPopup isVisible={isPopupVisible} setIsVisible={setIsPopupVisible} />
       </div>
     </HelmetProvider>
   );

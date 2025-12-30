@@ -27,6 +27,22 @@
   animation: shine 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+/* אנימציית Shimmer לטעינת תמונות */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+}
+
 /* Dark Mode Styles */
 .dark-mode {
   background-color: #1A0000;

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, User, Tag, ArrowLeft, Star, ThumbsUp, MapPin } from 'lucide-react';
 import { blogPosts } from './blogData';
+import { SocialShare } from '../components/SocialShare';
 
 export function BlogPost() {
   const { slug } = useParams();
@@ -63,6 +64,14 @@ export function BlogPost() {
               </div>
             </motion.div>
           </div>
+        </div>
+
+        {/* Social Share */}
+        <div className="flex justify-center mb-8">
+          <SocialShare 
+            title={post.title}
+            description={post.excerpt}
+          />
         </div>
 
         {/* Content */}
