@@ -31,6 +31,13 @@
   </url>
 
   <url>
+    <loc>https://www.hadromit.co.il/order</loc>
+    <lastmod>2024-12-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
     <loc>https://www.hadromit.co.il/about</loc>
     <lastmod>2024-03-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -46,28 +53,35 @@
 
   <url>
     <loc>https://www.hadromit.co.il/blog</loc>
-    <lastmod>2024-03-20</lastmod>
+    <lastmod>2024-12-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.hadromit.co.il/blog/behind-the-scenes-kitchen</loc>
+    <loc>https://www.hadromit.co.il/blog/hadromit-reviews</loc>
     <lastmod>2024-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.hadromit.co.il/blog/meat-secrets</loc>
+    <loc>https://www.hadromit.co.il/blog/best-meat-restaurant-beer-sheva</loc>
     <lastmod>2024-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://www.hadromit.co.il/blog/vip-rooms-design</loc>
+    <loc>https://www.hadromit.co.il/blog/best-restaurant-south</loc>
     <lastmod>2024-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/small-events-vip-rooms</loc>
+    <lastmod>2024-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

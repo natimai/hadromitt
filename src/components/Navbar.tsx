@@ -10,6 +10,7 @@ export function Navbar() {
   const links = [
     { to: '/', text: 'בית' },
     { to: '/menu', text: 'תפריט' },
+    { to: '/order', text: 'הזמנות' },
     { to: '/about', text: 'עלינו' },
     { to: '/events', text: 'אירועים' },
     { to: '/gallery', text: 'גלריה' },

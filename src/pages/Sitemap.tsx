@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Map, Home, Phone, Calendar, Scale } from 'lucide-react';
@@ -30,6 +29,7 @@ export default function Sitemap(): JSX.Element {
       links: [
         { to: "/", text: "דף הבית" },
         { to: "/menu", text: "תפריט" },
+        { to: "/order", text: "הזמנות" },
         { to: "/about", text: "אודות" },
         { to: "/events", text: "אירועים" },
         { to: "/gallery", text: "גלריה" },
@@ -43,7 +43,8 @@ export default function Sitemap(): JSX.Element {
         { to: "/privacy", text: "מדיניות פרטיות" },
         { to: "/terms", text: "תנאי שימוש" },
         { to: "/cookies", text: "מדיניות עוגיות" },
-        { to: "/accessibility", text: "הצהרת נגישות" }
+        { to: "/accessibility", text: "הצהרת נגישות" },
+        { text: "מפת האתר XML", to: "/sitemap.xml", external: true }
       ]
     },
     {

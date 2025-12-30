@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence, useInView } from 'framer-motion';
-import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check } from 'lucide-react';
+import { ChevronDown, Star, MapPin, Utensils, Quote, ThumbsUp, Phone, Calendar, ArrowLeft, ArrowRight, X, Plus, Check, ShoppingCart } from 'lucide-react';
 import { gtagEvent } from '../utils/gtag';
 
 export function Home() {
@@ -855,6 +855,19 @@ export function Home() {
                   </div>
                   <span className="text-white text-sm font-medium">הזמן מקום</span>
                 </motion.a>
+                <Link
+                  to="/order"
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 50, opacity: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="flex flex-col items-center gap-1"
+                >
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
+                    <ShoppingCart className="w-6 h-6" />
+                  </div>
+                  <span className="text-white text-sm font-medium">הזמן עכשיו</span>
+                </Link>
                 <motion.a
                   href="https://www.google.com/maps?q=31.22244798333614,34.80355542130626"
                   target="_blank"
@@ -862,7 +875,7 @@ export function Home() {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: 50, opacity: 0 }}
-                  transition={{ delay: 0.3 }}
+                  transition={{ delay: 0.4 }}
                   className="flex flex-col items-center gap-1"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#1A0000]/80 text-white shadow-lg backdrop-blur-lg hover:bg-[#1A0000]/90 transition-colors">
