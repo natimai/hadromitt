@@ -62,10 +62,10 @@ const menuCategories: MenuCategory[] = [
       },
       { 
         name: 'עסקית קרניבורים', 
-        price: '399', 
+        price: '450', 
         description: '* מבחר סוגי סלטים ולאפות מהטאבון\n* עיקרית: קרניבורים (מינימום 2 סועדים) - פילה בקר, סלייסים של אנטריקוט, נתחי כבד אווז, צלעות כבש (1 ק"ג)\n* 2 תוספות לבחירה: צ׳יפס / אורז / פירה / פירה בטטה / סלט ירקות',
-        isSpicy: false,
-        isRecommended: true
+        isSpicy: false, 
+        isRecommended: true 
       }
     ]
   },
@@ -251,28 +251,28 @@ const menuCategories: MenuCategory[] = [
       },
       { 
         name: 'דרום אדום', 
-        price: '194', 
+        price: '219', 
         description: 'אנטריקוט מיושן ומדליון כבד אווז', 
         isSpicy: false, 
         isRecommended: true 
       },
       { 
         name: 'אליפות דרומית', 
-        price: '179', 
+        price: '189', 
         description: 'מדליון פילה בקר, מדליון סינטה ומדליון כבד אווז', 
         isSpicy: false, 
         isRecommended: true 
       },
       { 
         name: 'סופה דרומית', 
-        price: '229', 
+        price: '249', 
         description: 'פילה בקר ומדליוני כבד אווז', 
         isSpicy: false, 
         isRecommended: true 
       },
       { 
         name: 'קרניבורים', 
-        price: '399', 
+        price: '450', 
         description: 'פילה בקר, סלייסים של אנטריקוט, נתחי כבד אווז, צלעות כבש (1 ק"ג)', 
         isSpicy: false, 
         isRecommended: true 
@@ -384,14 +384,14 @@ const menuCategories: MenuCategory[] = [
     items: [
       { 
         name: 'סטייק אנטריקוט ארגנטינאי', 
-        price: '134', 
+        price: '154', 
         description: 'נתח אנטריקוט משובח מיושן במקום (250 גר׳)', 
         isSpicy: false, 
         isRecommended: true 
       },
       { 
         name: 'סטייק אנטריקוט ארגנטינאי', 
-        price: '154', 
+        price: '174', 
         description: 'נתח אנטריקוט משובח מיושן במקום (350 גר׳)', 
         isSpicy: false, 
         isRecommended: true 
@@ -412,7 +412,7 @@ const menuCategories: MenuCategory[] = [
       },
       { 
         name: 'מדליוני פילה בקר', 
-        price: '169', 
+        price: '189', 
         description: 'נתח רך, נימוח ועסיסי ללא שומן (300 גר׳)', 
         isSpicy: false, 
         isRecommended: true 
@@ -426,14 +426,14 @@ const menuCategories: MenuCategory[] = [
       },
       { 
         name: 'צלעות כבש', 
-        price: '189', 
+        price: '199', 
         description: 'צלעות כבש טריות (500 גר׳)', 
         isSpicy: false, 
         isRecommended: true 
       },
       { 
         name: 'מדליוני כבד אווז בגריל', 
-        price: '199', 
+        price: '219', 
         description: 'נתח כבד אווז מיוחד (300 גר׳)', 
         isSpicy: false, 
         isRecommended: true 
