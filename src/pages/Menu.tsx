@@ -280,6 +280,104 @@ const menuCategories: MenuCategory[] = [
     ]
   },
   {
+    name: 'שיפודים בודדים',
+    description: 'שיפודים איכותיים על האש - מגוון בשרים טריים',
+    image: '/gallery/BarAharon-3565-2 Large.jpeg',
+    items: [
+      { 
+        name: 'שיפוד פילה בקר', 
+        price: '82', 
+        description: 'שיפוד פילה בקר רך ועסיסי', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שיפוד אנטריקוט', 
+        price: '69', 
+        description: 'שיפוד אנטריקוט עסיסי', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שיפוד כבש', 
+        price: '67', 
+        description: 'שיפוד כבש טרי', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שיפוד שומן כבש', 
+        price: '66', 
+        description: 'שיפוד שומן כבש עסיסי', 
+        isSpicy: false, 
+        isRecommended: false 
+      },
+      { 
+        name: 'שיפוד מולארד', 
+        price: '72', 
+        description: 'שיפוד חזה מולארד', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שיפוד פיקניה', 
+        price: '63', 
+        description: 'שיפוד פיקניה ארגנטינאית', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שקדים', 
+        price: '119', 
+        description: 'שיפוד שקדים מיוחד', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שיפוד פרגית', 
+        price: '39', 
+        description: 'שיפוד פרגית עסיסי', 
+        isSpicy: false, 
+        isRecommended: true 
+      },
+      { 
+        name: 'שיפוד שישליק הודו', 
+        price: '39', 
+        description: 'שיפוד שישליק הודו', 
+        isSpicy: false, 
+        isRecommended: false 
+      },
+      { 
+        name: 'שיפוד קבב', 
+        price: '38', 
+        description: 'שיפוד קבב מתובל', 
+        isSpicy: false, 
+        isRecommended: false 
+      },
+      { 
+        name: 'שיפוד כבד עוף', 
+        price: '34', 
+        description: 'שיפוד כבד עוף טרי', 
+        isSpicy: false, 
+        isRecommended: false 
+      },
+      { 
+        name: 'שיפוד לבבות עוף', 
+        price: '31', 
+        description: 'שיפוד לבבות עוף', 
+        isSpicy: false, 
+        isRecommended: false 
+      },
+      { 
+        name: 'שיפוד כנפיים', 
+        price: '31', 
+        description: 'שיפוד כנפי עוף פריכות', 
+        isSpicy: false, 
+        isRecommended: false 
+      }
+    ]
+  },
+  {
     name: 'בשרים ומנות עיקריות',
     description: 'כל מנות הפרימיום מוגשות בליווי של רוטב יין, קרם בטטה וקונפי שום למעט המבורגר',
     image: '/gallery/BarAharon-3287 Large.jpeg',
