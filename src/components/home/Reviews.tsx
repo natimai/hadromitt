@@ -8,35 +8,34 @@ export function Reviews() {
     const [currentReview, setCurrentReview] = useState(0);
 
     return (
-        <section className="relative py-24 px-6 overflow-hidden">
-            <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-gradient-to-b from-[#1A0000]/90 to-black/95 backdrop-blur-sm"></div>
-            </div>
+        <section className="relative py-24 px-6 overflow-hidden bg-white">
             <div className="relative z-10 max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-16 sm:mb-24"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#FF0000] mb-4">מה אומרים עלינו</h2>
-                    <p className="text-xl text-gray-300">הלקוחות שלנו מספרים על החוויה</p>
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-warmDark mb-4">מה אומרים עלינו</h2>
+                    <p className="text-xl text-warmDark/70 font-medium">הלקוחות שלנו מספרים על החוויה</p>
                 </motion.div>
 
                 <div className="relative">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentReview}
-                            initial={{ opacity: 0, x: 100 }}
+                            initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -100 }}
+                            exit={{ opacity: 0, x: -50 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                             className="relative"
                         >
-                            <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
                                 <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="relative aspect-[4/3] rounded-2xl overflow-hidden"
+                                    transition={{ duration: 0.5 }}
+                                    className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl shadow-warmDark/10"
                                 >
                                     <img
                                         src={reviews[currentReview].image}
@@ -44,36 +43,29 @@ export function Reviews() {
                                         loading="lazy"
                                         className="w-full h-full object-cover"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A0000] via-[#1A0000]/50 to-transparent"></div>
                                 </motion.div>
 
                                 <motion.div
-                                    className="bg-gradient-to-br from-[#1A0000]/60 to-black/60 backdrop-blur-lg p-10 rounded-3xl shadow-2xl border border-white/10 relative overflow-hidden"
+                                    className="bg-warmBg p-10 sm:p-12 rounded-[2rem] shadow-xl shadow-warmDark/5 border border-warmDark/5 relative overflow-hidden"
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.2 }}
+                                    transition={{ delay: 0.2, duration: 0.5 }}
                                 >
-                                    {/* Decorative elements */}
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#FF0000]/10 rounded-full blur-3xl"></div>
-                                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-2xl"></div>
+                                    <div className="absolute top-6 right-8 opacity-10">
+                                        <Quote className="w-24 h-24 text-brand transform -scale-x-100" />
+                                    </div>
 
                                     <div className="relative">
-                                        <div className="flex items-start mb-8">
-                                            <motion.div
-                                                animate={{ rotate: [0, -5, 0] }}
-                                                transition={{ duration: 3, repeat: Infinity }}
-                                            >
-                                                <Quote className="text-[#FF0000] w-14 h-14 mt-1 ml-4 transform -scale-x-100 drop-shadow-lg" />
-                                            </motion.div>
+                                        <div className="flex items-center gap-4 mb-8">
                                             <div>
-                                                <h3 className="text-3xl font-bold text-white mb-2">{reviews[currentReview].name}</h3>
+                                                <h3 className="text-2xl sm:text-3xl font-bold text-warmDark mb-1">{reviews[currentReview].name}</h3>
                                                 {reviews[currentReview].role && (
-                                                    <p className="text-[#FF6666] text-xl font-medium">{reviews[currentReview].role}</p>
+                                                    <p className="text-brand font-medium">{reviews[currentReview].role}</p>
                                                 )}
                                             </div>
                                         </div>
 
-                                        <div className="flex gap-2 mb-8">
+                                        <div className="flex gap-1.5 mb-8">
                                             {[...Array(reviews[currentReview].rating)].map((_, i) => (
                                                 <motion.div
                                                     key={i}
@@ -81,20 +73,20 @@ export function Reviews() {
                                                     animate={{ scale: 1, rotate: 0 }}
                                                     transition={{ delay: 0.3 + i * 0.1, type: "spring" }}
                                                 >
-                                                    <Star className="w-7 h-7 text-[#FF0000] fill-[#FF0000] drop-shadow-lg" />
+                                                    <Star className="w-6 h-6 text-amber-500 fill-amber-500" />
                                                 </motion.div>
                                             ))}
                                         </div>
 
-                                        <p className="text-gray-100 text-2xl mb-8 leading-relaxed font-light italic">
+                                        <p className="text-warmDark/80 text-xl sm:text-2xl mb-8 leading-relaxed font-light italic">
                                             "{reviews[currentReview].content}"
                                         </p>
 
-                                        <div className="flex items-center justify-between">
-                                            <p className="text-gray-400 text-lg">{reviews[currentReview].date}</p>
-                                            <div className="flex items-center gap-2 px-4 py-2 bg-[#FF0000]/20 rounded-full">
-                                                <ThumbsUp className="w-5 h-5 text-[#FF0000]" />
-                                                <span className="text-white font-medium">מומלץ בחום</span>
+                                        <div className="flex flex-wrap items-center justify-between gap-4">
+                                            <p className="text-warmDark/50">{reviews[currentReview].date}</p>
+                                            <div className="flex items-center gap-2 px-4 py-2 bg-brand/10 rounded-full">
+                                                <ThumbsUp className="w-5 h-5 text-brand" />
+                                                <span className="text-brand font-bold text-sm">מומלץ בחום</span>
                                             </div>
                                         </div>
                                     </div>
@@ -103,28 +95,31 @@ export function Reviews() {
                         </motion.div>
                     </AnimatePresence>
 
-                    <div className="flex justify-center gap-4 mt-8">
+                    <div className="flex justify-center flex-row-reverse items-center gap-6 mt-12">
                         <button
                             onClick={() => setCurrentReview((prev) => (prev - 1 + reviews.length) % reviews.length)}
-                            className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                            className="p-3 bg-warmDark/5 rounded-full hover:bg-warmDark/10 transition-colors text-warmDark flex-shrink-0"
+                            aria-label="הקודם"
                         >
-                            <ArrowRight className="w-6 h-6 text-white" />
+                            <ArrowRight className="w-6 h-6" />
                         </button>
-                        <div className="flex gap-2">
+                        <div className="flex flex-row-reverse gap-3">
                             {reviews.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setCurrentReview(index)}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentReview === index ? 'bg-[#FF0000]' : 'bg-white/20'
+                                    aria-label={`ביקורת ${index + 1}`}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentReview === index ? 'bg-brand scale-125' : 'bg-warmDark/20 hover:bg-warmDark/40'
                                         }`}
                                 />
                             ))}
                         </div>
                         <button
                             onClick={() => setCurrentReview((prev) => (prev + 1) % reviews.length)}
-                            className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition-colors"
+                            className="p-3 bg-warmDark/5 rounded-full hover:bg-warmDark/10 transition-colors text-warmDark flex-shrink-0"
+                            aria-label="הבא"
                         >
-                            <ArrowLeft className="w-6 h-6 text-white" />
+                            <ArrowLeft className="w-6 h-6" />
                         </button>
                     </div>
                 </div>
