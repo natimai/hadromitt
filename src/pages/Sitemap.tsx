@@ -80,7 +80,7 @@ export default function Sitemap(): JSX.Element {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="flex justify-center mb-6">
-              <Map className="w-16 h-16 text-[#FF0000]" />
+              <Map className="w-16 h-16 text-brand" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               מפת האתר
@@ -99,7 +99,7 @@ export default function Sitemap(): JSX.Element {
                 className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-colors duration-300"
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="text-[#FF0000]">{section.icon}</div>
+                  <div className="text-brand">{section.icon}</div>
                   <h2 className="text-xl font-semibold">{section.title}</h2>
                 </div>
                 <ul className="space-y-3">

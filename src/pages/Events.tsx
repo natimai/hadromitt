@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Music, Tv, Gift, ChevronRight, MapPin } from 'lucide-react';
+import { Users, Music, Gift, ChevronRight, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import fbq from '../utils/fbq';
+import { EventLeadForm } from '../components/EventLeadForm';
 
 export function Events() {
   useEffect(() => {
@@ -100,14 +101,14 @@ export function Events() {
             <div className="flex justify-center gap-4">
               <Link 
                 to="/menu" 
-                className="text-[#FF0000] hover:text-[#CC0000] transition-colors underline"
+                className="text-brand hover:text-brand-dark transition-colors underline"
               >
                 לתפריט האירועים
               </Link>
               <span className="text-gray-300">|</span>
               <Link 
                 to="/contact" 
-                className="text-[#FF0000] hover:text-[#CC0000] transition-colors underline"
+                className="text-brand hover:text-brand-dark transition-colors underline"
               >
                 לפרטים נוספים
               </Link>
@@ -140,7 +141,7 @@ export function Events() {
                 className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="p-4 bg-[#FF0000]/10 rounded-full text-[#FF0000]">
+                  <div className="p-4 bg-brand/10 rounded-full text-brand">
                     {type.icon}
                   </div>
                   <h3 className="text-xl font-bold text-[#1A0000]">{type.title}</h3>
@@ -206,7 +207,7 @@ export function Events() {
                               transition={{ delay: i * 0.1 }}
                               className="flex items-center text-gray-200"
                             >
-                              <ChevronRight className="w-4 h-4 text-[#FF0000] ml-2" />
+                              <ChevronRight className="w-4 h-4 text-brand ml-2" />
                               {feature}
                             </motion.li>
                           ))}
@@ -221,36 +222,31 @@ export function Events() {
         </div>
       </div>
 
-      {/* Call to Action */}
-      <div className="bg-white py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Call to Action + Lead Form */}
+      <div className="bg-warmBg py-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="space-y-8"
+            className="text-center space-y-4 mb-10"
           >
-            <h2 className="text-3xl font-bold text-[#1A0000]">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-ink">
               מעוניינים לחגוג אצלנו?
             </h2>
-            <p className="text-xl text-gray-600">
-              צוות המסעדה ישמח לסייע בתכנון האירוע המושלם עבורכם
+            <p className="text-xl text-warmDark/70">
+              השאירו פרטים או צרו קשר — נתאים לכם חדר VIP ותפריט
             </p>
-            
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-block"
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 text-brand font-semibold hover:underline"
             >
-              <a
-                href="/contact"
-                className="group relative inline-flex items-center gap-2 px-12 py-5 rounded-full text-xl font-bold overflow-hidden bg-[#1A0000] text-white transition-colors duration-300"
-              >
-                <MapPin className="w-6 h-6" />
-                <span>צור קשר לתיאום</span>
-              </a>
-            </motion.div>
+              <MapPin className="w-4 h-4" />
+              לכל פרטי ההתקשרות
+            </Link>
           </motion.div>
+
+          <EventLeadForm />
         </div>
       </div>
     </div>

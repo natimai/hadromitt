@@ -67,11 +67,11 @@ export function About() {
               >
                 <p className="text-xl leading-relaxed text-gray-100 mb-8">
                   ברוכים הבאים להדרומית, מסעדת בשרים כשרה מבית קבוצת פפה מישל, הממוקמת ברח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע.
-                  <Link to="/menu" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
+                  <Link to="/menu" className="text-brand hover:text-brand-dark transition-colors mx-1">
                     צפו בתפריט שלנו
                   </Link>
                   או
-                  <Link to="/contact" className="text-[#FF0000] hover:text-[#CC0000] transition-colors mx-1">
+                  <Link to="/contact" className="text-brand hover:text-brand-dark transition-colors mx-1">
                     צרו קשר
                   </Link>
                   לפרטים נוספים.
@@ -159,14 +159,14 @@ export function About() {
             whileTap={{ scale: 0.95 }}
             className="inline-block"
           >
-            <a
-              href="/contact"
-              className="group relative inline-flex items-center gap-2 px-12 py-5 rounded-full text-xl font-bold overflow-hidden bg-white text-[#1A0000] hover:text-white transition-colors duration-300"
+            <Link
+              to="/contact"
+              className="group relative inline-flex items-center gap-2 px-12 py-5 rounded-full text-xl font-bold overflow-hidden bg-white text-ink hover:text-white transition-colors duration-300"
             >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#FF0000] to-[#CC0000] opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <span className="absolute inset-0 bg-gradient-to-r from-brand to-brand-dark opacity-0 group-hover:opacity-100 transition-opacity"></span>
               <MapPin className="relative w-6 h-6" />
               <span className="relative">צור קשר</span>
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>

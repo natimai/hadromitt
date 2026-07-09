@@ -14,7 +14,7 @@ export function Blog() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-[#FF0000]">מאחורי הקלעים</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-brand">מאחורי הקלעים</h1>
           <p className="text-xl text-gray-300">גלו את הסיפורים והסודות שמאחורי החוויה הקולינרית שלנו</p>
         </motion.div>
 
@@ -43,7 +43,7 @@ export function Blog() {
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-[#FF0000]/10 text-[#FF0000] rounded-full text-sm"
+                        className="px-3 py-1 bg-brand/10 text-brand rounded-full text-sm"
                       >
                         {tag}
                       </span>
@@ -70,7 +70,7 @@ export function Blog() {
                     </div>
                   </div>
                   
-                  <div className="mt-4 flex items-center text-[#FF0000] group">
+                  <div className="mt-4 flex items-center text-brand group">
                     <span>קרא עוד</span>
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>

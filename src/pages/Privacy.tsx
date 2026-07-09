@@ -23,7 +23,7 @@ export default function Privacy(): JSX.Element {
 
   const sections = [
     {
-      icon: <Database className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Database className="w-6 h-6 text-brand" />,
       title: "איסוף מידע",
       content: `אנו אוספים מידע אישי כגון:
 • שם, כתובת, מספר טלפון ודוא"ל,
@@ -38,7 +38,7 @@ export default function Privacy(): JSX.Element {
 • יוצרים קשר עם שירות הלקוחות.`
     },
     {
-      icon: <Eye className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Eye className="w-6 h-6 text-brand" />,
       title: "שימוש במידע",
       content: `אנו משתמשים במידע שנאסף כדי:
 • לספק את השירותים שהזמנתם,
@@ -48,7 +48,7 @@ export default function Privacy(): JSX.Element {
 • לעמוד בדרישות החוק והרגולציה.`
     },
     {
-      icon: <Cookie className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Cookie className="w-6 h-6 text-brand" />,
       title: "עוגיות ומעקב",
       content: `אנו משתמשים בעוגיות ובטכנולוגיות מעקב כדי:
 • לשמור על העדפותיכם,
@@ -59,7 +59,7 @@ export default function Privacy(): JSX.Element {
 אתם יכולים לשלוט בהגדרות העוגיות דרך הדפדפן שלכם.`
     },
     {
-      icon: <Lock className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Lock className="w-6 h-6 text-brand" />,
       title: "אבטחת מידע",
       content: `אנו נוקטים באמצעי אבטחה מתקדמים כדי להגן על המידע שלכם:
 • הצפנת מידע רגיש,
@@ -98,7 +98,7 @@ export default function Privacy(): JSX.Element {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="flex justify-center mb-6">
-              <Shield className="w-16 h-16 text-[#FF0000]" />
+              <Shield className="w-16 h-16 text-brand" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               מדיניות פרטיות

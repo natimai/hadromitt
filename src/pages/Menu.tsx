@@ -6,6 +6,8 @@ import fbq from '../utils/fbq';
 
 import { SEO } from '../components/SEO';
 import { menuCategories } from '../data/menuData';
+import { TABIT_RESERVATION_URL } from '../utils/constants';
+import { trackReservationClick } from '../utils/gtag';
 
 export function Menu() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(menuCategories[0].name);
@@ -70,26 +72,25 @@ export function Menu() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-6 sm:mb-12"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-[#FF0000]">תפריט הדרומית - מסעדה בבאר שבע</h1>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-brand">תפריט הדרומית - מסעדה בבאר שבע</h1>
           <p className="text-lg sm:text-xl text-gray-300 mb-4 sm:mb-6">מסעדת בשרים כשר חלק מומלצת - תפריט עשיר ומגוון</p>
 
           {/* כפתורי הזמנה ואירועים */}
           <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium rounded-full transition duration-300 ease-out border-2 border-[#FF0000] text-white shadow-md"
+            <a
+              href={TABIT_RESERVATION_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackReservationClick('menu_tabit')}
+              className="inline-flex items-center justify-center px-6 py-2.5 font-bold rounded-full bg-brand hover:bg-brand-dark text-white shadow-md shadow-brand/30 transition-colors"
             >
-              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white bg-[#FF0000] group-hover:w-full transition-all duration-300 ease-out"></span>
-              <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">להזמנת מקום</span>
-              <span className="relative invisible">להזמנת מקום</span>
-            </Link>
+              להזמנת מקום
+            </a>
             <Link
               to="/events"
-              className="group relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium rounded-full transition duration-300 ease-out border-2 border-white/20 text-white shadow-md"
+              className="inline-flex items-center justify-center px-6 py-2.5 font-medium rounded-full border border-white/25 text-white hover:bg-white/10 transition-colors"
             >
-              <span className="absolute inset-0 flex items-center justify-center w-full h-full text-white bg-white/10 group-hover:w-full transition-all duration-300 ease-out"></span>
-              <span className="absolute flex items-center justify-center w-full h-full text-white transition-all duration-300 transform group-hover:translate-x-full ease">לאירועים מיוחדים</span>
-              <span className="relative invisible">לאירועים מיוחדים</span>
+              לאירועים מיוחדים
             </Link>
           </div>
 
@@ -103,7 +104,7 @@ export function Menu() {
                 placeholder="חיפוש בתפריט..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-5 py-2.5 bg-[#1A0000]/60 border border-[#FF0000]/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-[#FF0000]/50 focus:ring-2 focus:ring-[#FF0000]/20"
+                className="w-full px-5 py-2.5 bg-[#1A0000]/60 border border-brand/20 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-brand/50 focus:ring-2 focus:ring-brand/20"
               />
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             </motion.div>
@@ -114,7 +115,7 @@ export function Menu() {
             <motion.button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-between w-full px-4 py-3 bg-[#FF0000] rounded-lg text-white font-bold"
+              className="flex items-center justify-between w-full px-4 py-3 bg-brand rounded-lg text-white font-bold"
             >
               <span>{selectedCategory || 'בחר קטגוריה'}</span>
               <ChevronDown className={`transition-transform duration-300 ${isMenuOpen ? 'rotate-180' : ''}`} size={20} />
@@ -127,7 +128,7 @@ export function Menu() {
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="overflow-hidden bg-[#1A0000] rounded-b-lg border border-[#FF0000]/20 shadow-xl z-20"
+                  className="overflow-hidden bg-[#1A0000] rounded-b-lg border border-brand/20 shadow-xl z-20"
                 >
                   <div className="flex flex-col p-2 max-h-60 overflow-y-auto">
                     {menuCategories.map((category) => (
@@ -135,7 +136,7 @@ export function Menu() {
                         key={`mobile-${category.name}`}
                         onClick={() => toggleCategory(category.name)}
                         className={`px-4 py-3 text-right rounded-lg mb-1 transition-all ${selectedCategory === category.name
-                            ? 'bg-[#FF0000]/20 text-white font-bold'
+                            ? 'bg-brand/20 text-white font-bold'
                             : 'text-white/80 hover:bg-white/5'
                           }`}
                         whileTap={{ scale: 0.98 }}
@@ -161,7 +162,7 @@ export function Menu() {
                   key={category.name}
                   onClick={() => toggleCategory(category.name)}
                   className={`relative px-5 py-3 rounded-full transition-all duration-300 ${selectedCategory === category.name
-                      ? 'bg-[#FF0000] text-white font-bold'
+                      ? 'bg-brand text-white font-bold'
                       : 'bg-white/5 text-white/80 hover:bg-white/10'
                     }`}
                   whileHover={{ scale: 1.05 }}
@@ -223,7 +224,7 @@ export function Menu() {
                       <div className="flex justify-between items-start gap-2">
                         <div className="flex-1">
                           <div className="flex items-center gap-1 sm:gap-2 flex-wrap">
-                            <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${expandedItems.includes(item.name) ? 'text-[#FF0000]' : 'text-white'}`}>
+                            <h3 className={`text-lg sm:text-xl font-semibold transition-colors duration-300 ${expandedItems.includes(item.name) ? 'text-brand' : 'text-white'}`}>
                               {item.name}
                             </h3>
                             <div className="flex">
@@ -258,7 +259,7 @@ export function Menu() {
                         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
                           <motion.div
                             whileTap={{ scale: 0.95 }}
-                            className="bg-gradient-to-r from-[#FF0000] to-[#CC0000] text-white font-bold px-2 sm:px-3 py-1 rounded-full text-sm sm:text-base"
+                            className="bg-gradient-to-r from-brand to-brand-dark text-white font-bold px-2 sm:px-3 py-1 rounded-full text-sm sm:text-base"
                           >
                             ₪{item.price}
                           </motion.div>
@@ -306,7 +307,7 @@ export function Menu() {
             >
               <motion.button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="bg-[#FF0000] text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center"
+                className="bg-brand text-white rounded-full shadow-lg w-12 h-12 flex items-center justify-center"
                 whileTap={{ scale: 0.9 }}
               >
                 <ChevronUp size={24} />
@@ -316,7 +317,7 @@ export function Menu() {
         </AnimatePresence>
 
         {/* אינדיקטור לקטגוריה נוכחית במובייל */}
-        <div className="fixed top-16 left-0 z-10 md:hidden p-2 bg-gradient-to-r from-[#FF0000] to-transparent">
+        <div className="fixed top-16 left-0 z-10 md:hidden p-2 bg-gradient-to-r from-brand to-transparent">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -345,7 +346,7 @@ export function Menu() {
             <span className="text-white">פיקנטי</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="p-1 sm:p-2 bg-[#FF0000]/10 rounded-full">
+            <div className="p-1 sm:p-2 bg-brand/10 rounded-full">
               <Star className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
             <span className="text-white">הקש לפרטים</span>

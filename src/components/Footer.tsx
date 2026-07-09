@@ -69,6 +69,10 @@ export function Footer() {
               <p className="text-gray-300 text-sm leading-relaxed">
                 חוויה קולינרית מיוחדת עם בשרים כשר חלק איכותיים
               </p>
+              <div className="inline-flex items-center gap-2 bg-white/10 rounded-xl px-3 py-2">
+                <img src="/kosher-badge.png" alt="כשר חלק" className="h-10 w-auto" loading="lazy" />
+                <span className="text-sm text-gray-200 font-medium">כשר חלק</span>
+              </div>
             </div>
 
             {/* Social Media */}
@@ -141,7 +145,7 @@ export function Footer() {
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center gap-3 text-gray-300"
               >
-                <Phone className="w-5 h-5 text-[#FF0000]" />
+                <Phone className="w-5 h-5 text-brand" />
                 <a href="tel:0796744711" onClick={handleCallClick} className="hover:text-white transition-colors">
                   079-674-4711
                 </a>
@@ -150,15 +154,15 @@ export function Footer() {
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center gap-3 text-gray-300"
               >
-                <MapPin className="w-5 h-5 text-[#FF0000]" />
+                <MapPin className="w-5 h-5 text-brand" />
                 <span>רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע</span>
               </motion.div>
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="flex items-center gap-3 text-gray-300"
+                className="flex items-start gap-3 text-gray-300"
               >
-                <Clock className="w-5 h-5 text-[#FF0000]" />
-                <span>א-ה: 10:00-22:00</span>
+                <Clock className="w-5 h-5 text-brand mt-0.5 shrink-0" />
+                <span>א׳–ד׳: 12:00–23:00 · ה׳: 12:00–00:00 · מוצ״ש: מצאת שבת–00:00</span>
               </motion.div>
             </div>
           </motion.div>
@@ -202,8 +206,8 @@ export function Footer() {
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <span>© 2024 הדרומית. כל הזכויות שמורות.</span>
-              <Heart className="w-4 h-4 text-[#FF0000]" />
+              <span>© {new Date().getFullYear()} הדרומית. כל הזכויות שמורות.</span>
+              <Heart className="w-4 h-4 text-brand" />
             </div>
             
             <div className="flex items-center gap-4">

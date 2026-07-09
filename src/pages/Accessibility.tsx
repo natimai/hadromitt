@@ -23,7 +23,7 @@ export default function AccessibilityPage(): JSX.Element {
 
   const sections = [
     {
-      icon: <Check className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Check className="w-6 h-6 text-brand" />,
       title: "סטטוס התאמות הנגישות באתר",
       content: `אתר זה עומד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג 2013.
 התאמות הנגישות בוצעו עפ"י המלצות התקן הישראלי (ת"י 5568) לנגישות תכנים באינטרנט ברמת AA ומסמך WCAG2.1 הבינלאומי.
@@ -37,7 +37,7 @@ export default function AccessibilityPage(): JSX.Element {
 • תפריט נגישות מלא`
     },
     {
-      icon: <Users className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Users className="w-6 h-6 text-brand" />,
       title: "נגישות במסעדה",
       content: `המסעדה מותאמת פיזית בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות למקום ציבורי שהוא בניין קיים), תשע"ב-2011:
 • חניות נכים תקניות בסמוך לכניסה
@@ -48,7 +48,7 @@ export default function AccessibilityPage(): JSX.Element {
 • כניסה מותרת לחיות שירות`
     },
     {
-      icon: <Settings className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Settings className="w-6 h-6 text-brand" />,
       title: "אמצעי נגישות באתר",
       content: `האתר מציע מגוון אמצעי נגישות בהתאם לתקן:
 • שינוי גודל טקסט
@@ -60,7 +60,7 @@ export default function AccessibilityPage(): JSX.Element {
 • תפריט נגישות מלא הזמין בכל עמוד`
     },
     {
-      icon: <FileText className="w-6 h-6 text-[#FF0000]" />,
+      icon: <FileText className="w-6 h-6 text-brand" />,
       title: "הצהרת נגישות לפי החוק",
       content: `בהתאם לסעיף 35 לחוק שוויון זכויות לאנשים עם מוגבלות, תשנ"ח-1998 ותקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013, אנו מצהירים כי:
 
@@ -84,7 +84,7 @@ export default function AccessibilityPage(): JSX.Element {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="flex justify-center mb-6">
-              <Accessibility className="w-16 h-16 text-[#FF0000]" />
+              <Accessibility className="w-16 h-16 text-brand" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               הצהרת נגישות

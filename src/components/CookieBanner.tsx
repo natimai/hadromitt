@@ -132,7 +132,7 @@ export function CookieBanner() {
             // הודעה בסיסית
             <div className="p-6">
               <div className="flex items-start gap-4 mb-4">
-                <Cookie className="w-8 h-8 text-[#FF0000] flex-shrink-0 mt-1" />
+                <Cookie className="w-8 h-8 text-brand flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <h2 className="text-xl font-bold text-[#1A0000] mb-2">
                     שימוש בעוגיות באתר
@@ -152,11 +152,11 @@ export function CookieBanner() {
                   </div>
                   <p className="text-xs text-gray-600">
                     למידע נוסף, עיינו ב
-                    <Link to="/cookies" className="text-[#FF0000] hover:underline mx-1">
+                    <Link to="/cookies" className="text-brand hover:underline mx-1">
                       מדיניות העוגיות
                     </Link>
                     ו
-                    <Link to="/privacy" className="text-[#FF0000] hover:underline mx-1">
+                    <Link to="/privacy" className="text-brand hover:underline mx-1">
                       מדיניות הפרטיות
                     </Link>
                     שלנו.
@@ -180,7 +180,7 @@ export function CookieBanner() {
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="px-6 py-2 bg-[#FF0000] text-white rounded-lg hover:bg-[#CC0000] transition-colors text-sm font-medium"
+                  className="px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-dark transition-colors text-sm font-medium"
                 >
                   קבלת כל העוגיות
                 </button>
@@ -191,7 +191,7 @@ export function CookieBanner() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-[#1A0000] flex items-center gap-2">
-                  <Settings className="w-6 h-6 text-[#FF0000]" />
+                  <Settings className="w-6 h-6 text-brand" />
                   הגדרות עוגיות
                 </h2>
                 <button
@@ -209,7 +209,7 @@ export function CookieBanner() {
                     <h3 className="font-semibold text-[#1A0000]">עוגיות הכרחיות</h3>
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-500">תמיד פעיל</span>
-                      <div className="w-10 h-6 bg-[#FF0000] rounded-full flex items-center justify-end px-1">
+                      <div className="w-10 h-6 bg-brand rounded-full flex items-center justify-end px-1">
                         <div className="w-4 h-4 bg-white rounded-full"></div>
                       </div>
                     </div>
@@ -226,7 +226,7 @@ export function CookieBanner() {
                     <button
                       onClick={() => handlePreferenceChange('functional')}
                       className={`w-10 h-6 rounded-full flex items-center transition-colors ${
-                        preferences.functional ? 'bg-[#FF0000] justify-end' : 'bg-gray-300 justify-start'
+                        preferences.functional ? 'bg-brand justify-end' : 'bg-gray-300 justify-start'
                       } px-1`}
                     >
                       <div className="w-4 h-4 bg-white rounded-full"></div>
@@ -244,7 +244,7 @@ export function CookieBanner() {
                     <button
                       onClick={() => handlePreferenceChange('analytics')}
                       className={`w-10 h-6 rounded-full flex items-center transition-colors ${
-                        preferences.analytics ? 'bg-[#FF0000] justify-end' : 'bg-gray-300 justify-start'
+                        preferences.analytics ? 'bg-brand justify-end' : 'bg-gray-300 justify-start'
                       } px-1`}
                     >
                       <div className="w-4 h-4 bg-white rounded-full"></div>
@@ -262,7 +262,7 @@ export function CookieBanner() {
                     <button
                       onClick={() => handlePreferenceChange('marketing')}
                       className={`w-10 h-6 rounded-full flex items-center transition-colors ${
-                        preferences.marketing ? 'bg-[#FF0000] justify-end' : 'bg-gray-300 justify-start'
+                        preferences.marketing ? 'bg-brand justify-end' : 'bg-gray-300 justify-start'
                       } px-1`}
                     >
                       <div className="w-4 h-4 bg-white rounded-full"></div>
@@ -283,7 +283,7 @@ export function CookieBanner() {
                 </button>
                 <button
                   onClick={saveCustomPreferences}
-                  className="px-6 py-2 bg-[#FF0000] text-white rounded-lg hover:bg-[#CC0000] transition-colors text-sm font-medium flex items-center gap-2"
+                  className="px-6 py-2 bg-brand text-white rounded-lg hover:bg-brand-dark transition-colors text-sm font-medium flex items-center gap-2"
                 >
                   <Check className="w-4 h-4" />
                   שמירת העדפות

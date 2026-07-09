@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { Breadcrumb } from './components/Breadcrumb';
 import { AccessibilityMenu } from './components/AccessibilityMenu';
 import { CookieBanner } from './components/CookieBanner';
+import { MobileStickyBar } from './components/MobileStickyBar';
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
@@ -45,7 +46,7 @@ function ScrollToTop(): null {
 function App(): JSX.Element {
   return (
     <HelmetProvider>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen has-mobile-sticky">
         <Navbar />
         <Breadcrumb />
         <main className="flex-grow">
@@ -70,6 +71,7 @@ function App(): JSX.Element {
           </Suspense>
         </main>
         <Footer />
+        <MobileStickyBar />
         <AccessibilityMenu />
         <CookieBanner />
       </div>

@@ -104,7 +104,7 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
                   <div className="text-center space-y-4 sm:space-y-6">
                     <div className="flex items-center justify-center gap-3 -mt-12 relative">
                       <div className="bg-[#1A0000] p-3 sm:p-4 rounded-xl shadow-lg">
-                        <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-[#FF0000]" />
+                        <Crown className="w-6 h-6 sm:w-8 sm:h-8 text-brand" />
                       </div>
                     </div>
 
@@ -117,19 +117,19 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
 
                     <ul className="text-gray-300 space-y-2 sm:space-y-3 md:space-y-4 text-right max-w-md md:max-w-lg lg:max-w-xl mx-auto">
                       <li className="flex items-center gap-2 text-sm sm:text-base md:text-lg">
-                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF0000] shrink-0" />
+                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-brand shrink-0" />
                         חדרים מרווחים עד 90 איש
                       </li>
                       <li className="flex items-center gap-2 text-sm sm:text-base md:text-lg">
-                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF0000] shrink-0" />
+                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-brand shrink-0" />
                         מערכות שמע ומולטימדיה מתקדמות
                       </li>
                       <li className="flex items-center gap-2 text-sm sm:text-base md:text-lg">
-                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF0000] shrink-0" />
+                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-brand shrink-0" />
                         תפריט מותאם אישית
                       </li>
                       <li className="flex items-center gap-2 text-sm sm:text-base md:text-lg">
-                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF0000] shrink-0" />
+                        <Star className="w-4 h-4 sm:w-5 sm:h-5 text-brand shrink-0" />
                         שירות VIP צמוד
                       </li>
                     </ul>
@@ -141,7 +141,7 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
                           e.stopPropagation();
                           setIsVisible(false);
                         }}
-                        className="bg-[#FF0000] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-[#CC0000] transition-colors flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg"
+                        className="bg-brand text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-brand-dark transition-colors flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg"
                       >
                         <Crown className="w-4 h-4 sm:w-5 sm:h-5" />
                         לפרטים נוספים
@@ -152,7 +152,7 @@ export function VipPopup({ isVisible, setIsVisible }: VipPopupProps) {
                           e.stopPropagation();
                           setIsVisible(false);
                         }}
-                        className="border border-[#FF0000] text-[#FF0000] px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-[#FF0000]/10 transition-colors text-sm sm:text-base md:text-lg"
+                        className="border border-brand text-brand px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-brand/10 transition-colors text-sm sm:text-base md:text-lg"
                       >
                         צור קשר
                       </Link>

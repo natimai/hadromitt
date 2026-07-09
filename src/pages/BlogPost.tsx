@@ -14,7 +14,7 @@ export function BlogPost() {
       <div className="min-h-screen pt-20 bg-gradient-to-b from-[#1A0000] to-black text-white">
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <h1 className="text-3xl font-bold mb-4">מאמר לא נמצא</h1>
-          <Link to="/blog" className="text-[#FF0000] hover:text-[#CC0000]">חזרה לבלוג</Link>
+          <Link to="/blog" className="text-brand hover:text-brand-dark">חזרה לבלוג</Link>
         </div>
       </div>
     );
@@ -41,7 +41,7 @@ export function BlogPost() {
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-[#FF0000]/10 text-[#FF0000] rounded-full text-sm"
+                    className="px-3 py-1 bg-brand/10 text-brand rounded-full text-sm"
                   >
                     {tag}
                   </span>
@@ -117,7 +117,7 @@ export function BlogPost() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF0000] text-white rounded-lg hover:bg-[#CC0000] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white rounded-lg hover:bg-brand-dark transition-colors"
                 >
                   <MapPin className="w-5 h-5" />
                   <span>צור קשר</span>
@@ -137,7 +137,7 @@ export function BlogPost() {
         <div className="mt-12 pt-8 border-t border-white/10">
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 text-[#FF0000] hover:text-[#CC0000] transition-colors"
+            className="inline-flex items-center gap-2 text-brand hover:text-brand-dark transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>חזרה לבלוג</span>

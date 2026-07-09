@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --brand: #ED1D24;
+  --brand-dark: #CC0000;
+  --brand-darker: #990000;
+  --warm-bg: #FDFBF7;
+  --warm-dark: #2A211E;
+  --ink: #1A0000;
+  --font-display: "Frank Ruhl Libre", Georgia, serif;
+  --font-body: Heebo, system-ui, sans-serif;
+}
+
 /* אנימציית Shine */
 @keyframes shine {
   0% {
@@ -133,27 +144,33 @@ body[style*="cursor: pointer"] * {
   }
   
   body {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: var(--font-body);
+    background-color: var(--warm-bg);
+    color: var(--warm-dark);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
   }
   
   /* Mobile optimizations */
   @media (max-width: 768px) {
-    /* Optimize fonts for mobile */
     body {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       text-rendering: optimizeLegibility;
     }
     
-    /* Prevent zoom on input focus (iOS) */
     input[type="text"],
     input[type="email"],
     input[type="tel"],
-    textarea {
+    input[type="date"],
+    input[type="number"],
+    textarea,
+    select {
       font-size: 16px !important;
     }
     
-    /* Better tap targets */
     button,
     a {
       min-width: 44px;
@@ -161,7 +178,6 @@ body[style*="cursor: pointer"] * {
     }
   }
   
-  /* iOS safe area support */
   @supports (padding-bottom: env(safe-area-inset-bottom)) {
     body {
       padding-bottom: env(safe-area-inset-bottom);
@@ -173,21 +189,26 @@ body[style*="cursor: pointer"] * {
   .transition {
     @apply transition-all duration-300 ease-in-out;
   }
+
+  .btn-brand {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand text-white rounded-xl text-lg font-bold hover:bg-brand-dark transition-all duration-300 shadow-lg shadow-brand/25 hover:shadow-brand/40 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/30 text-white rounded-xl text-lg font-bold hover:bg-white/10 transition-all duration-300 backdrop-blur-sm;
+  }
   
-  /* Mobile optimizations */
   .touch-manipulation {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
   
-  /* Smooth scrolling for mobile */
   @media (max-width: 768px) {
     html {
       -webkit-overflow-scrolling: touch;
       scroll-behavior: smooth;
     }
     
-    /* Reduce motion for better performance on low-end devices */
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -199,7 +220,6 @@ body[style*="cursor: pointer"] * {
       }
     }
     
-    /* Optimize blur effects */
     .backdrop-blur-sm,
     .backdrop-blur-lg,
     .backdrop-blur-xl {
@@ -207,7 +227,6 @@ body[style*="cursor: pointer"] * {
       backdrop-filter: blur(8px);
     }
     
-    /* Hardware acceleration for animations */
     .transform-gpu {
       transform: translateZ(0);
       backface-visibility: hidden;
@@ -215,7 +234,6 @@ body[style*="cursor: pointer"] * {
     }
   }
   
-  /* Better scrollbar for mobile */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
@@ -223,5 +241,16 @@ body[style*="cursor: pointer"] * {
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Space for mobile sticky conversion bar */
+  .has-mobile-sticky {
+    padding-bottom: 4.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .has-mobile-sticky {
+      padding-bottom: 0;
+    }
   }
 }

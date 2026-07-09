@@ -23,14 +23,14 @@ export default function Terms(): JSX.Element {
 
   const sections = [
     {
-      icon: <Scale className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Scale className="w-6 h-6 text-brand" />,
       title: "תנאים כלליים",
       content: `השימוש באתר הדרומית ובשירותים המוצעים בו כפוף לתנאי השימוש המפורטים להלן. גלישה באתר ו/או הזמנת מוצרים מהווה הסכמה מצדך לתנאים אלה.
 
 אנו שומרים לעצמנו את הזכות לעדכן את תנאי השימוש מעת לעת, לפי שיקול דעתנו הבלעדי וללא הודעה מוקדמת.`
     },
     {
-      icon: <ShoppingBag className="w-6 h-6 text-[#FF0000]" />,
+      icon: <ShoppingBag className="w-6 h-6 text-brand" />,
       title: "הזמנות ותשלומים",
       content: `• המחירים באתר כוללים מע"מ
 • התשלום יתבצע באמצעות כרטיס אשראי או אמצעי תשלום מאושרים אחרים
@@ -38,7 +38,7 @@ export default function Terms(): JSX.Element {
 • אנו שומרים את הזכות לבטל הזמנות במקרה של טעות מחיר או אי זמינות המוצר`
     },
     {
-      icon: <Truck className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Truck className="w-6 h-6 text-brand" />,
       title: "זמני אספקה",
       content: `• זמני האספקה המצוינים באתר הם משוערים ועשויים להשתנות
 • במקרה של עיכוב, נעדכן אתכם בהקדם האפשרי
@@ -46,7 +46,7 @@ export default function Terms(): JSX.Element {
 • משלוחים מתבצעים בימים א'-ה' בשעות הפעילות`
     },
     {
-      icon: <Shield className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Shield className="w-6 h-6 text-brand" />,
       title: "אחריות והגבלות",
       content: `• האתר מסופק "כפי שהוא" (AS IS)
 • איננו אחראים לנזקים עקיפים או תוצאתיים
@@ -82,7 +82,7 @@ export default function Terms(): JSX.Element {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="flex justify-center mb-6">
-              <FileText className="w-16 h-16 text-[#FF0000]" />
+              <FileText className="w-16 h-16 text-brand" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               תנאי שימוש

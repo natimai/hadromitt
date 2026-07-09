@@ -183,9 +183,9 @@ export default function FAQ(): JSX.Element {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="inline-block p-4 bg-[#FF0000]/20 rounded-full mb-6"
+              className="inline-block p-4 bg-brand/20 rounded-full mb-6"
             >
-              <HelpCircle className="w-16 h-16 text-[#FF0000]" />
+              <HelpCircle className="w-16 h-16 text-brand" />
             </motion.div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">שאלות נפוצות</h1>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -207,7 +207,7 @@ export default function FAQ(): JSX.Element {
                 placeholder="חפש שאלה..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-4 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#FF0000] focus:border-transparent text-white placeholder-gray-400 backdrop-blur-sm"
+                className="w-full pl-4 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent text-white placeholder-gray-400 backdrop-blur-sm"
               />
             </div>
           </motion.div>
@@ -230,7 +230,7 @@ export default function FAQ(): JSX.Element {
                       transition-all duration-300 whitespace-nowrap
                       min-h-[48px] touch-manipulation flex-shrink-0
                       ${selectedCategory === category.name
-                        ? 'bg-[#FF0000] text-white shadow-lg shadow-red-500/50'
+                        ? 'bg-brand text-white shadow-lg shadow-red-500/50'
                         : 'bg-white/10 text-gray-300 hover:bg-white/20 active:bg-white/30'
                       }
                     `}
@@ -274,7 +274,7 @@ export default function FAQ(): JSX.Element {
                             <span dangerouslySetInnerHTML={{
                               __html: faq.question.replace(
                                 new RegExp(searchQuery, 'gi'),
-                                (match) => `<mark class="bg-[#FF0000]/30 text-white">${match}</mark>`
+                                (match) => `<mark class="bg-brand/30 text-white">${match}</mark>`
                               )
                             }} />
                           )}
@@ -287,7 +287,7 @@ export default function FAQ(): JSX.Element {
                         transition={{ duration: 0.3 }}
                         className="mr-4"
                       >
-                        <ChevronDown className="w-6 h-6 text-[#FF0000]" />
+                        <ChevronDown className="w-6 h-6 text-brand" />
                       </motion.div>
                     </button>
                     
@@ -325,9 +325,9 @@ export default function FAQ(): JSX.Element {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
-            className="mt-16 text-center bg-gradient-to-br from-[#FF0000]/20 to-[#CC0000]/20 backdrop-blur-sm p-10 rounded-3xl border border-[#FF0000]/30"
+            className="mt-16 text-center bg-gradient-to-br from-brand/20 to-brand-dark/20 backdrop-blur-sm p-10 rounded-3xl border border-brand/30"
           >
-            <Mail className="w-12 h-12 text-[#FF0000] mx-auto mb-4" />
+            <Mail className="w-12 h-12 text-brand mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-4">לא מצאת את התשובה?</h2>
             <p className="text-gray-300 mb-6">
               צוות השירות שלנו זמין לעזור לך בכל שאלה
@@ -335,7 +335,7 @@ export default function FAQ(): JSX.Element {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 to="/contact"
-                className="bg-[#FF0000] hover:bg-[#CC0000] text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300 inline-flex items-center gap-2"
+                className="bg-brand hover:bg-brand-dark text-white px-8 py-3 rounded-full font-semibold transition-colors duration-300 inline-flex items-center gap-2"
               >
                 צור קשר
               </Link>

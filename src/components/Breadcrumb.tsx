@@ -63,7 +63,7 @@ export function Breadcrumb(): JSX.Element {
               )}
               {index === breadcrumbItems.length - 1 ? (
                 // פריט אחרון - לא קליקי
-                <span className="text-[#FF0000] font-medium flex items-center gap-1">
+                <span className="text-brand font-medium flex items-center gap-1">
                   {item.icon}
                   {item.name}
                 </span>
@@ -71,7 +71,7 @@ export function Breadcrumb(): JSX.Element {
                 // פריטים קליקיים
                 <Link
                   to={item.path}
-                  className="text-gray-600 hover:text-[#FF0000] transition-colors flex items-center gap-1"
+                  className="text-gray-600 hover:text-brand transition-colors flex items-center gap-1"
                 >
                   {item.icon}
                   {item.name}

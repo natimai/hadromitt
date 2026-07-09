@@ -70,8 +70,8 @@ export function ReviewPlatforms(): JSX.Element {
     <section className="py-20 px-6 bg-gradient-to-b from-black to-[#1A0000] relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-[#FF0000] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FF0000] rounded-full blur-3xl"></div>
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -88,13 +88,13 @@ export function ReviewPlatforms(): JSX.Element {
             אנחנו גאים בביקורות המצוינות שלנו ברחבי הרשת
           </p>
           <div className="flex justify-center items-center gap-3 flex-wrap">
-            <div className="flex items-center gap-2 bg-[#FF0000]/20 px-6 py-3 rounded-full backdrop-blur-sm">
-              <Star className="w-6 h-6 text-[#FF0000] fill-[#FF0000]" />
+            <div className="flex items-center gap-2 bg-brand/20 px-6 py-3 rounded-full backdrop-blur-sm">
+              <Star className="w-6 h-6 text-brand fill-brand" />
               <span className="text-white text-xl font-bold">4.8</span>
               <span className="text-gray-300">ממוצע ביקורות</span>
             </div>
             <div className="flex items-center gap-2 bg-white/10 px-6 py-3 rounded-full backdrop-blur-sm">
-              <MessageCircle className="w-6 h-6 text-[#FF0000]" />
+              <MessageCircle className="w-6 h-6 text-brand" />
               <span className="text-white text-xl font-bold">800+</span>
               <span className="text-gray-300">ביקורות</span>
             </div>
@@ -117,7 +117,7 @@ export function ReviewPlatforms(): JSX.Element {
               variants={itemVariants}
               whileHover={{ scale: 1.05, y: -10 }}
               whileTap={{ scale: 0.95 }}
-              className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20 hover:border-[#FF0000]/50 transition-all duration-300 overflow-hidden"
+              className="group relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/20 hover:border-brand/50 transition-all duration-300 overflow-hidden"
             >
               {/* Glow effect on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${platform.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
@@ -146,7 +146,7 @@ export function ReviewPlatforms(): JSX.Element {
                           key={i}
                           className={`w-5 h-5 ${
                             i < Math.floor(platform.rating!)
-                              ? 'text-[#FF0000] fill-[#FF0000]'
+                              ? 'text-brand fill-brand'
                               : 'text-gray-500'
                           }`}
                         />
@@ -162,7 +162,7 @@ export function ReviewPlatforms(): JSX.Element {
                 </p>
 
                 {/* CTA Button */}
-                <div className="flex items-center justify-center gap-2 text-[#FF0000] group-hover:text-white transition-colors duration-300">
+                <div className="flex items-center justify-center gap-2 text-brand group-hover:text-white transition-colors duration-300">
                   <span className="font-semibold">
                     {platform.rating ? 'צפה בביקורות' : 'שלח הודעה'}
                   </span>
@@ -171,7 +171,7 @@ export function ReviewPlatforms(): JSX.Element {
               </div>
 
               {/* Corner decoration */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-[#FF0000]/10 rounded-bl-full"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-brand/10 rounded-bl-full"></div>
             </motion.a>
           ))}
         </motion.div>
@@ -190,7 +190,7 @@ export function ReviewPlatforms(): JSX.Element {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-gradient-to-r from-[#FF0000] to-[#CC0000] text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl shadow-red-500/50 hover:shadow-red-500/70 transition-all duration-300"
+            className="bg-gradient-to-r from-brand to-brand-dark text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl shadow-red-500/50 hover:shadow-red-500/70 transition-all duration-300"
             onClick={() => window.open('https://www.google.com/search?q=%D7%94%D7%93%D7%A8%D7%95%D7%9E%D7%99%D7%AA+%D7%91%D7%90%D7%A8+%D7%A9%D7%91%D7%A2', '_blank')}
           >
             <div className="flex items-center gap-3">

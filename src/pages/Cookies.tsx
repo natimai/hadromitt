@@ -23,12 +23,12 @@ export default function Cookies() {
 
   const sections = [
     {
-      icon: <Info className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Info className="w-6 h-6 text-brand" />,
       title: "מהן עוגיות?",
       content: `עוגיות (Cookies) הן קבצי טקסט קטנים המאוחסנים על המכשיר שלכם בעת הגלישה באתר. הן מסייעות לנו לספק לכם חוויית משתמש טובה יותר ולהבין כיצד אתם משתמשים באתר.`
     },
     {
-      icon: <Database className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Database className="w-6 h-6 text-brand" />,
       title: "סוגי העוגיות שבשימוש",
       content: `• עוגיות הכרחיות: נדרשות לתפעול האתר
 • עוגיות ביצועים: מסייעות לנו להבין כיצד המבקרים משתמשים באתר
@@ -36,7 +36,7 @@ export default function Cookies() {
 • עוגיות שיווקיות: משמשות למעקב אחר פעילות המשתמשים לצורך התאמת פרסומות`
     },
     {
-      icon: <Settings className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Settings className="w-6 h-6 text-brand" />,
       title: "ניהול העדפות עוגיות",
       content: `אתם יכולים לשלוט בעוגיות ולנהל אותן באמצעות הגדרות הדפדפן שלכם:
 • חסימת כל העוגיות
@@ -47,7 +47,7 @@ export default function Cookies() {
 שימו לב: חסימת עוגיות עלולה להשפיע על תפקוד האתר.`
     },
     {
-      icon: <Shield className="w-6 h-6 text-[#FF0000]" />,
+      icon: <Shield className="w-6 h-6 text-brand" />,
       title: "אבטחה ופרטיות",
       content: `אנו מקפידים על אבטחת המידע הנאסף באמצעות עוגיות ומשתמשים בו בהתאם למדיניות הפרטיות שלנו. המידע משמש אותנו לשיפור השירות ואינו מועבר לצדדים שלישיים ללא הסכמתכם.`
     }
@@ -65,7 +65,7 @@ export default function Cookies() {
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
             <div className="flex justify-center mb-6">
-              <Cookie className="w-16 h-16 text-[#FF0000]" />
+              <Cookie className="w-16 h-16 text-brand" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               מדיניות עוגיות
