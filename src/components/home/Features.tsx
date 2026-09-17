@@ -116,6 +116,12 @@ export function Features() {
           >
             לאירועים וחדרי VIP
           </Link>
+          <Link
+            to="/outdoor-events"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-bold text-white bg-ink hover:bg-brand transition-colors"
+          >
+            לאירועי חוץ
+          </Link>
         </motion.div>
       </div>
     </section>

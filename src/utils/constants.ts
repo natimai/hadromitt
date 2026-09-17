@@ -10,10 +10,14 @@ export const PHONE_E164 = '972796744711';
 export const EMAIL = 'info@hadromit.co.il';
 export const ADDRESS = 'רח׳ צבי טאוב, מתחם ישפרו סנטר, באר-שבע';
 
-export const WHATSAPP_BASE = `https://wa.me/${PHONE_E164}`;
+/** מספר לקבלת הודעות וואטסאפ (לא מספר הטלפון של המסעדה) */
+export const WHATSAPP_DISPLAY = '050-313-3001';
+export const WHATSAPP_E164 = '972503133001';
+export const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_E164}`;
 
 export const WHATSAPP_RESERVE = `${WHATSAPP_BASE}?text=${encodeURIComponent('שלום, אני מעוניין להזמין מקום')}`;
 export const WHATSAPP_EVENTS = `${WHATSAPP_BASE}?text=${encodeURIComponent('שלום, אשמח לקבל פרטים על אירוע / חדר VIP')}`;
+export const WHATSAPP_OUTDOOR_EVENTS = `${WHATSAPP_BASE}?text=${encodeURIComponent('שלום, אשמח לקבל הצעת מחיר לאירוע חוץ')}`;
 
 /** Canonical opening hours (aligned with Contact / FAQ) */
 export const HOURS_SHORT = "א'-ד': 12:00–23:00 | ה': 12:00–00:00 | מוצ\"ש: מצאת שבת–00:00";

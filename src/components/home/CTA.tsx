@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Calendar, Utensils, ShieldCheck, Crown, MapPin } from 'lucide-react';
+import { Calendar, Utensils, ShieldCheck, Crown, MapPin, Flame } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { TABIT_RESERVATION_URL } from '../../utils/constants';
 import { trackReservationClick } from '../../utils/gtag';
@@ -28,8 +28,8 @@ export function CTA() {
             מוכנים לשולחן?
           </h2>
           <p className="text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
-            כשר חלק, בשרים על האש וחדרי VIP — בישפרו סנטר, באר שבע.
-            הזמינו עכשיו ותבטיחו מקום לערב הבא.
+            כשר חלק, בשרים על האש, חדרי VIP ואירועי חוץ — בישפרו סנטר, באר שבע.
+            הזמינו שולחן, או הזמינו אותנו אליכם.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 text-sm text-white/75">
@@ -40,6 +40,10 @@ export function CTA() {
             <span className="inline-flex items-center gap-2">
               <Crown className="w-4 h-4 text-brand" />
               חדרי VIP
+            </span>
+            <span className="inline-flex items-center gap-2">
+              <Flame className="w-4 h-4 text-brand" />
+              אירועי חוץ
             </span>
             <span className="inline-flex items-center gap-2">
               <MapPin className="w-4 h-4 text-brand" />
@@ -61,6 +65,10 @@ export function CTA() {
             <Link to="/menu" className="btn-outline-light">
               <Utensils className="w-5 h-5" />
               לתפריט המלא
+            </Link>
+            <Link to="/outdoor-events" className="btn-outline-light">
+              <Flame className="w-5 h-5" />
+              לאירועי חוץ
             </Link>
           </div>
         </motion.div>

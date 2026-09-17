@@ -1,6 +1,7 @@
-import { useState, FormEvent } from 'react';
-import { MessageCircle, Send, Calendar, Users, Phone, User } from 'lucide-react';
-import { WHATSAPP_BASE, EMAIL, WHATSAPP_EVENTS } from '../utils/constants';
+import { useId, useState, FormEvent } from 'react';
+import { MessageCircle, Send, Calendar, Users, Phone, User, MapPin } from 'lucide-react';
+import { EMAIL, WHATSAPP_BASE, WHATSAPP_DISPLAY, WHATSAPP_EVENTS } from '../utils/constants';
+import { submitLead } from '../utils/submitLead';
 import { gtagEvent } from '../utils/gtag';
 import fbq from '../utils/fbq';
 
@@ -8,39 +9,64 @@ interface EventLeadFormProps {
   variant?: 'light' | 'dark';
   title?: string;
   subtitle?: string;
+  whatsappIntro?: string;
+  trackingLabel?: string;
+  contentName?: string;
+  showLocation?: boolean;
+  maxGuests?: number;
+  reopenWhatsApp?: string;
 }
 
 export function EventLeadForm({
   variant = 'light',
   title = 'בקשת הצעת מחיר לאירוע',
-  subtitle = 'מלאו פרטים ונחזור אליכם בוואטסאפ עם הצעה מותאמת',
+  subtitle = 'מלאו פרטים — ההודעה מגיעה לוואטסאפ ולמייל של הדרומית',
+  whatsappIntro = 'שלום, אשמח לקבל פרטים על אירוע / חדר VIP',
+  trackingLabel = 'events_form',
+  contentName = 'אירוע VIP',
+  showLocation = false,
+  maxGuests = 200,
+  reopenWhatsApp = WHATSAPP_EVENTS,
 }: EventLeadFormProps) {
+  const formId = useId();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [date, setDate] = useState('');
   const [guests, setGuests] = useState('');
+  const [location, setLocation] = useState('');
   const [note, setNote] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'whatsapp' | 'email'>('idle');
 
   const isDark = variant === 'dark';
 
   const buildMessage = () => {
     const lines = [
-      'שלום, אשמח לקבל פרטים על אירוע / חדר VIP',
+      whatsappIntro,
       `שם: ${name}`,
       `טלפון: ${phone}`,
       date ? `תאריך מבוקש: ${date}` : null,
       guests ? `מספר אורחים: ${guests}` : null,
+      location ? `מיקום האירוע: ${location}` : null,
       note ? `הערות: ${note}` : null,
     ].filter(Boolean);
     return lines.join('\n');
   };
 
+  const leadPayload = () => ({
+    name: name.trim(),
+    phone: phone.trim(),
+    date,
+    guests,
+    location,
+    note,
+    source: contentName,
+  });
+
   const trackLead = () => {
-    gtagEvent('event_lead', 'conversion', 'events_form');
+    gtagEvent('event_lead', 'conversion', trackingLabel);
     try {
       fbq('track', 'Lead', {
-        content_name: 'אירוע VIP',
+        content_name: contentName,
         content_category: 'events',
       });
     } catch {
@@ -48,22 +74,31 @@ export function EventLeadForm({
     }
   };
 
-  const handleWhatsApp = (e: FormEvent) => {
+  const handleWhatsApp = async (e: FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) return;
+    setStatus('sending');
     trackLead();
+    void submitLead(leadPayload());
     const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(buildMessage())}`;
     window.open(url, '_blank', 'noopener,noreferrer');
-    setSubmitted(true);
+    setStatus('whatsapp');
   };
 
-  const handleEmail = () => {
+  const handleEmail = async () => {
     if (!name.trim() || !phone.trim()) return;
+    setStatus('sending');
+    const sent = await submitLead(leadPayload());
+    if (sent) {
+      trackLead();
+      setStatus('email');
+      return;
+    }
     trackLead();
     const subject = encodeURIComponent(`פנייה לאירוע — ${name}`);
     const body = encodeURIComponent(buildMessage());
     window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setStatus('email');
   };
 
   const inputClass = isDark
@@ -72,7 +107,7 @@ export function EventLeadForm({
 
   const labelClass = isDark ? 'text-white/80 text-sm font-medium mb-1.5 block' : 'text-warmDark/70 text-sm font-medium mb-1.5 block';
 
-  if (submitted) {
+  if (status === 'whatsapp' || status === 'email') {
     return (
       <div
         className={`rounded-3xl p-8 text-center ${
@@ -80,18 +115,24 @@ export function EventLeadForm({
         }`}
       >
         <MessageCircle className="w-12 h-12 text-brand mx-auto mb-4" />
-        <h3 className="font-display text-2xl font-bold mb-2">תודה! נפתח וואטסאפ</h3>
+        <h3 className="font-display text-2xl font-bold mb-2">
+          {status === 'whatsapp' ? 'נפתח וואטסאפ' : 'הפרטים נשלחו'}
+        </h3>
         <p className={isDark ? 'text-white/70' : 'text-warmDark/70'}>
-          השלימו את השליחה בוואטסאפ — נחזור אליכם בהקדם.
+          {status === 'whatsapp'
+            ? `השלימו את השליחה בוואטסאפ למספר ${WHATSAPP_DISPLAY} — ההודעה מגיעה ישירות לדרומית.`
+            : 'קיבלנו את הפרטים למייל. נחזור אליכם בהקדם.'}
         </p>
-        <a
-          href={WHATSAPP_EVENTS}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-brand mt-6"
-        >
-          פתיחה מחדש בוואטסאפ
-        </a>
+        {status === 'whatsapp' && (
+          <a
+            href={reopenWhatsApp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-brand mt-6"
+          >
+            פתיחה מחדש בוואטסאפ
+          </a>
+        )}
       </div>
     );
   }
@@ -109,13 +150,13 @@ export function EventLeadForm({
 
       <form onSubmit={handleWhatsApp} className="space-y-4">
         <div>
-          <label htmlFor="lead-name" className={labelClass}>
+          <label htmlFor={`${formId}-name`} className={labelClass}>
             שם מלא *
           </label>
           <div className="relative">
             <User className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-warmDark/35'}`} />
             <input
-              id="lead-name"
+              id={`${formId}-name`}
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -127,13 +168,13 @@ export function EventLeadForm({
         </div>
 
         <div>
-          <label htmlFor="lead-phone" className={labelClass}>
+          <label htmlFor={`${formId}-phone`} className={labelClass}>
             טלפון *
           </label>
           <div className="relative">
             <Phone className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-warmDark/35'}`} />
             <input
-              id="lead-phone"
+              id={`${formId}-phone`}
               type="tel"
               required
               value={phone}
@@ -147,13 +188,13 @@ export function EventLeadForm({
 
         <div className="grid sm:grid-cols-2 gap-4">
           <div>
-            <label htmlFor="lead-date" className={labelClass}>
+            <label htmlFor={`${formId}-date`} className={labelClass}>
               תאריך מבוקש
             </label>
             <div className="relative">
               <Calendar className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-warmDark/35'}`} />
               <input
-                id="lead-date"
+                id={`${formId}-date`}
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
@@ -162,16 +203,16 @@ export function EventLeadForm({
             </div>
           </div>
           <div>
-            <label htmlFor="lead-guests" className={labelClass}>
+            <label htmlFor={`${formId}-guests`} className={labelClass}>
               מספר אורחים
             </label>
             <div className="relative">
               <Users className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-warmDark/35'}`} />
               <input
-                id="lead-guests"
+                id={`${formId}-guests`}
                 type="number"
                 min={1}
-                max={200}
+                max={maxGuests}
                 value={guests}
                 onChange={(e) => setGuests(e.target.value)}
                 className={`${inputClass} pr-10`}
@@ -181,12 +222,30 @@ export function EventLeadForm({
           </div>
         </div>
 
+        {showLocation && (
+          <div>
+            <label htmlFor={`${formId}-location`} className={labelClass}>
+              מיקום האירוע
+            </label>
+            <div className="relative">
+              <MapPin className={`absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 ${isDark ? 'text-white/40' : 'text-warmDark/35'}`} />
+              <input
+                id={`${formId}-location`}
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                className={`${inputClass} pr-10`}
+                placeholder="עיר / מתחם / כתובת"
+              />
+            </div>
+          </div>
+        )}
+
         <div>
-          <label htmlFor="lead-note" className={labelClass}>
+          <label htmlFor={`${formId}-note`} className={labelClass}>
             הערות
           </label>
           <textarea
-            id="lead-note"
+            id={`${formId}-note`}
             rows={3}
             value={note}
             onChange={(e) => setNote(e.target.value)}
@@ -196,14 +255,15 @@ export function EventLeadForm({
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          <button type="submit" className="btn-brand flex-1">
+          <button type="submit" disabled={status === 'sending'} className="btn-brand flex-1 disabled:opacity-70">
             <MessageCircle className="w-5 h-5" />
-            שליחה בוואטסאפ
+            {status === 'sending' ? 'שולח...' : 'שליחה בוואטסאפ'}
           </button>
           <button
             type="button"
             onClick={handleEmail}
-            className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold transition-colors ${
+            disabled={status === 'sending'}
+            className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold transition-colors disabled:opacity-70 ${
               isDark
                 ? 'border border-white/25 text-white hover:bg-white/10'
                 : 'border border-warmDark/15 text-warmDark hover:border-brand hover:text-brand'
@@ -213,6 +273,9 @@ export function EventLeadForm({
             שליחה במייל
           </button>
         </div>
+        <p className={`text-xs ${isDark ? 'text-white/45' : 'text-warmDark/45'}`}>
+          וואטסאפ: {WHATSAPP_DISPLAY} · מייל: {EMAIL}
+        </p>
       </form>
     </div>
   );

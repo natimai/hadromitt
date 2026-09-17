@@ -31,6 +31,7 @@ export default function Sitemap(): JSX.Element {
         { to: "/menu", text: "תפריט" },
         { to: "/about", text: "אודות" },
         { to: "/events", text: "אירועים" },
+        { to: "/outdoor-events", text: "אירועי חוץ" },
         { to: "/gallery", text: "גלריה" },
         { to: "/contact", text: "צור קשר" }
       ]
@@ -53,6 +54,7 @@ export default function Sitemap(): JSX.Element {
       links: [
         { text: "הזמנת מקום", to: "https://tabitisrael.co.il/הזמנת-מקום/create-reservation?step=search&orgId=61bf129cfa6d8c2d451c0d99&source=tabit&type=future_reservation", external: true },
         { text: "אירועים פרטיים", to: "/events" },
+        { text: "אירועי חוץ וקייטרינג", to: "/outdoor-events" },
         { text: "תפריט משלוחים", to: "/menu" }
       ]
     },

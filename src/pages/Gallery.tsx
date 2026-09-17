@@ -131,6 +131,24 @@ const images: GalleryImage[] = [
     title: 'אווירה חמה',
     alt: 'אווירה חמה ומזמינה במסעדת הדרומית',
     category: 'אווירה'
+  },
+  {
+    url: '/outdoor-events/buffet-tent.jpg',
+    title: 'אירוע חוץ',
+    alt: 'קייטרינג בשרים של הדרומית באירוע חוץ',
+    category: 'אירועים'
+  },
+  {
+    url: '/outdoor-events/grill-skewers.jpg',
+    title: 'מנגל באירוע',
+    alt: 'שיפודים על המנגל באירוע חוץ של הדרומית',
+    category: 'אירועים'
+  },
+  {
+    url: '/outdoor-events/pool-buffet.jpg',
+    title: 'אירוע בריכה',
+    alt: 'בופה של הדרומית באירוע חוץ ליד הבריכה',
+    category: 'אירועים'
   }
 ];
 
@@ -225,6 +243,13 @@ export function Gallery() {
               className="text-brand hover:text-brand-dark transition-colors underline"
             >
               מידע על אירועים
+            </Link>
+            <span className="mx-2 text-gray-300">|</span>
+            <Link 
+              to="/outdoor-events" 
+              className="text-brand hover:text-brand-dark transition-colors underline"
+            >
+              אירועי חוץ
             </Link>
           </div>
         </motion.div>

@@ -12,6 +12,7 @@ import {
   HOURS_LINES,
   WHATSAPP_RESERVE,
   WHATSAPP_EVENTS,
+  WHATSAPP_OUTDOOR_EVENTS,
 } from '../utils/constants';
 import { EventLeadForm } from '../components/EventLeadForm';
 
@@ -49,6 +50,10 @@ export function Contact() {
             <span className="text-warmDark/30">|</span>
             <Link to="/events" className="text-brand hover:text-brand-dark transition-colors underline">
               לאירועים מיוחדים
+            </Link>
+            <span className="text-warmDark/30">|</span>
+            <Link to="/outdoor-events" className="text-brand hover:text-brand-dark transition-colors underline">
+              לאירועי חוץ
             </Link>
             <span className="text-warmDark/30">|</span>
             <Link to="/about" className="text-brand hover:text-brand-dark transition-colors underline">
@@ -153,6 +158,7 @@ export function Contact() {
               </div>
             </div>
 
+            <div className="flex flex-col gap-2">
             <a
               href={WHATSAPP_EVENTS}
               target="_blank"
@@ -160,15 +166,27 @@ export function Contact() {
               className="inline-flex items-center gap-2 text-brand font-semibold hover:underline"
             >
               <MessageCircle className="w-4 h-4" />
-              פנייה מהירה לאירועים בוואטסאפ
+              פנייה לחדרי VIP בוואטסאפ
             </a>
+            <a
+              href={WHATSAPP_OUTDOOR_EVENTS}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-brand font-semibold hover:underline"
+            >
+              <MessageCircle className="w-4 h-4" />
+              פנייה לאירוע חוץ בוואטסאפ
+            </a>
+            </div>
           </motion.div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10 mb-12">
           <EventLeadForm
-            title="פנייה לאירוע / חדר VIP"
-            subtitle="מלאו פרטים ונחזור אליכם עם הצעה מותאמת"
+            title="פנייה לאירוע"
+            subtitle="חדר VIP במסעדה או אירוע חוץ — מלאו פרטים ונחזור עם הצעה"
+            whatsappIntro="שלום, אשמח לקבל פרטים על אירוע (חדר VIP / אירוע חוץ)"
+            showLocation
           />
 
           <div className="bg-white rounded-3xl shadow-lg p-8 border border-warmDark/5">

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { Hero } from '../components/home/Hero';
 import { Features } from '../components/home/Features';
+import { OutdoorTeaser } from '../components/home/OutdoorTeaser';
 import { SocialProof } from '../components/home/SocialProof';
 import { CTA } from '../components/home/CTA';
 import { VipPopup } from '../components/VipPopup';
@@ -54,12 +55,13 @@ export function Home() {
       <SEO
         title="הדרומית - מסעדה בבאר שבע | מסעדת בשרים כשר חלק מומלצת | מסעדה מומלצת בבאר שבע"
         description="מסעדה בבאר שבע המובילה - הדרומית. מסעדת בשרים כשר חלק מומלצת המציעה חוויה קולינרית מיוחדת. תפריט עשיר של בשרים איכותיים, סטייקים מעולים, שיפודים על האש וסלטים טריים."
-        keywords="מסעדה בבאר שבע, מסעדת בשרים בבאר שבע, מסעדה כשרה בבאר שבע, סטייקים בבאר שבע, שיפודים בבאר שבע, הדרומית"
+        keywords="מסעדה בבאר שבע, מסעדת בשרים בבאר שבע, מסעדה כשרה בבאר שבע, סטייקים בבאר שבע, שיפודים בבאר שבע, הדרומית, אירועי חוץ, קייטרינג בשרים"
         canonicalUrl="/"
       />
 
       <Hero />
       <Features />
+      <OutdoorTeaser />
       <SocialProof />
       <CTA />
       <VipPopup isVisible={showVipPopup} setIsVisible={handleVipVisibility} />

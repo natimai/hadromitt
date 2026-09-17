@@ -4,6 +4,7 @@ import { Users, Music, Gift, ChevronRight, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import fbq from '../utils/fbq';
 import { EventLeadForm } from '../components/EventLeadForm';
+import { SEO } from '../components/SEO';
 
 export function Events() {
   useEffect(() => {
@@ -76,9 +77,15 @@ export function Events() {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
+      <SEO
+        title="אירועים וחדרי VIP | הדרומית באר שבע"
+        description="חדרי VIP לאירועים פרטיים ועסקיים במסעדת הדרומית בבאר שבע, ואירועי חוץ עם מנגל במקום בדרום ובמרכז."
+        keywords="חדרי VIP באר שבע, אירועים במסעדה, הדרומית אירועים"
+        canonicalUrl="/events"
+      />
       {/* Hero Section */}
-      <div className="relative h-[50vh]">
+      <div className="relative h-[50vh] pt-20">
         <div className="absolute inset-0">
           <img 
             src="/gallery/BarAharon-3131 Large.jpeg"
@@ -107,6 +114,13 @@ export function Events() {
               </Link>
               <span className="text-gray-300">|</span>
               <Link 
+                to="/outdoor-events" 
+                className="text-brand hover:text-brand-dark transition-colors underline"
+              >
+                לאירועי חוץ
+              </Link>
+              <span className="text-gray-300">|</span>
+              <Link 
                 to="/contact" 
                 className="text-brand hover:text-brand-dark transition-colors underline"
               >
@@ -114,6 +128,29 @@ export function Events() {
               </Link>
             </div>
           </motion.div>
+        </div>
+      </div>
+
+      <div className="bg-warmBg py-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            to="/outdoor-events"
+            className="group relative overflow-hidden flex flex-col md:flex-row items-center gap-6 rounded-3xl bg-ink text-white p-6 md:p-8"
+          >
+            <img
+              src="/outdoor-events/buffet-tent.jpg"
+              alt="אירועי חוץ של הדרומית"
+              className="w-full md:w-56 h-40 object-cover rounded-2xl"
+            />
+            <div className="flex-1 text-center md:text-right">
+              <p className="text-brand font-semibold mb-1">שירות חדש</p>
+              <h2 className="font-display text-2xl md:text-3xl font-bold mb-2">אירועי חוץ — הדרומית מגיעה אליכם</h2>
+              <p className="text-white/75">
+                בשרים ומנות מהמסעדה, מנגל במקום וצוות שירות לאירועים בדרום ובמרכז
+              </p>
+            </div>
+            <span className="btn-brand shrink-0">לפרטים</span>
+          </Link>
         </div>
       </div>
 

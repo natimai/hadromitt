@@ -68,7 +68,7 @@ export function Hero() {
               הדרומית
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-warmBg/90 font-medium max-w-2xl mx-auto leading-relaxed">
-              מסעדת בשרים כשר חלק בבאר שבע — סטייקים, שיפודים וחדרי VIP
+              מסעדת בשרים כשר חלק בבאר שבע — סטייקים, שיפודים, חדרי VIP ואירועי חוץ
             </p>
           </div>
 

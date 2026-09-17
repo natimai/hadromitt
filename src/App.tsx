@@ -13,6 +13,7 @@ const Home = lazy(() => import('./pages/Home').then(module => ({ default: module
 const Menu = lazy(() => import('./pages/Menu').then(module => ({ default: module.Menu })));
 const About = lazy(() => import('./pages/About').then(module => ({ default: module.About })));
 const Events = lazy(() => import('./pages/Events').then(module => ({ default: module.Events })));
+const OutdoorEvents = lazy(() => import('./pages/OutdoorEvents').then(module => ({ default: module.OutdoorEvents })));
 const Gallery = lazy(() => import('./pages/Gallery').then(module => ({ default: module.Gallery })));
 const Contact = lazy(() => import('./pages/Contact').then(module => ({ default: module.Contact })));
 const Blog = lazy(() => import('./pages/Blog').then(module => ({ default: module.Blog })));
@@ -46,7 +47,7 @@ function ScrollToTop(): null {
 function App(): JSX.Element {
   return (
     <HelmetProvider>
-      <div className="flex flex-col min-h-screen has-mobile-sticky">
+      <div className="relative flex flex-col min-h-screen has-mobile-sticky">
         <Navbar />
         <Breadcrumb />
         <main className="flex-grow">
@@ -57,6 +58,7 @@ function App(): JSX.Element {
               <Route path="/menu" element={<Menu />} />
               <Route path="/about" element={<About />} />
               <Route path="/events" element={<Events />} />
+              <Route path="/outdoor-events" element={<OutdoorEvents />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog" element={<Blog />} />

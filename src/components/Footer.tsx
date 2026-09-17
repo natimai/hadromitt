@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings } from 'lucide-react';
+import { Instagram, Facebook, Phone, MapPin, Clock, Accessibility, Youtube, Video, Heart, Code, Shield, FileText, Scale, Cookie, Settings, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { CookieSettings } from './CookieSettings';
 import { gtagEvent } from '../utils/gtag';
+import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_DISPLAY, WHATSAPP_RESERVE } from '../utils/constants';
 
 export function Footer() {
   const [isCookieSettingsOpen, setIsCookieSettingsOpen] = useState(false);
@@ -134,6 +135,11 @@ export function Footer() {
                   אירועים
                 </Link>
               </motion.div>
+              <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                <Link to="/outdoor-events" className="text-gray-300 hover:text-white transition-colors">
+                  אירועי חוץ
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -146,8 +152,23 @@ export function Footer() {
                 className="flex items-center gap-3 text-gray-300"
               >
                 <Phone className="w-5 h-5 text-brand" />
-                <a href="tel:0796744711" onClick={handleCallClick} className="hover:text-white transition-colors">
-                  079-674-4711
+                <a href={PHONE_TEL} onClick={handleCallClick} className="hover:text-white transition-colors">
+                  {PHONE_DISPLAY}
+                </a>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-3 text-gray-300"
+              >
+                <MessageCircle className="w-5 h-5 text-brand" />
+                <a
+                  href={WHATSAPP_RESERVE}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => gtagEvent('whatsapp_click', 'engagement', 'footer_whatsapp')}
+                  className="hover:text-white transition-colors"
+                >
+                  וואטסאפ {WHATSAPP_DISPLAY}
                 </a>
               </motion.div>
               <motion.div 
