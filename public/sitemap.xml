@@ -153,4 +153,50 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://www.hadromit.co.il/blog/outdoor-meat-catering-guide</loc>
+    <lastmod>2025-03-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/asado-smoker-meat-catering</loc>
+    <lastmod>2025-03-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/private-chef-grillman-events</loc>
+    <lastmod>2025-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/how-much-meat-per-person-events</loc>
+    <lastmod>2025-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/corporate-meat-catering-events</loc>
+    <lastmod>2025-02-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.hadromit.co.il/blog/buying-used-car-guide</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.hadromit.co.il/used-car-guide.jpg</image:loc>
+      <image:title>קונים רכב יד שנייה? המדריך המלא מהמודעה ועד העברת הבעלות</image:title>
+    </image:image>
+  </url>
+
 </urlset>

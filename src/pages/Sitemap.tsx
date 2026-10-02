@@ -33,6 +33,7 @@ export default function Sitemap(): JSX.Element {
         { to: "/events", text: "אירועים" },
         { to: "/outdoor-events", text: "אירועי חוץ" },
         { to: "/gallery", text: "גלריה" },
+        { to: "/blog", text: "בלוג" },
         { to: "/contact", text: "צור קשר" }
       ]
     },
