@@ -32,6 +32,7 @@ import {
   WHATSAPP_OUTDOOR_EVENTS,
 } from '../utils/constants';
 import { gtagEvent } from '../utils/gtag';
+import { menuCategories } from '../data/menuData';
 
 // Comprehensive Meat & Outdoor Catering Gallery
 const GALLERY_ITEMS = [
@@ -121,72 +122,27 @@ const GALLERY_ITEMS = [
   },
 ];
 
-// Meat packages & catering tracks
-const MEAT_PACKAGES = [
-  {
-    id: 'grill-butcher',
-    badge: 'הפופולרי ביותר',
-    name: 'גריל קצבים פרימיום',
-    tagline: 'חגיגת בשרים לוהטת על גריל פחמים מול האורחים',
-    image: '/gallery/BarAharon-3565-2 Large.jpeg',
-    recommendedFor: 'ימי הולדת בגינה, מסיבות וילה, ערבי גיבוש ובריתות',
-    meats: [
-      'אנטריקוט עגלי בקר מיושן 21 יום עם פסי צריבה מדויקים',
-      'שיפודי פרגית במרינדת שום, סילאן ועשבי תיבול טריים',
-      'קבב הדרומית המפורסם — בשר טחון טרי עם בצל, פטרוזיליה וצנוברים',
-      'נקניקיות מרגז קצבים עבודת יד פיקנטיות בעדינות',
-      'עראייס קריספי על פחמים במילוי בשר מתובל וטחינה',
-    ],
-    sides: [
-      'לחמי פרנה ומאפים חמים היישר מהאש',
-      'עמדת 12 סלטי שף עשירים וטריים מדי בוקר',
-      'חומוס הבית הנטחן במקום עם גרגרים חמים',
-      "צ'ימיצ'ורי ארגנטינאי טרי וטחינה הר ברכה",
-    ],
-  },
-  {
-    id: 'asado-smoker',
-    badge: 'חוויית Low & Slow',
-    name: 'אסאדו ומעשנת גזעי אלון Live',
-    tagline: 'בשרים בעישון איטי של 8 שעות שנמסים מהעצם',
-    image: '/outdoor-events/plated-meats.jpg',
-    recommendedFor: 'חתונות שטח, אירועי בוטיק בטבע, כנסי חברות וקרניבורים',
-    meats: [
-      'אסאדו שפונדרה בעישון 8 שעות בעצי אלון והדרים שנמס במזלג',
-      'בריסקט בקר ברובי תבלינים דרומיים עם טבעת עשן מושלמת',
-      'שוק טלה עשיר ברוזמרין, שום קונפי ושמן זית כתית',
-      'פיקניה משוישת צלויה בעישון חם עם קראסט פריך',
-      'עראייס שומן כבש וטחינה חמה מהגריל',
-    ],
-    sides: [
-      'תפוחי אדמה מדורה עם שום קונפי ורוזמרין',
-      'בצלצלי שאלוט וירקות שורש מקורמלים בסילאן ועשן',
-      'ריבת בצל ביתית ורוטב ברביקיו מעושן',
-      'עמדת לחמים כפריים וסלטים עשירים',
-    ],
-  },
-  {
-    id: 'carnivore-vip',
-    badge: 'חוויית שף VIP',
-    name: 'משתה שף קרניבורי Grand',
-    tagline: "נתחי טומהוק, פילה בקר וצלעות כבש בחיתוך בוצ'ר",
-    image: '/gallery/BarAharon-3064 Large.jpeg',
-    recommendedFor: 'אירועי יוקרה, השקות עסקיות, ימי הולדת עגולים ואירוח אח"מים',
-    meats: [
-      'נתחי טומהוק ואנטריקוט עבים בחיתוך אלגנטי',
-      'מדליוני פילה בקר רכים במידת עשייה מדויקת',
-      'צלעות כבש מובחרות צרובות בגריל פחמים',
-      'כבד אווז צרוב בליווי פירות יער (אופציונלי)',
-      'עמדת פריסת רוסטביף סינטה דק-דק מול האורחים',
-    ],
-    sides: [
-      'סליידרים מושחתים עם בשר אסאדו מפורק ואיולי כמהין',
-      'טאקו בקר חרוך עם סלסת עגבניות מדורה',
-      "פלטות בוצ'ר מעץ עמוסות בשרים ישר לשולחנות",
-      'בר סלטים ומנות פתיחה יוקרתיות של המסעדה',
-    ],
-  },
+// Showcase built from the restaurant menu — everything served in the restaurant is brought to outdoor events
+const SHOWCASE_CATEGORIES: { menuName: string; tagline: string }[] = [
+  { menuName: 'המיוחדים שלנו', tagline: 'מנות הדגל של השף, בגדלים הנכונים לחבורה' },
+  { menuName: 'בשרים ומנות עיקריות', tagline: 'נתחי פרימיום מיושנים, צלויים על הגריל' },
+  { menuName: 'שיפודים בודדים', tagline: 'שיפודים איכותיים על האש, ישר אל האורחים' },
+  { menuName: 'מנות פתיחה', tagline: 'מבחר מנות ראשונות מעשה ידי השף' },
 ];
+const EXCLUDED_SHOWCASE_ITEMS = new Set([
+  'סלט עוף ועלים ירוקים',
+  'המבורגר ביונד טבעוני',
+  'שניצל',
+]);
+
+const MEAT_SHOWCASE = SHOWCASE_CATEGORIES.flatMap(({ menuName, tagline }) => {
+  const category = menuCategories.find((c) => c.name === menuName);
+  if (!category) return [];
+  const items = Array.from(
+    new Set(category.items.map((i) => i.name).filter((n) => !EXCLUDED_SHOWCASE_ITEMS.has(n)))
+  );
+  return [{ name: category.name, tagline, image: category.image, items }];
+});
 
 // Real meat reviews
 const MEAT_REVIEWS = [
@@ -250,7 +206,6 @@ export function OutdoorEvents() {
 
   // Calculator states
   const [guestCount, setGuestCount] = useState<number>(75);
-  const [selectedPackageId, setSelectedPackageId] = useState<string>('grill-butcher');
   const [selectedEventType, setSelectedEventType] = useState<string>('אירוע פרטי / יום הולדת');
 
   useEffect(() => {
@@ -291,17 +246,13 @@ export function OutdoorEvents() {
     return Math.round(guestCount * 0.5);
   }, [guestCount]);
 
-  const selectedPackage = useMemo(() => {
-    return MEAT_PACKAGES.find((p) => p.id === selectedPackageId) || MEAT_PACKAGES[0];
-  }, [selectedPackageId]);
-
   // Pre-filled WhatsApp link based on calculator
   const calculatorWhatsAppUrl = useMemo(() => {
     const text = encodeURIComponent(
-      `שלום לדרומית! אשמח להצעת מחיר לאירוע חוץ: ${selectedEventType}, כ-${guestCount} אורחים (הערכה של כ-${estimatedMeatKg} ק"ג בשר), מסלול: ${selectedPackage.name}.`
+      `שלום לדרומית! אשמח להצעת מחיר לאירוע חוץ: ${selectedEventType}, כ-${guestCount} אורחים (הערכה של כ-${estimatedMeatKg} ק"ג בשר).`
     );
     return `https://wa.me/972528731388?text=${text}`;
-  }, [selectedEventType, guestCount, estimatedMeatKg, selectedPackage]);
+  }, [selectedEventType, guestCount, estimatedMeatKg]);
 
   const schema = {
     '@context': 'https://schema.org',
@@ -376,8 +327,8 @@ export function OutdoorEvents() {
               <a href="#quote" className="btn-brand text-lg py-4 px-8 shadow-2xl">
                 קבלו הצעת מחיר לתפריט בשרים
               </a>
-              <a href="#packages" className="btn-outline-light text-lg py-4 px-8">
-                למסלולי הבשרים והתפריטים
+              <a href="#meats" className="btn-outline-light text-lg py-4 px-8">
+                לבשרים של הדרומית
               </a>
             </div>
 
@@ -467,8 +418,8 @@ export function OutdoorEvents() {
         </div>
       </section>
 
-      {/* Meat Packages Showcase */}
-      <section id="packages" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#180000] text-white scroll-mt-20">
+      {/* Restaurant Meats Showcase */}
+      <section id="meats" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#180000] text-white scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -478,100 +429,62 @@ export function OutdoorEvents() {
           >
             <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand/20 text-brand rounded-full text-xs font-bold mb-3">
               <Award className="w-3.5 h-3.5" />
-              תפריטים בהתאמה אישית
+              כל המסעדה, אצלכם באירוע
             </span>
             <h2 className="font-display text-3xl sm:text-5xl font-bold mb-4">
-              מסלולי בשרים לאירועי חוץ
+              הבשרים של הדרומית — בשטח
             </h2>
             <p className="text-lg text-white/75 leading-relaxed">
-              בחרו את סגנון האירוע המתאים לכם. כל המסלולים כוללים צוות גרילמנים, עמדות הגשה, 12 סלטי שף טריים, פיתות פרנה ומטבלים ללא הגבלה.
+              כל מה שמגיע אליכם לצלחת במסעדה אנחנו מביאים גם לאירועי חוץ: אותם נתחים, אותה צלייה על האש ואותו סטנדרט. אנחנו יודעים להפיק אירועי חוץ מדהימים, והבשר הוא הלב של כל אירוע.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {MEAT_PACKAGES.map((pkg, index) => (
+          <div className="grid lg:grid-cols-2 gap-8">
+            {MEAT_SHOWCASE.map((cat, index) => (
               <motion.div
-                key={pkg.id}
+                key={cat.name}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className={`relative rounded-3xl overflow-hidden flex flex-col justify-between border ${
-                  pkg.badge === 'הפופולרי ביותר'
-                    ? 'border-brand bg-white/10 shadow-2xl shadow-brand/20 ring-1 ring-brand'
-                    : 'border-white/10 bg-white/5'
-                }`}
+                transition={{ delay: (index % 2) * 0.1 }}
+                className="rounded-3xl overflow-hidden border border-white/10 bg-white/5"
               >
-                <div>
-                  {/* Image header */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img
-                      src={pkg.image}
-                      alt={pkg.name}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-                    <span className="absolute top-4 right-4 px-3 py-1 bg-brand text-white rounded-full text-xs font-bold shadow-md">
-                      {pkg.badge}
-                    </span>
-                    <div className="absolute bottom-4 right-4 left-4">
-                      <h3 className="font-display text-2xl font-bold text-white mb-1">
-                        {pkg.name}
-                      </h3>
-                      <p className="text-xs text-white/80">{pkg.tagline}</p>
-                    </div>
-                  </div>
-
-                  {/* Body content */}
-                  <div className="p-6 space-y-6">
-                    <div>
-                      <span className="text-xs font-bold text-brand uppercase tracking-wider block mb-2">
-                        בשרים ונתחי שף מהאש:
-                      </span>
-                      <ul className="space-y-2">
-                        {pkg.meats.map((meat) => (
-                          <li key={meat} className="flex items-start gap-2 text-sm text-gray-200">
-                            <Flame className="w-4 h-4 text-brand shrink-0 mt-0.5" />
-                            <span>{meat}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="pt-4 border-t border-white/10">
-                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider block mb-2">
-                        תוספות ועמדות שטח:
-                      </span>
-                      <ul className="space-y-1.5">
-                        {pkg.sides.map((side) => (
-                          <li key={side} className="flex items-start gap-2 text-xs text-gray-300">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand shrink-0 mt-1.5" />
-                            <span>{side}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="p-3 bg-white/5 rounded-2xl text-xs text-gray-300">
-                      <span className="font-bold text-white">מתאים במיוחד ל: </span>
-                      {pkg.recommendedFor}
-                    </div>
+                <div className="relative aspect-[16/7] overflow-hidden">
+                  <img
+                    src={cat.image}
+                    alt={cat.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  <div className="absolute bottom-4 right-4 left-4">
+                    <h3 className="font-display text-2xl font-bold text-white mb-1">{cat.name}</h3>
+                    <p className="text-xs text-white/80">{cat.tagline}</p>
                   </div>
                 </div>
-
-                <div className="p-6 pt-0">
-                  <a
-                    href="#quote"
-                    onClick={() => setSelectedPackageId(pkg.id)}
-                    className="w-full btn-brand text-sm py-3 block text-center"
-                  >
-                    התאמת תפריט וקבלת הצעה
-                  </a>
+                <div className="p-6">
+                  <ul className="flex flex-wrap gap-2">
+                    {cat.items.map((item) => (
+                      <li
+                        key={item}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/10 px-3 py-1.5 text-sm text-gray-200"
+                      >
+                        <Flame className="w-3.5 h-3.5 text-brand shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          <p className="text-center text-white/70 mt-10">
+            בנוסף: מנות פתיחה, תוספות וקינוחים מהמסעדה — הכול זמין גם בשטח.{' '}
+            <Link to="/menu" className="text-brand font-bold hover:underline">
+              לתפריט המלא של המסעדה
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -650,11 +563,11 @@ export function OutdoorEvents() {
                   <span className="text-xs text-warmDark/50 block mt-0.5">כ-500 גרם נטו לסועד</span>
                 </div>
                 <div>
-                  <span className="text-xs text-warmDark/60 block mb-1">מסלול מומלץ</span>
+                  <span className="text-xs text-warmDark/60 block mb-1">צלייה באירוע</span>
                   <span className="font-display text-lg sm:text-xl font-bold text-brand">
-                    {selectedPackage.name}
+                    מנגל Live
                   </span>
-                  <span className="text-xs text-warmDark/50 block mt-0.5">גרילמנים ומנגל Live</span>
+                  <span className="text-xs text-warmDark/50 block mt-0.5">גרילמנים ובשרי המסעדה</span>
                 </div>
                 <div>
                   <span className="text-xs text-warmDark/60 block mb-1">סלטים ותוספות</span>
