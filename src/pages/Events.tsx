@@ -283,7 +283,7 @@ export function Events() {
             </Link>
           </motion.div>
 
-          <EventLeadForm />
+          <EventLeadForm whatsappOnly />
         </div>
       </div>
     </div>

@@ -27,8 +27,8 @@ import { SEO } from '../components/SEO';
 import { EventLeadForm } from '../components/EventLeadForm';
 import fbq from '../utils/fbq';
 import {
-  PHONE_DISPLAY,
-  PHONE_TEL,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_TEL,
   WHATSAPP_OUTDOOR_EVENTS,
 } from '../utils/constants';
 import { gtagEvent } from '../utils/gtag';
@@ -773,12 +773,12 @@ export function OutdoorEvents() {
 
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <a
-                  href={PHONE_TEL}
+                  href={WHATSAPP_TEL}
                   onClick={() => gtagEvent('call_click', 'engagement', 'outdoor_events_call')}
                   className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-warmDark/15 font-bold text-warmDark hover:border-brand hover:text-brand transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4" />
-                  {PHONE_DISPLAY}
+                  {WHATSAPP_DISPLAY}
                 </a>
                 <a
                   href={WHATSAPP_OUTDOOR_EVENTS}
@@ -886,6 +886,7 @@ export function OutdoorEvents() {
               showLocation
               maxGuests={800}
               reopenWhatsApp={WHATSAPP_OUTDOOR_EVENTS}
+              whatsappOnly
             />
           </div>
         </div>

@@ -254,3 +254,55 @@ body[style*="cursor: pointer"] * {
     }
   }
 }
+
+/* Outdoor-events landing page motion */
+@keyframes lp-ember-rise {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate3d(var(--lp-drift, 20px), -85vh, 0) scale(0.3); opacity: 0; }
+}
+
+.lp-ember {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #ffd27a 0%, #ff7a1f 45%, rgba(237, 29, 36, 0) 75%);
+  animation: lp-ember-rise linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes lp-marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.lp-marquee {
+  animation: lp-marquee var(--lp-marquee-duration, 30s) linear infinite;
+  will-change: transform;
+}
+
+.lp-marquee-reverse {
+  animation-direction: reverse;
+}
+
+.lp-fire-text {
+  background: linear-gradient(100deg, #ffb23f 0%, #ff5a1f 45%, #ed1d24 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lp-outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-ember,
+  .lp-marquee {
+    animation: none;
+  }
+  .lp-ember {
+    display: none;
+  }
+}

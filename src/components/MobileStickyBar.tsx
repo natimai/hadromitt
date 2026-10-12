@@ -6,6 +6,7 @@ import {
   WHATSAPP_RESERVE,
   WHATSAPP_EVENTS,
   WHATSAPP_OUTDOOR_EVENTS,
+  WHATSAPP_TEL,
 } from '../utils/constants';
 import { trackReservationClick, gtagEvent } from '../utils/gtag';
 
@@ -35,7 +36,7 @@ export function MobileStickyBar() {
     >
       <div className="grid grid-cols-3 gap-1 px-2 py-2">
         <a
-          href={PHONE_TEL}
+          href={isOutdoor || isEvents ? WHATSAPP_TEL : PHONE_TEL}
           onClick={() => gtagEvent('call_click', 'engagement', 'mobile_sticky_call')}
           className="flex flex-col items-center justify-center gap-0.5 py-2 rounded-xl text-white hover:bg-white/10 active:bg-white/15 touch-manipulation min-h-[52px]"
         >
