@@ -7,7 +7,6 @@ import {
   MapPin,
   Users,
   Phone,
-  MessageCircle,
   CheckCircle2,
   ChevronDown,
   UtensilsCrossed,
@@ -15,6 +14,7 @@ import {
   ClipboardList,
 } from 'lucide-react';
 import { EventLeadForm } from '../../components/EventLeadForm';
+import { WhatsAppIcon } from '../../components/WhatsAppIcon';
 import { menuCategories } from '../../data/menuData';
 import fbq from '../../utils/fbq';
 import { gtagEvent, trackAdsLead } from '../../utils/gtag';
@@ -157,11 +157,12 @@ export function OutdoorEventsLanding() {
       maxGuests={800}
       reopenWhatsApp={WHATSAPP_OUTDOOR_EVENTS}
       onLead={trackAdsLead}
+      whatsappGreen
     />
   );
 
   return (
-    <div className="min-h-screen bg-warmBg text-warmDark pb-20 md:pb-0">
+    <div className="min-h-screen bg-warmBg text-warmDark pb-20 md:pb-0 overflow-x-clip">
       <Helmet>
         <title>קייטרינג בשרים לאירועי חוץ | כשר חלק | הדרומית</title>
         <meta
@@ -385,9 +386,9 @@ export function OutdoorEventsLanding() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackContact('landing_footer_whatsapp')}
-                className="btn-outline-light"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-bold text-white bg-[#25D366] hover:bg-[#1EBE5A] transition-colors"
               >
-                <MessageCircle className="w-5 h-5" />
+                <WhatsAppIcon />
                 וואטסאפ
               </a>
             </div>
@@ -425,9 +426,9 @@ export function OutdoorEventsLanding() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackContact('landing_sticky_whatsapp')}
-            className="flex flex-col items-center justify-center gap-0.5 py-2 rounded-xl min-h-[52px] active:bg-white/15"
+            className="flex flex-col items-center justify-center gap-0.5 py-2 rounded-xl min-h-[52px] bg-[#25D366] active:bg-[#1EBE5A]"
           >
-            <MessageCircle className="w-5 h-5" />
+            <WhatsAppIcon />
             וואטסאפ
           </a>
           <a

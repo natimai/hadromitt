@@ -3,6 +3,7 @@ import { MessageCircle, Send, Calendar, Users, Phone, User, MapPin } from 'lucid
 import { EMAIL, WHATSAPP_BASE, WHATSAPP_DISPLAY, WHATSAPP_EVENTS } from '../utils/constants';
 import { submitLead } from '../utils/submitLead';
 import { gtagEvent } from '../utils/gtag';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import fbq from '../utils/fbq';
 
 interface EventLeadFormProps {
@@ -16,6 +17,8 @@ interface EventLeadFormProps {
   maxGuests?: number;
   reopenWhatsApp?: string;
   onLead?: () => void;
+  /** WhatsApp-green submit button with the WhatsApp logo */
+  whatsappGreen?: boolean;
 }
 
 export function EventLeadForm({
@@ -29,6 +32,7 @@ export function EventLeadForm({
   maxGuests = 200,
   reopenWhatsApp = WHATSAPP_EVENTS,
   onLead,
+  whatsappGreen = false,
 }: EventLeadFormProps) {
   const formId = useId();
   const [name, setName] = useState('');
@@ -201,7 +205,7 @@ export function EventLeadForm({
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className={`${inputClass} pr-10`}
+                className={`${inputClass} pr-10 min-w-0 appearance-none min-h-[50px] text-right`}
               />
             </div>
           </div>
@@ -258,8 +262,16 @@ export function EventLeadForm({
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
-          <button type="submit" disabled={status === 'sending'} className="btn-brand flex-1 disabled:opacity-70">
-            <MessageCircle className="w-5 h-5" />
+          <button
+            type="submit"
+            disabled={status === 'sending'}
+            className={
+              whatsappGreen
+                ? 'flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold text-white bg-[#25D366] hover:bg-[#1EBE5A] shadow-lg shadow-[#25D366]/25 transition-colors disabled:opacity-70'
+                : 'btn-brand flex-1 disabled:opacity-70'
+            }
+          >
+            {whatsappGreen ? <WhatsAppIcon /> : <MessageCircle className="w-5 h-5" />}
             {status === 'sending' ? 'שולח...' : 'שליחה בוואטסאפ'}
           </button>
           <button
