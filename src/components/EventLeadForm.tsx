@@ -15,6 +15,7 @@ interface EventLeadFormProps {
   showLocation?: boolean;
   maxGuests?: number;
   reopenWhatsApp?: string;
+  onLead?: () => void;
 }
 
 export function EventLeadForm({
@@ -27,6 +28,7 @@ export function EventLeadForm({
   showLocation = false,
   maxGuests = 200,
   reopenWhatsApp = WHATSAPP_EVENTS,
+  onLead,
 }: EventLeadFormProps) {
   const formId = useId();
   const [name, setName] = useState('');
@@ -64,6 +66,7 @@ export function EventLeadForm({
 
   const trackLead = () => {
     gtagEvent('event_lead', 'conversion', trackingLabel);
+    onLead?.();
     try {
       fbq('track', 'Lead', {
         content_name: contentName,

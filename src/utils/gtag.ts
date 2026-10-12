@@ -33,4 +33,16 @@ export const trackReservationClick = (label = 'tabit_reservation') => {
   trackConversion();
 };
 
+/**
+ * Google Ads lead conversion for the outdoor-events landing page.
+ * Fill in the "AW-ID/label" pair from Google Ads → Goals → Conversions; until then nothing is sent.
+ */
+export const GOOGLE_ADS_LEAD_SEND_TO = '';
+
+export const trackAdsLead = () => {
+  if (GOOGLE_ADS_LEAD_SEND_TO && typeof window !== 'undefined' && window.gtag) {
+    window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_LEAD_SEND_TO });
+  }
+};
+
 export default gtagEvent;

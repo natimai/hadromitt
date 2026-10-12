@@ -18,6 +18,7 @@ const Gallery = lazy(() => import('./pages/Gallery').then(module => ({ default: 
 const Contact = lazy(() => import('./pages/Contact').then(module => ({ default: module.Contact })));
 const Blog = lazy(() => import('./pages/Blog').then(module => ({ default: module.Blog })));
 const BlogPost = lazy(() => import('./pages/BlogPost').then(module => ({ default: module.BlogPost })));
+const OutdoorEventsLanding = lazy(() => import('./pages/landing/OutdoorEventsLanding').then(module => ({ default: module.OutdoorEventsLanding })));
 
 // Default exports
 const Privacy = lazy(() => import('./pages/Privacy'));
@@ -44,7 +45,28 @@ function ScrollToTop(): null {
   return null;
 }
 
+// Campaign landing pages (/lp/...) stand alone, without the main site's navigation
+function LandingApp(): JSX.Element {
+  return (
+    <HelmetProvider>
+      <main className="relative min-h-screen">
+        <ScrollToTop />
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            <Route path="/lp/outdoor-events" element={<OutdoorEventsLanding />} />
+          </Routes>
+        </Suspense>
+      </main>
+      <AccessibilityMenu />
+      <CookieBanner />
+    </HelmetProvider>
+  );
+}
+
 function App(): JSX.Element {
+  const { pathname } = useLocation();
+  if (pathname.startsWith('/lp/')) return <LandingApp />;
+
   return (
     <HelmetProvider>
       <div className="relative flex flex-col min-h-screen has-mobile-sticky">
