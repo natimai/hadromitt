@@ -17,8 +17,8 @@ interface EventLeadFormProps {
   maxGuests?: number;
   reopenWhatsApp?: string;
   onLead?: () => void;
-  /** WhatsApp-green submit button with the WhatsApp logo */
-  whatsappGreen?: boolean;
+  /** WhatsApp is the only contact channel: green WhatsApp button, no email option */
+  whatsappOnly?: boolean;
 }
 
 export function EventLeadForm({
@@ -32,7 +32,7 @@ export function EventLeadForm({
   maxGuests = 200,
   reopenWhatsApp = WHATSAPP_EVENTS,
   onLead,
-  whatsappGreen = false,
+  whatsappOnly = false,
 }: EventLeadFormProps) {
   const formId = useId();
   const [name, setName] = useState('');
@@ -193,8 +193,8 @@ export function EventLeadForm({
           </div>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4">
-          <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="min-w-0">
             <label htmlFor={`${formId}-date`} className={labelClass}>
               תאריך מבוקש
             </label>
@@ -205,11 +205,11 @@ export function EventLeadForm({
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className={`${inputClass} pr-10 min-w-0 appearance-none min-h-[50px] text-right`}
+                className={`${inputClass} pr-10 block max-w-full min-w-0 appearance-none min-h-[50px] text-right [&::-webkit-date-and-time-value]:text-right`}
               />
             </div>
           </div>
-          <div>
+          <div className="min-w-0">
             <label htmlFor={`${formId}-guests`} className={labelClass}>
               מספר אורחים
             </label>
@@ -266,30 +266,32 @@ export function EventLeadForm({
             type="submit"
             disabled={status === 'sending'}
             className={
-              whatsappGreen
+              whatsappOnly
                 ? 'flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold text-white bg-[#25D366] hover:bg-[#1EBE5A] shadow-lg shadow-[#25D366]/25 transition-colors disabled:opacity-70'
                 : 'btn-brand flex-1 disabled:opacity-70'
             }
           >
-            {whatsappGreen ? <WhatsAppIcon /> : <MessageCircle className="w-5 h-5" />}
+            {whatsappOnly ? <WhatsAppIcon /> : <MessageCircle className="w-5 h-5" />}
             {status === 'sending' ? 'שולח...' : 'שליחה בוואטסאפ'}
           </button>
-          <button
-            type="button"
-            onClick={handleEmail}
-            disabled={status === 'sending'}
-            className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold transition-colors disabled:opacity-70 ${
-              isDark
-                ? 'border border-white/25 text-white hover:bg-white/10'
-                : 'border border-warmDark/15 text-warmDark hover:border-brand hover:text-brand'
-            }`}
-          >
-            <Send className="w-5 h-5" />
-            שליחה במייל
-          </button>
+          {!whatsappOnly && (
+            <button
+              type="button"
+              onClick={handleEmail}
+              disabled={status === 'sending'}
+              className={`flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold transition-colors disabled:opacity-70 ${
+                isDark
+                  ? 'border border-white/25 text-white hover:bg-white/10'
+                  : 'border border-warmDark/15 text-warmDark hover:border-brand hover:text-brand'
+              }`}
+            >
+              <Send className="w-5 h-5" />
+              שליחה במייל
+            </button>
+          )}
         </div>
         <p className={`text-xs ${isDark ? 'text-white/45' : 'text-warmDark/45'}`}>
-          וואטסאפ: {WHATSAPP_DISPLAY} · מייל: {EMAIL}
+          וואטסאפ: {WHATSAPP_DISPLAY}{!whatsappOnly && ` · מייל: ${EMAIL}`}
         </p>
       </form>
     </div>

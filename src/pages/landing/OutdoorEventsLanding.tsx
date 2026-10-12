@@ -20,8 +20,8 @@ import fbq from '../../utils/fbq';
 import { gtagEvent, trackAdsLead } from '../../utils/gtag';
 import {
   ADDRESS,
-  PHONE_DISPLAY,
-  PHONE_TEL,
+  WHATSAPP_DISPLAY,
+  WHATSAPP_TEL,
   WHATSAPP_OUTDOOR_EVENTS,
 } from '../../utils/constants';
 
@@ -157,7 +157,7 @@ export function OutdoorEventsLanding() {
       maxGuests={800}
       reopenWhatsApp={WHATSAPP_OUTDOOR_EVENTS}
       onLead={trackAdsLead}
-      whatsappGreen
+      whatsappOnly
     />
   );
 
@@ -177,12 +177,12 @@ export function OutdoorEventsLanding() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <img src="/logo.svg" alt="הדרומית — מסעדת בשרים כשרה" className="h-10 w-auto" />
           <a
-            href={PHONE_TEL}
+            href={WHATSAPP_TEL}
             onClick={() => trackContact('landing_header_call')}
             className="hidden sm:inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 text-white text-sm font-bold hover:bg-white/20 transition-colors"
           >
             <Phone className="w-4 h-4" />
-            {PHONE_DISPLAY}
+            {WHATSAPP_DISPLAY}
           </a>
         </div>
       </header>
@@ -198,7 +198,7 @@ export function OutdoorEventsLanding() {
         <div className="absolute inset-0 bg-gradient-to-l from-ink via-ink/85 to-ink/50" />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-24 pb-14 lg:pt-28 lg:pb-20 grid lg:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6">
+          <div className="space-y-6 min-w-0">
             <span className="inline-flex items-center gap-2 rounded-full bg-brand/20 border border-brand/40 px-4 py-1.5 text-sm font-semibold">
               <MapPin className="w-4 h-4 text-brand" />
               מסעדת הדרומית, באר שבע · דרום ומרכז
@@ -224,7 +224,7 @@ export function OutdoorEventsLanding() {
                 קבלו הצעת מחיר
               </a>
               <a
-                href={PHONE_TEL}
+                href={WHATSAPP_TEL}
                 onClick={() => trackContact('landing_hero_call')}
                 className="btn-outline-light"
               >
@@ -234,7 +234,7 @@ export function OutdoorEventsLanding() {
             </div>
           </div>
 
-          <div id="form" className="scroll-mt-4">
+          <div id="form" className="scroll-mt-4 min-w-0">
             {leadForm}
           </div>
         </div>
@@ -367,19 +367,19 @@ export function OutdoorEventsLanding() {
       {/* Final CTA */}
       <section className="py-16 px-4 sm:px-6 bg-ink text-white">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-          <div className="space-y-5 text-center lg:text-right">
+          <div className="space-y-5 text-center lg:text-right min-w-0">
             <h2 className="font-display text-3xl sm:text-4xl font-bold">בואו נדבר על האירוע שלכם</h2>
             <p className="text-white/75 text-lg">
               השאירו פרטים, או דברו איתנו ישירות בטלפון או בוואטסאפ.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <a
-                href={PHONE_TEL}
+                href={WHATSAPP_TEL}
                 onClick={() => trackContact('landing_footer_call')}
                 className="btn-outline-light"
               >
                 <Phone className="w-5 h-5" />
-                {PHONE_DISPLAY}
+                {WHATSAPP_DISPLAY}
               </a>
               <a
                 href={WHATSAPP_OUTDOOR_EVENTS}
@@ -393,7 +393,7 @@ export function OutdoorEventsLanding() {
               </a>
             </div>
           </div>
-          {leadForm}
+          <div className="min-w-0">{leadForm}</div>
         </div>
       </section>
 
@@ -414,7 +414,7 @@ export function OutdoorEventsLanding() {
       >
         <div className="grid grid-cols-3 gap-1 px-2 py-2 text-white text-xs font-semibold">
           <a
-            href={PHONE_TEL}
+            href={WHATSAPP_TEL}
             onClick={() => trackContact('landing_sticky_call')}
             className="flex flex-col items-center justify-center gap-0.5 py-2 rounded-xl min-h-[52px] active:bg-white/15"
           >

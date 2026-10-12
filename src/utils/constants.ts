@@ -13,6 +13,7 @@ export const ADDRESS = 'רח׳ צבי טאוב, מתחם ישפרו סנטר, ב
 /** מספר לקבלת הודעות וואטסאפ (לא מספר הטלפון של המסעדה) */
 export const WHATSAPP_DISPLAY = '050-313-3001';
 export const WHATSAPP_E164 = '972503133001';
+export const WHATSAPP_TEL = 'tel:0503133001';
 export const WHATSAPP_BASE = `https://wa.me/${WHATSAPP_E164}`;
 
 export const WHATSAPP_RESERVE = `${WHATSAPP_BASE}?text=${encodeURIComponent('שלום, אני מעוניין להזמין מקום')}`;
