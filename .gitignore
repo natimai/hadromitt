@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# scroll-craft build artifacts
+scrollcraft/builds/*/lab/
+scrollcraft/builds/*/package.json
+scrollcraft/builds/*/package-lock.json

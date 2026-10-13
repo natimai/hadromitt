@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/lp/al-haesh",
+      "destination": "/lp/al-haesh/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -16,4 +20,4 @@
       ]
     }
   ]
-} 
+}
