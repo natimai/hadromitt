@@ -32,7 +32,7 @@ Sibling of the React landing page at `/lp/outdoor-events`, which stays untouched
 1. **Vibe:** smoke, heat, appetite, a backyard at night. References: the sound
    of fat hitting coals; a butcher's chalkboard; a Tel Aviv street-food sign.
 2. **Journey:** appetite first, then the host's real problem (stuck at the grill),
-   the relief (we bring the fire), the fire itself, what's on it, proof from real
+   the relief (we bring the meat), the fire itself, what's on it, proof from real
    events, how it works, the questions, then the ask.
 3. **Energy:** hot open, a cold honest beat, a loud relief, a deliberate silence,
    the peak, then fast and generous, then calm and administrative, then a hot close.
@@ -85,7 +85,7 @@ the steaks show up the whole bottom of the screen flares."
 ```
 1  Appetite      skewers on a board, layered over their own blurred shadow, embers drifting, the first coal catches
 2  Recognition   bone paper ground, big honest type: you want to celebrate, not stand at the grill
-3  Relief        a red wipe takes the whole screen: we bring the fire, three plain lines
+3  Relief        a red wipe takes the whole screen: we bring the meat, three plain lines
 4  Anticipation  authored silence on charcoal: one small line, nothing else (deliberate, not dead scroll)
 5  Awe [PEAK]    steaks going onto the grill in smoke, an iris opens on them under "על האש.", the coals flare under the thumb
 6  Abundance     the menu as a chalkboard: item names land one after another at poster scale
@@ -154,3 +154,10 @@ The peak is the largest visual change on the sheet (iris plus flare) and holds t
 - Form: empty submit shows the error and focuses the name field; valid submit opens WhatsApp with the full message, posts the background copy with campaign and keyword, shows the confirmation and hides the form.
 - Keyboard: skip link first, then bar, hero CTAs, FAQ. No horizontal overflow at 390px.
 - Not verified: a real phone (iOS Safari date input, touch scroll feel, Low Power Mode), and the tracking scripts, which the sandbox blocks.
+
+## Owner revisions (after first review on a phone)
+
+- Act 4 (authored silence) removed: "on mobile this element just takes up a lot of space".
+- Sections before it were too airy on mobile: recognition, relief and peak now take their content height on phones; full-screen heights kept from 900px up. Mobile page length 9,720px → 7,841px.
+- Relief headline changed from "אנחנו מביאים את האש" to "אנחנו מביאים את הבשר" (owner's wording).
+- With the silence gone the peak has no quiet act directly before it; the red relief act is the loudest ground before it. Re-verified: no dead scroll, all cues ≥ 4.5:1, mobile and desktop.

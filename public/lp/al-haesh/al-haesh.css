@@ -218,7 +218,7 @@ body {
 .cut--paper ::selection { background: var(--paper-ink); color: var(--paper); }
 
 /* 2 · recognition */
-.recog { min-height: 92svh; display: flex; align-items: center; padding-block: 5rem; }
+.recog { display: flex; align-items: center; padding-block: 3.5rem; }
 .recog .poster em { color: var(--red); }
 .rl { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .rl > * {
@@ -230,8 +230,8 @@ body {
 
 /* 3 · relief */
 .relief { background: var(--sc-canvas); }
-.relief__ground { background: var(--red); color: #fff; min-height: 100svh; display: flex; align-items: center; }
-.relief__inner { padding-block: 5rem; text-align: center; }
+.relief__ground { background: var(--red); color: #fff; display: flex; align-items: center; }
+.relief__inner { padding-block: 3.5rem; text-align: center; }
 .relief__list { list-style: none; margin: 2.25rem auto 0; padding: 0; max-width: 34rem; }
 .relief__list li {
   font-size: clamp(1.12rem, 1rem + 0.6vw, 1.45rem); font-weight: 700; line-height: 1.4;
@@ -239,14 +239,19 @@ body {
 }
 .relief__list li:last-child { border-bottom: 1px solid hsl(0 0% 100% / 0.28); }
 
-/* 4 · hush (authored silence) */
-.hush { min-height: 72svh; background: var(--char-deep); display: grid; place-items: center; padding: 3rem 1.5rem; }
-.hush__line { margin: 0; font-size: 1.05rem; color: var(--sc-ink-soft); letter-spacing: 0.02em; text-align: center; }
+@media (min-width: 900px) {
+  .recog { min-height: 92svh; padding-block: 5rem; }
+  .relief__ground { min-height: 100svh; }
+  .relief__inner { padding-block: 5rem; }
+  .peak { min-height: 140svh; padding-block: 14svh 12svh; gap: 2rem; }
+  .board, .steps, .faq { padding-block: 5rem; }
+  .close { padding-top: 5rem; }
+}
 
 /* 5 · peak: headline on the dark ground, the grill as a wide band under it */
 .peak {
-  min-height: 140svh; background: var(--char-deep);
-  display: flex; flex-direction: column; justify-content: center; gap: 2rem; padding-block: 14svh 12svh;
+  background: var(--char-deep);
+  display: flex; flex-direction: column; justify-content: center; gap: 1.75rem; padding-block: 3.5rem 3rem;
 }
 .peak__copy { color: #fff; }
 .peak__copy p { font-size: clamp(1.12rem, 1rem + 0.6vw, 1.45rem); font-weight: 500; max-width: 26ch; margin: 1rem 0 0; color: var(--sc-ink); }
@@ -261,7 +266,7 @@ img.heat { filter: saturate(calc(0.86 + var(--heat) * 0.34)) sepia(calc(var(--he
   background:
     radial-gradient(120% 70% at 80% 0%, hsl(14 60% 12% / 0.9), transparent 60%),
     #1c0b07;
-  padding-block: 5rem 4.5rem;
+  padding-block: 3.5rem;
 }
 .board__title { font: 700 clamp(3rem, 13vw, 5.5rem)/0.9 var(--sc-font-display); margin: 0 0 2rem; color: var(--ember); }
 .board__list {
@@ -293,7 +298,7 @@ img.heat { filter: saturate(calc(0.86 + var(--heat) * 0.34)) sepia(calc(var(--he
 .proof--alt .label { inset-inline-start: auto; inset-inline-end: 1.25rem; }
 
 /* 8 · steps */
-.steps { padding-block: 4.5rem; }
+.steps { padding-block: 3.5rem; }
 .steps__list { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1.5rem; }
 .steps__list li { display: grid; grid-template-columns: 3.25rem 1fr; gap: 1rem; align-items: start; }
 .steps__n { font: 700 3.6rem/0.85 var(--sc-font-display); color: var(--red); text-align: center; }
@@ -302,7 +307,7 @@ img.heat { filter: saturate(calc(0.86 + var(--heat) * 0.34)) sepia(calc(var(--he
 @media (min-width: 900px) { .steps__list { grid-template-columns: repeat(3, 1fr); } }
 
 /* 9 · faq */
-.faq { padding-block: 4.5rem; background: var(--sc-surface); }
+.faq { padding-block: 3.5rem; background: var(--sc-surface); }
 .faq__list { margin-top: 1.75rem; max-width: 46rem; }
 .faq details { border-bottom: 1px solid var(--sc-hairline-strong); }
 .faq summary {
@@ -319,7 +324,7 @@ img.heat { filter: saturate(calc(0.86 + var(--heat) * 0.34)) sepia(calc(var(--he
 .faq details p { margin: 0 0 1.15rem; color: var(--sc-ink-soft); max-width: 60ch; }
 
 /* 10 · close */
-.close { background: var(--red); color: #fff; padding-block: 4.5rem 1.5rem; scroll-margin-top: calc(var(--bar-h) + var(--strip-h)); }
+.close { background: var(--red); color: #fff; padding-block: 3.5rem 1.5rem; scroll-margin-top: calc(var(--bar-h) + var(--strip-h)); }
 .close__grid { display: grid; gap: 2.25rem; }
 .close__head p { font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); margin: 1.25rem 0 0; max-width: 32ch; }
 @media (min-width: 900px) { .close__grid { grid-template-columns: 1fr 1fr; align-items: start; } }
